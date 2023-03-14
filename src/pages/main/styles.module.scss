@@ -1,0 +1,10 @@
+@import "src/assets/styles/colors";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $greyBackground;
+  gap: 15px;
+}

@@ -1,0 +1,81 @@
+@import "src/assets/styles/colors.scss";
+
+.buttonContainer {
+  display: flex;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  transition: .3s ease-in-out;
+  font-size: 16px;
+  font-weight: 400;
+  color: $whiteBase;
+  cursor: pointer;
+  border-radius: 40px;
+  overflow: hidden;
+  border: solid 1px $greenBase;
+
+  &:active {
+    opacity: .9;
+  }
+}
+
+// colors
+.green {
+  background-color: $greenBase;
+
+  &:hover {
+    background-color: $greenHover;
+  }
+}
+
+.whiteUpload {
+  background-color: $whiteBase;
+  color: $blackBase;
+
+  &:hover {
+    background-color: $greenBase;
+    color: $whiteBase;
+  }
+}
+
+//sizes
+.xl {
+  width: 285px;
+  height: 64px;
+  flex-direction: row-reverse;
+}
+
+.l {
+  width: 285px;
+  height: 50px;
+}
+
+.m {
+  width: 133px;
+  height: 40px
+}
+
+.s {
+  width: 102px;
+  height: 40px
+}
+
+.xs {
+  width: 50px;
+  height: 50px
+}
+
+//icon
+
+.icon {
+  fill: red;
+  background-size: cover;
+}
+.iconLeft {
+  justify-self: start;
+}
+

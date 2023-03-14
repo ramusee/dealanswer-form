@@ -1,0 +1,13 @@
+@import "./fonts-styles/poppins.css";
+
+html, body, #root {
+	font-family: 'Poppins', -apple-system,  'BlinkMacSystemFont', 'Roboto',  'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue','sans-serif';
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
