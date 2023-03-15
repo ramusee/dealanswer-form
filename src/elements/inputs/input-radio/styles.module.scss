@@ -1,0 +1,50 @@
+@import "../../../assets/styles/colors";
+
+.inputContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 15px 16px;
+  background-color: $whiteBase;
+  border: 1px solid $greyBorder;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: .2s ease-out;
+  gap: 8px;
+  cursor: pointer;
+
+  & input {
+    position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+    outline: none;
+    &:checked  + .radioIcon {
+      background-image: url('src/assets/icons/checkGreen.svg');
+    }
+  }
+
+  &:not(.disabled):active {
+    opacity: .9;
+  }
+
+  &:not(.disabled):hover {
+    border-color: $greenBase;
+  }
+}
+
+.radioIcon {
+  background-image: url('src/assets/icons/check.svg');
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  z-index: 1;
+}
+
+.active {
+  border-color: $greenBase;
+}
