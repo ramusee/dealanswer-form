@@ -1,5 +1,7 @@
+import { InputRadio } from '../../types/radioInputGroup';
+
 interface InputRadioGroupProps {
-  radioList: string[];
+  radioList: InputRadio[];
   groupName: string;
   isDisabled?: boolean;
 }

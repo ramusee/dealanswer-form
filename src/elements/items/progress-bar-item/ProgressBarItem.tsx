@@ -9,26 +9,23 @@ import s from './styles.module.scss';
 
 const ProgressBarItem: FC<ProgressBarItemProps> = ({ id, title, status }) => {
   const isDone = status === Statuses.Done;
+  const isActiveItem = status === Statuses.InProgress && s.activeIcon;
 
-  const iconClassName = cn(
-    s.icon,
-    status === Statuses.InProgress && s.activeIcon,
-  );
+  const iconClassName = cn(s.icon, isActiveItem && s.activeIcon);
+
+  const contentClassName = cn(s.content, isActiveItem && s.contentActive);
   return (
     <div className={s.container}>
-      <div className={s.wrapper}>
-        <div className={s.content}>
-          {isDone ? (
-            <CircleCheckIcon />
-          ) : (
-            <div className={iconClassName}>{id}</div>
-          )}
-          <span className={s.title}>{title}</span>
-          <div className={s.arrowIcon}>
-            <ArrowRightSmIcon />
-          </div>
-        </div>
-        <div className={s.indicator}></div>
+      <div className={contentClassName}>
+        {isDone ? (
+          <CircleCheckIcon />
+        ) : (
+          <div className={iconClassName}>{id}</div>
+        )}
+        <span className={s.title}>{title}</span>
+      </div>
+      <div className={s.arrowIcon}>
+        <ArrowRightSmIcon />
       </div>
     </div>
   );

@@ -2,17 +2,34 @@
 
 .container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
   white-space: nowrap;
   font-size: 16px;
-}
-.content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 12px;
 }
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  cursor: pointer;
+  &:before {
+    content: '';
+    opacity: 0;
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    bottom: -15px;
+    background-color: $orangeBase;
+  }
+}
+.contentActive:before {
+  opacity: 1;
+}
+
 .icon {
   display: flex;
   justify-content: center;
@@ -36,10 +53,5 @@
   justify-content: center;
   align-items: center;
   width: 36px;
-}
 
-.indicator {
-  height: 2px;
-  background-color: $orangeBase;
-  justify-self: end;
 }

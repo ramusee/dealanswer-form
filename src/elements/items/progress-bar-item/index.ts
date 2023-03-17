@@ -1,1 +1,1 @@
-export { NavItem } from './ProgressBarItem';
+export { ProgressBarItem } from './ProgressBarItem';

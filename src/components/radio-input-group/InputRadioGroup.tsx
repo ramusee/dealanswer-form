@@ -3,27 +3,26 @@ import { InputRadioGroupProps } from './types';
 import { InputRadio } from '../../elements/inputs/input-radio';
 
 import s from './styles.module.scss';
+import { useFormContext } from 'react-hook-form';
 
 const InputRadioGroup: FC<InputRadioGroupProps> = ({
   radioList,
   groupName,
   isDisabled,
 }) => {
-  const [value, setValue] = useState<string>();
+  const { watch } = useFormContext();
+  const inputValue = watch(groupName);
 
-  const inputRadioHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
   return (
     <div className={s.radioGroupContainer}>
-      {radioList.map(text => (
+      {radioList.map(({ title, withText }) => (
         <InputRadio
-          key={text}
+          key={title}
           name={groupName}
-          text={text}
-          onChange={inputRadioHandler}
-          isChecked={value === text.toLowerCase()}
+          title={title}
           isDisabled={isDisabled}
+          isWithText={withText}
+          isChecked={inputValue === title.toLowerCase()}
         />
       ))}
     </div>

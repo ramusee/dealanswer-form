@@ -1,11 +1,9 @@
-import { ChangeEvent } from 'react';
-
 interface InputRadioProps {
-  text: string;
+  title: string;
   name: string;
   isChecked: boolean;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   isDisabled?: boolean;
+  isWithText?: boolean;
 }
 
 export type { InputRadioProps };

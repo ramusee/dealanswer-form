@@ -1,19 +1,21 @@
 @import "../../../assets/styles/colors";
 
-.inputContainer {
+
+
+.inputRadioContainer {
   display: flex;
-  justify-content: start;
   align-items: center;
-  padding: 15px 16px;
-  background-color: $whiteBase;
   border: 1px solid $greyBorder;
   border-radius: 12px;
+  padding: 15px 16px;
+  max-width: 200px;
+  width: fit-content;
+  background-color: $whiteBase;
   font-size: 14px;
   transition: .2s ease-out;
   gap: 8px;
   cursor: pointer;
-
-  & input {
+  & > input {
     position: absolute;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -23,7 +25,7 @@
     height: 20px;
     z-index: 2;
     outline: none;
-    &:checked  + .radioIcon {
+    &:checked + .radioIcon {
       background-image: url('src/assets/icons/checkGreen.svg');
     }
   }
@@ -37,6 +39,25 @@
   }
 }
 
+.inputTextContainer {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  transition: 2s ease-out;
+  & input {
+    display: inline-block;
+    height: 17px;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    transition: 0.2s ease-out;
+    width: 100px
+  }
+}
+.text {
+  color: $greyBase;
+}
 .radioIcon {
   background-image: url('src/assets/icons/check.svg');
   background-repeat: no-repeat;
