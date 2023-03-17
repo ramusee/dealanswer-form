@@ -1,11 +1,11 @@
 enum InputFileSize {
-  COVER = 'COVER',
-  FIX = 'FIX',
+  Cover = 'Cover',
+  Fix = 'Fix',
 }
 
 enum InputType {
-  DASHED = 'DASHED',
-  SOLID = 'SOLID',
+  Dashed = 'Dashed',
+  Solid = 'Solid',
 }
 
 export { InputFileSize, InputType };

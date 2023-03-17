@@ -16,9 +16,9 @@ const Button: FC<ButtonProps> = ({
 }) => {
   const buttonClassname = cn(
     s.button,
-    color === ButtonColor.GREEN && s.green,
-    color === ButtonColor.WHITE && s.white,
-    color === ButtonColor.GREY && s.grey,
+    color === ButtonColor.Green && s.green,
+    color === ButtonColor.White && s.white,
+    color === ButtonColor.Grey && s.grey,
     size === ButtonSize.XL && s.xl,
     size === ButtonSize.L && s.l,
     size === ButtonSize.M && s.m,

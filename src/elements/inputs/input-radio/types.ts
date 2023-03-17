@@ -5,6 +5,7 @@ interface InputRadioProps {
   name: string;
   isChecked: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  isDisabled?: boolean;
 }
 
 export type { InputRadioProps };

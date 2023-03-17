@@ -7,6 +7,7 @@ import s from './styles.module.scss';
 const InputRadioGroup: FC<InputRadioGroupProps> = ({
   radioList,
   groupName,
+  isDisabled,
 }) => {
   const [value, setValue] = useState<string>();
 
@@ -22,6 +23,7 @@ const InputRadioGroup: FC<InputRadioGroupProps> = ({
           text={text}
           onChange={inputRadioHandler}
           isChecked={value === text.toLowerCase()}
+          isDisabled={isDisabled}
         />
       ))}
     </div>

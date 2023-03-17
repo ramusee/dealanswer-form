@@ -7,17 +7,18 @@ enum ButtonSize {
 }
 
 enum ButtonColor {
-  GREEN = 'GREEN',
-  WHITE = 'WHITE',
-  GREY = 'GREY',
+  Green = 'Green',
+  White = 'White',
+  Grey = 'Grey',
 }
 
 enum ButtonIconKey {
-  ARROW_RIGHT = 'ARROW_RIGHT',
-  CLOSE = 'CLOSE',
-  EDIT = 'EDIT',
-  PAPERCLIP = 'PAPERCLIP',
-  TRASH = 'TRASH',
+  ArrowRight = 'ArrowRight',
+  Close = 'Close',
+  Edit = 'Edit',
+  Paperclip = 'Paperclip',
+  Trash = 'Trash',
+  Login = 'Login',
 }
 
 export { ButtonSize, ButtonColor, ButtonIconKey };

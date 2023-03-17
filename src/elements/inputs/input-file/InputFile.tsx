@@ -16,8 +16,9 @@ const InputFile: FC<InputFileProps> = ({
   const inputFileRef = useRef(null);
   const inputFileContainerClassname = cn(
     s.inputContainer,
-    type === InputType.SOLID && s.solid,
-    size === InputFileSize.FIX && s.fixSize,
+    type === InputType.Solid && s.solid,
+    size === InputFileSize.Fix && s.fixSize,
+    size === InputFileSize.Cover && s.coverSize,
     isDisabled && s.disabled,
   );
   return (

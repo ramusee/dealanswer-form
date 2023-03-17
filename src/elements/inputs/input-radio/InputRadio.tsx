@@ -1,17 +1,22 @@
 import React, { FC } from 'react';
+import cn from 'classnames';
 
 import { InputRadioProps } from './types';
 
 import s from './styles.module.scss';
-import cn from 'classnames';
 
 const InputRadio: FC<InputRadioProps> = ({
   text,
   onChange,
   isChecked,
   name,
+  isDisabled = false,
 }) => {
-  const inputContainerClassName = cn(s.inputContainer, isChecked && s.active);
+  const inputContainerClassName = cn(
+    s.inputContainer,
+    isChecked && s.active,
+    isDisabled && s.disabled,
+  );
   return (
     <label className={inputContainerClassName}>
       <input
@@ -20,6 +25,7 @@ const InputRadio: FC<InputRadioProps> = ({
         value={text.toLowerCase()}
         onChange={onChange}
         name={name}
+        disabled={isDisabled}
       />
       <span className={s.radioIcon} />
       {text}

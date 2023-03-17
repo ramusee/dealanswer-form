@@ -1,0 +1,45 @@
+@import 'src/assets/styles/colors';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 16px;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  color: $greyBase;
+  border: 1px solid $greyBase;
+  border-radius: 30px;
+  font-size: 14px;
+}
+
+.activeIcon {
+  background-color: $orangeBase;
+  border: none;
+  color: $blackBase;
+}
+
+.arrowIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+}
+
+.indicator {
+  height: 2px;
+  background-color: $orangeBase;
+  justify-self: end;
+}
