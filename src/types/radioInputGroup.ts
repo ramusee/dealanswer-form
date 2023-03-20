@@ -1,6 +1,6 @@
-interface InputRadio {
+interface InputRadioItem {
   title: string;
   withText?: boolean;
 }
 
-export type { InputRadio };
+export type { InputRadioItem };

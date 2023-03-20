@@ -1,0 +1,60 @@
+@import 'src/assets/styles/colors';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 285px;
+  height: 50px;
+  border: 1px solid $greyBorder;
+  border-radius: 12px;
+  font-size: 14px;
+  padding: 0 20px;
+  transition: box-shadow .2s ease-out;
+
+  &:hover {
+    box-shadow: 0 5px 10px $greyBorder;
+  }
+
+  &:active {
+    border-color: $greenBase;
+  }
+
+  & > div {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-right: 5px;
+  }
+
+  & input {
+    border: none;
+    outline: none;
+    height: 17px;
+  }
+
+  & span {
+    color: $greyBase;
+    font-size: 11px;
+  }
+
+  & svg {
+    cursor: pointer;
+  }
+}
+
+.disabled {
+  opacity: 0.6;
+}
+
+.filled {
+  padding: 8px 20px;
+  justify-content: space-between;
+}
+
+
+.active {
+  border-color: $greenBase;
+}

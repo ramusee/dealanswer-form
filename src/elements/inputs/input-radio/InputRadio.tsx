@@ -1,21 +1,19 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
+import { useFormContext } from 'react-hook-form';
 import cn from 'classnames';
 
 import { InputRadioProps } from './types';
 
 import s from './styles.module.scss';
-import { useFormContext } from 'react-hook-form';
 
 const InputRadio: FC<InputRadioProps> = props => {
-  const {
-    title,
-    name,
-    isChecked,
-    isDisabled = false,
-    isWithText = false,
-  } = props;
+  const { title, name, isDisabled = false, isWithText = false } = props;
 
-  const { register } = useFormContext();
+  const { register, watch } = useFormContext();
+  // const textValue = watch('radioTextValue');
+  const radioValue = watch(name);
+
+  const isChecked = radioValue === title;
 
   const inputRadioContainerClassName = cn(
     s.inputRadioContainer,
@@ -23,25 +21,23 @@ const InputRadio: FC<InputRadioProps> = props => {
     isDisabled && s.disabled,
   );
 
-  // const isShowedText = isWithText && isChecked;
-
-  // if (!isWithText) {
-  // return (
-  //   <label className={inputRadioContainerClassName}>
-  //     <input
-  //       type="radio"
-  //       {...register(name, {
-  //         disabled: isDisabled,
-  //       })}
-  //       value={title.toLowerCase()}
-  //       checked={isChecked}
-  //       disabled={isDisabled}
-  //     />
-  //     <span className={s.radioIcon} />
-  //     {title}
-  //   </label>
-  // );
-  // }
+  if (!isWithText) {
+    return (
+      <label className={inputRadioContainerClassName}>
+        <input
+          type="radio"
+          {...register(name, {
+            disabled: isDisabled,
+          })}
+          value={title}
+          checked={isChecked}
+          disabled={isDisabled}
+        />
+        <span className={s.radioIcon} />
+        {title}
+      </label>
+    );
+  }
 
   return (
     <div className={s.container}>
@@ -49,18 +45,18 @@ const InputRadio: FC<InputRadioProps> = props => {
         <input
           type="radio"
           checked={isChecked}
-          value={title.toLowerCase()}
+          value={title}
           disabled={isDisabled}
           {...register(name, {
             disabled: isDisabled,
           })}
         />
         <span className={s.radioIcon} />
-        {!isChecked && <span className={s.text}> {title}</span>}
+        {!isChecked && <span className={s.text}>{title}</span>}
         {isChecked && (
           <div className={s.inputTextContainer}>
             <input
-              {...register(name, {
+              {...register('radioTextValue', {
                 disabled: isDisabled,
               })}
               type="text"

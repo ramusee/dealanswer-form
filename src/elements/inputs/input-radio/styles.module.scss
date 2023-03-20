@@ -1,7 +1,5 @@
 @import "../../../assets/styles/colors";
 
-
-
 .inputRadioContainer {
   display: flex;
   align-items: center;
@@ -15,6 +13,11 @@
   transition: .2s ease-out;
   gap: 8px;
   cursor: pointer;
+
+  &:not(.disabled):hover {
+    border-color: $greenBase;
+  }
+
   & > input {
     position: absolute;
     -webkit-appearance: none;
@@ -25,18 +28,12 @@
     height: 20px;
     z-index: 2;
     outline: none;
+
     &:checked + .radioIcon {
       background-image: url('src/assets/icons/checkGreen.svg');
     }
   }
 
-  &:not(.disabled):active {
-    opacity: .9;
-  }
-
-  &:not(.disabled):hover {
-    border-color: $greenBase;
-  }
 }
 
 .inputTextContainer {
@@ -44,6 +41,7 @@
   align-items: center;
   width: fit-content;
   transition: 2s ease-out;
+
   & input {
     display: inline-block;
     height: 17px;
@@ -55,9 +53,11 @@
     width: 100px
   }
 }
+
 .text {
   color: $greyBase;
 }
+
 .radioIcon {
   background-image: url('src/assets/icons/check.svg');
   background-repeat: no-repeat;

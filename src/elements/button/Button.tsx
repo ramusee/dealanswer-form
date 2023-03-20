@@ -3,8 +3,9 @@ import cn from 'classnames';
 
 import { ButtonProps } from './types';
 
-import s from './styles.module.scss';
 import { ButtonColor, ButtonSize } from '../../types/button';
+
+import s from './styles.module.scss';
 
 const Button: FC<ButtonProps> = ({
   size,
@@ -26,13 +27,12 @@ const Button: FC<ButtonProps> = ({
     size === ButtonSize.XS && s.xs,
   );
   const iconClassName = cn(s.icon, size !== ButtonSize.XL && s.iconLeft);
+
   return (
-    <div onClick={onClick} className={s.buttonContainer}>
-      <button className={buttonClassname} disabled={isDisabled}>
-        {Icon && <Icon className={iconClassName} />}
-        {title}
-      </button>
-    </div>
+    <button onClick={onClick} className={buttonClassname} disabled={isDisabled}>
+      {Icon && <Icon className={iconClassName} />}
+      {title}
+    </button>
   );
 };
 

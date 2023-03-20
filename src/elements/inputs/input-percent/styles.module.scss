@@ -1,0 +1,71 @@
+@import 'src/assets/styles/colors';
+
+.container {
+  display: flex;
+  //justify-content: space-between;
+  //align-items: center;
+  width: 100%;
+  height: 50px;
+  max-width: 285px;
+  border: 1px solid $greyBorder;
+  border-radius: 12px;
+  font-size: 14px;
+  padding: 5px 5px 5px 20px;
+  transition: box-shadow .2s ease-out;
+
+  &:hover {
+    box-shadow: 0 5px 10px $greyBorder;
+  }
+
+  &:active {
+    border-color: $greenBase;
+  }
+
+  & .content {
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    //flex-grow: 1;
+    //width: 100%;
+  }
+
+  & input {
+    border: none;
+    outline: none;
+    height: 17px;
+    padding-right: 5px;
+    width: 100%;
+  }
+
+  & span {
+    color: $greyBase;
+    font-size: 11px;
+  }
+}
+
+.checkButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $greyBorder;
+  border-radius: 12px;
+  background-color: $greyBackground;
+  cursor: pointer;
+  transition: .2s ease-out;
+
+  &:hover {
+    background-color: $greenBase;
+    & g {
+      opacity: 1;
+    }
+    & path {
+      stroke: $whiteBase;
+    }
+  }
+}
+
+.active {
+  border-color: $greenBase;
+}

@@ -9,6 +9,8 @@
   font-weight: 400;
   color: $blackBase;
   font-size: 14px;
+  padding: 10px;
+  width: 100%;
   cursor: pointer;
   overflow: hidden;
   border: dashed 2px $greenBase;
@@ -49,11 +51,10 @@
 //sizes
 
 .fixSize {
-  width: 285px;
+  max-width: 285px;
   height: 50px;
 }
 .coverSize {
-  width: 100%;
   height: 120px;
 }
 

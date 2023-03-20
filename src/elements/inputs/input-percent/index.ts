@@ -1,0 +1,1 @@
+export { InputPercent } from './InputPercent';

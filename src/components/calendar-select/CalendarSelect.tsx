@@ -11,7 +11,6 @@ const CalendarSelect = () => {
   return (
     <div>
       <DatePicker
-        showYearPicker
         selected={date}
         onChange={date => setDate(date)}
         onCalendarClose={handleCalendarClose}

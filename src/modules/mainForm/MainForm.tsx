@@ -4,17 +4,25 @@ import { ButtonColor, ButtonSize } from '../../types/button';
 import { BUTTON_ICONS } from '../../consts/button';
 import { InputFile } from '../../elements/inputs/input-file';
 import { InputFileSize, InputType } from '../../types/inputFile';
-import { InputRadioGroup } from '../../components/radio-input-group';
+import { RadioGroup } from '../../components/radio-input-group';
 import { CalendarSelect } from '../../components/calendar-select';
-import { InputRadio } from '../../types/radioInputGroup';
+import { InputRadioItem } from '../../types/radioInputGroup';
 import { FormProvider, useForm } from 'react-hook-form';
-import s from './styles.module.scss';
+import { InputText } from '../../elements/inputs/input-text/InputText';
+import { InputPassword } from '../../elements/inputs/input-password';
+import { InputPercent } from '../../elements/inputs/input-percent';
+// import { InputCheckbox } from '../../elements/inputs/input-checkbox';
 
-const inputRadioList: InputRadio[] = [
+import s from './styles.module.scss';
+import { CheckboxGroup } from '../../components/input-checkbox-group';
+
+const inputRadioList: InputRadioItem[] = [
   { title: 'Yes' },
   { title: 'No' },
   { title: 'Other', withText: true },
 ];
+
+const checkboxList = ['Mercury', 'Earth'];
 
 const MainForm = () => {
   const methods = useForm();
@@ -68,8 +76,12 @@ const MainForm = () => {
           size={InputFileSize.Fix}
           inputFileHandler={inputFileHandler}
         />
-        <InputRadioGroup radioList={inputRadioList} groupName="isMan" />
+        <RadioGroup radioList={inputRadioList} groupName="isMan" />
         <CalendarSelect />
+        <InputText name="Full Legal Name" />
+        <InputPassword />
+        <InputPercent name="% in the Carried Interest" />
+        <CheckboxGroup checkboxList={checkboxList} groupName="planet" />
       </form>
     </FormProvider>
   );

@@ -2,11 +2,13 @@
 
 .buttonContainer {
   display: flex;
+  width: 100%;
 }
 
 .button {
   display: flex;
   justify-content: center;
+  width: 100%;
   gap: 8px;
   align-items: center;
   transition: .2s ease-out;
@@ -27,6 +29,7 @@
 }
 
 // colors
+
 .green {
   background-color: $greenBase;
 
@@ -74,32 +77,32 @@
 //sizes
 
 .xl {
-  width: 285px;
+  max-width: 285px;
   height: 64px;
   font-size: 16px;
   flex-direction: row-reverse;
 }
 
 .l {
-  width: 285px;
+  max-width: 285px;
   height: 50px;
   font-size: 14px;
 }
 
 .m {
-  width: 133px;
+  max-width: 133px;
   height: 40px;
   font-size: 14px;
 }
 
 .s {
-  width: 102px;
+  max-width: 102px;
   height: 40px;
   font-size: 14px;
 }
 
 .xs {
-  width: 50px;
+  max-width: 50px;
   height: 50px;
   font-size: 14px;
 }
@@ -128,3 +131,4 @@
     stroke: $whiteBase;
   }
 }
+

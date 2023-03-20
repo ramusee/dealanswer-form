@@ -1,0 +1,66 @@
+@import "../../../assets/styles/colors";
+
+.container {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 285px;
+  background-color: $whiteBase;
+  font-size: 16px;
+  transition: .2s ease-out;
+  gap: 8px;
+  cursor: pointer;
+
+  &:not(.disabled):hover {
+    & > div {
+      border-color: $greenBase;
+    }
+  }
+}
+
+.checkbox {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid $greyBorder;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  transition: .2s ease-out;
+  position: relative;
+
+  & input {
+    position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    z-index: 2;
+    outline: none;
+
+    &:checked + .checkIcon {
+      background-image: url('src/assets/icons/filledCheckbox.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.checkIcon {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  z-index: 1;
+  transition: .2s ease-out;
+}
+
+.disabled {
+  opacity: .6;
+}
+
+.checked {
+  border: none;
+}

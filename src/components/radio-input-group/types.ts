@@ -1,9 +1,9 @@
-import { InputRadio } from '../../types/radioInputGroup';
+import { InputRadioItem } from '../../types/radioInputGroup';
 
-interface InputRadioGroupProps {
-  radioList: InputRadio[];
+interface RadioGroupProps {
+  radioList: InputRadioItem[];
   groupName: string;
   isDisabled?: boolean;
 }
 
-export type { InputRadioGroupProps };
+export type { RadioGroupProps };

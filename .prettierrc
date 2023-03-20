@@ -1,10 +1,10 @@
 {
-	"parser": "typescript",
-	"singleQuote": true,
-	"tabWidth": 2,
-	"semi": true,
-	"printWidth": 80,
-	"trailingComma": "all",
-	"arrowParens": "avoid",
-	"endOfLine": "crlf"
+  "parser": "typescript",
+  "singleQuote": true,
+  "tabWidth": 2,
+  "semi": true,
+  "printWidth": 80,
+  "trailingComma": "all",
+  "arrowParens": "avoid",
+  "endOfLine": "lf"
 }
