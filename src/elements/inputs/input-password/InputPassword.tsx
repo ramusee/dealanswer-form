@@ -37,7 +37,7 @@ const InputPassword: FC<InputPasswordProps> = ({ isDisabled = false }) => {
 
   return (
     <label className={containerClassName}>
-      <div>
+      <div className={s.content}>
         {inputValue && <span>Password</span>}
         <input
           {...register(PASSWORD, {
@@ -49,7 +49,9 @@ const InputPassword: FC<InputPasswordProps> = ({ isDisabled = false }) => {
           onBlur={activeHandler}
         />
       </div>
-      <EyeIcon onClick={showPasswordHandler} />
+      <div className={s.iconContainer}>
+        <EyeIcon onClick={showPasswordHandler} />
+      </div>
     </label>
   );
 };

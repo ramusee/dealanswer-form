@@ -9,6 +9,7 @@ const RadioGroup: FC<RadioGroupProps> = ({
   groupName,
   isDisabled,
 }) => {
+  s;
   return (
     <div className={s.radioGroupContainer}>
       {radioList.map(({ title, withText }) => (

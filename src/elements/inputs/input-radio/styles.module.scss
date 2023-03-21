@@ -33,7 +33,12 @@
       background-image: url('src/assets/icons/checkGreen.svg');
     }
   }
-
+  & .content {
+    height: 17px;
+    margin: 0;
+    padding-left: 25px;
+    word-break: break-all;
+  }
 }
 
 .inputTextContainer {
@@ -50,22 +55,24 @@
     outline: none;
     font-size: 14px;
     transition: 0.2s ease-out;
-    width: 100px
+    width: 100px;
+    min-width: 15px;
   }
 }
 
-.text {
-  color: $greyBase;
-}
-
 .radioIcon {
+  position: absolute;
   background-image: url('src/assets/icons/check.svg');
+  background-position: center;
   background-repeat: no-repeat;
   width: 20px;
-  height: 20px;
   z-index: 1;
+  min-width: 15px;
+  height: 15px;
 }
-
+.withText {
+  color: $greyBase;
+}
 .active {
   border-color: $greenBase;
 }

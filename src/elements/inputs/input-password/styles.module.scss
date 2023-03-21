@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   max-width: 285px;
+  width: 100%;
   height: 50px;
   border: 1px solid $greyBorder;
   border-radius: 12px;
@@ -20,12 +21,11 @@
     border-color: $greenBase;
   }
 
-  & > div {
+  .content {
     display: flex;
     gap: 4px;
-    width: 100%;
     flex-direction: column;
-    flex-grow: 1;
+    width: 100%;
     padding-right: 5px;
   }
 
@@ -33,6 +33,7 @@
     border: none;
     outline: none;
     height: 17px;
+    width: 100%;
   }
 
   & span {
@@ -45,13 +46,18 @@
   }
 }
 
+.iconContainer {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
 .disabled {
   opacity: 0.6;
 }
 
 .filled {
   padding: 8px 20px;
-  justify-content: space-between;
 }
 
 

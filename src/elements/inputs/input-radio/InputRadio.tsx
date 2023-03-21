@@ -34,7 +34,7 @@ const InputRadio: FC<InputRadioProps> = props => {
           disabled={isDisabled}
         />
         <span className={s.radioIcon} />
-        {title}
+        <div className={s.content}>{title}</div>
       </label>
     );
   }
@@ -52,19 +52,21 @@ const InputRadio: FC<InputRadioProps> = props => {
           })}
         />
         <span className={s.radioIcon} />
-        {!isChecked && <span className={s.text}>{title}</span>}
-        {isChecked && (
-          <div className={s.inputTextContainer}>
-            <input
-              {...register('radioTextValue', {
-                disabled: isDisabled,
-              })}
-              type="text"
-              autoFocus={isChecked}
-              placeholder={title}
-            />
-          </div>
-        )}
+        <div className={s.content}>
+          {!isChecked && <span className={s.withText}>{title}</span>}
+          {isChecked && (
+            <div className={s.inputTextContainer}>
+              <input
+                {...register('radioTextValue', {
+                  disabled: isDisabled,
+                })}
+                type="text"
+                autoFocus={isChecked}
+                placeholder={title}
+              />
+            </div>
+          )}
+        </div>
       </label>
     </div>
   );

@@ -4,17 +4,17 @@ import { ButtonColor, ButtonSize } from '../../types/button';
 import { BUTTON_ICONS } from '../../consts/button';
 import { InputFile } from '../../elements/inputs/input-file';
 import { InputFileSize, InputType } from '../../types/inputFile';
-import { RadioGroup } from '../../components/radio-input-group';
+import { RadioGroup } from '../../components/radio-group';
 import { CalendarSelect } from '../../components/calendar-select';
 import { InputRadioItem } from '../../types/radioInputGroup';
 import { FormProvider, useForm } from 'react-hook-form';
-import { InputText } from '../../elements/inputs/input-text/InputText';
+import { InputText } from '../../elements/inputs/input-text';
 import { InputPassword } from '../../elements/inputs/input-password';
 import { InputPercent } from '../../elements/inputs/input-percent';
-// import { InputCheckbox } from '../../elements/inputs/input-checkbox';
 
 import s from './styles.module.scss';
-import { CheckboxGroup } from '../../components/input-checkbox-group';
+import { CheckboxGroup } from '../../components/checkbox-group';
+import { Dropdown } from '../../components/dropdown';
 
 const inputRadioList: InputRadioItem[] = [
   { title: 'Yes' },
@@ -22,7 +22,18 @@ const inputRadioList: InputRadioItem[] = [
   { title: 'Other', withText: true },
 ];
 
-const checkboxList = ['Mercury', 'Earth'];
+const dropDownOptionsList: string[] = [
+  'Justin Randall Timberlake',
+  'William Bradley Pitt',
+  'Leonardo Wilhelm DiCaprio',
+  'Benedict Timothy Cumberbatch',
+  'Michael Calyle Hall',
+  'Leonardo Wilhelm Diaprio',
+  'Benedict Timohy Cumberbatch',
+  'Michael Carlyle Hll',
+];
+
+const checkboxList = ['Mercury', 'Earth', 'Mars', 'Neptune'];
 
 const MainForm = () => {
   const methods = useForm();
@@ -30,7 +41,7 @@ const MainForm = () => {
   const inputFileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.files);
   };
-  const onSubmit = () => console.log();
+  const onSubmit = (data: unknown) => console.log(data);
 
   return (
     <FormProvider {...methods}>
@@ -77,11 +88,19 @@ const MainForm = () => {
           inputFileHandler={inputFileHandler}
         />
         <RadioGroup radioList={inputRadioList} groupName="isMan" />
-        <CalendarSelect />
         <InputText name="Full Legal Name" />
         <InputPassword />
-        <InputPercent name="% in the Carried Interest" />
+        <InputPercent
+          name="% in the Carried Interest"
+          onClick={() => console.log('button')}
+        />
         <CheckboxGroup checkboxList={checkboxList} groupName="planet" />
+        <CalendarSelect />
+        <Dropdown
+          name="Add Manager"
+          optionsList={dropDownOptionsList}
+          currentOption={dropDownOptionsList[3]}
+        />
       </form>
     </FormProvider>
   );

@@ -7,7 +7,11 @@ import { ReactComponent as CheckIcon } from '../../../assets/icons/check.svg';
 
 import s from './styles.module.scss';
 
-const InputPercent: FC<InputPercentProps> = ({ name, isDisabled = false }) => {
+const InputPercent: FC<InputPercentProps> = ({
+  name,
+  isDisabled = false,
+  onClick,
+}) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const { register, watch } = useFormContext();
@@ -39,9 +43,9 @@ const InputPercent: FC<InputPercentProps> = ({ name, isDisabled = false }) => {
           placeholder={name}
         />
       </div>
-      <div className={s.checkButton}>
+      <button className={s.checkButton} onClick={onClick}>
         <CheckIcon />
-      </div>
+      </button>
     </label>
   );
 };
