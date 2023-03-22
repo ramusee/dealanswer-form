@@ -5,10 +5,6 @@ import InputRadioCalendar from './components/InputRadioCalendar';
 
 import s from './styles.module.scss';
 
-const CustomInput = forwardRef(function CustomInput(props: any, ref) {
-  return <InputRadioCalendar {...props} ref={ref} />;
-});
-
 const CalendarSelect = () => {
   const [date, setDate] = useState<Date | null>(new Date());
 
@@ -20,7 +16,7 @@ const CalendarSelect = () => {
     <div>
       <DatePicker
         selected={date}
-        customInput={<CustomInput inputRef={inputRef} />}
+        // customInput={<CustomInput inputRef={inputRef} />}
         dateFormat="MMMM d, yyyy "
         onChange={date => setDate(date)}
       />

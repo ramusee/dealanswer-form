@@ -15,6 +15,7 @@ import { InputPercent } from '../../elements/inputs/input-percent';
 import s from './styles.module.scss';
 import { CheckboxGroup } from '../../components/checkbox-group';
 import { Dropdown } from '../../components/dropdown';
+import { Accordion } from '../../components/accordion';
 
 const inputRadioList: InputRadioItem[] = [
   { title: 'Yes' },
@@ -34,6 +35,7 @@ const dropDownOptionsList: string[] = [
 ];
 
 const checkboxList = ['Mercury', 'Earth', 'Mars', 'Neptune'];
+const accordionList = ['List Name 1', 'List Name 2', 'List Name 3'];
 
 const MainForm = () => {
   const methods = useForm();
@@ -41,7 +43,7 @@ const MainForm = () => {
   const inputFileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.files);
   };
-  const onSubmit = (data: unknown) => console.log(data);
+  const onSubmit = (data: unknown) => console.log('data');
 
   return (
     <FormProvider {...methods}>
@@ -94,13 +96,10 @@ const MainForm = () => {
           name="% in the Carried Interest"
           onClick={() => console.log('button')}
         />
+        <Dropdown name="Add Manager" optionsList={dropDownOptionsList} />
         <CheckboxGroup checkboxList={checkboxList} groupName="planet" />
         <CalendarSelect />
-        <Dropdown
-          name="Add Manager"
-          optionsList={dropDownOptionsList}
-          currentOption={dropDownOptionsList[3]}
-        />
+        <Accordion price={5000} title="SPV" contentList={accordionList} />
       </form>
     </FormProvider>
   );

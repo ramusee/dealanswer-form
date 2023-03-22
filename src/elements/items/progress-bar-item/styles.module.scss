@@ -7,9 +7,10 @@
   white-space: nowrap;
   font-size: 16px;
   gap: 12px;
-  &:last-child  {
+
+  &:last-child {
     & > div:last-child {
-    display: none;
+      display: none;
     }
   }
 }
@@ -20,6 +21,7 @@
   gap: 12px;
   position: relative;
   cursor: pointer;
+
   &:before {
     content: '';
     opacity: 0;
@@ -31,6 +33,7 @@
     background-color: $orangeBase;
   }
 }
+
 .contentActive:before {
   opacity: 1;
 }

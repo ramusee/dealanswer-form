@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useMemo, useRef, useState } from 'react';
 import cn from 'classnames';
 // import { ReactComponent as ArrowBottom } from '../../assets/icons/arrowBottom.svg';
 import { DropdownProps } from './types';
@@ -9,37 +9,46 @@ import { useOnClickOutside } from '../../hooks/useOnclickOutside';
 const Dropdown: FC<DropdownProps> = ({
   name,
   optionsList,
-  currentOption,
   isDisabled = false,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [inputValue, setInputValue] = useState<string>('');
 
   const dropdownRef = useRef(null);
 
-  const dropdownClassName = cn(
-    s.dropdown,
-    isOpen && s.dropdownOpen,
-    isOpen && s.rotate,
-  );
+  const dropdownClassName = cn(s.dropdown, isOpen && s.dropdownOpen);
+  const dropButtonClassName = cn(s.dropButton, isOpen && s.rotate);
   const inputDropClassName = cn(s.inputHidden, isOpen && s.showInput);
   const addButtonClassName = cn(s.option, s.addButton);
-  const contentClassName = cn(s.content, isOpen && s.openContent);
+
+  useOnClickOutside(dropdownRef, () => {
+    setIsOpen(false);
+  });
+
+  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  const filteredOptions = useMemo(
+    () =>
+      optionsList.filter(item =>
+        item.toLowerCase().includes(inputValue.trim().toLowerCase()),
+      ),
+    [optionsList, inputValue],
+  );
 
   const optionClickHandler = (option: string) => {
     console.log(option);
   };
+
   const openClickHandler = () => {
     setIsOpen(prevState => !prevState);
   };
 
-  const options = optionsList.map(option => {
-    const optionClassName = cn(
-      s.option,
-      option === currentOption && s.contentCurrentOption,
-    );
+  const filteredOptionsElems = filteredOptions.map(option => {
     return (
       <span
-        className={optionClassName}
+        className={s.option}
         key={option}
         onClick={() => {
           optionClickHandler(option);
@@ -50,25 +59,29 @@ const Dropdown: FC<DropdownProps> = ({
     );
   });
 
-  useOnClickOutside(dropdownRef, () => {
-    setIsOpen(false);
-  });
-
   return (
     <div ref={dropdownRef} className={dropdownClassName}>
       <div className={s.buttonContainer}>
-        <input className={inputDropClassName} type="text" placeholder={name} />
-        <button onClick={openClickHandler}>{name}</button>
+        <input
+          onChange={inputHandler}
+          value={inputValue}
+          className={inputDropClassName}
+          type="text"
+          placeholder={name}
+        />
+        <button className={dropButtonClassName} onClick={openClickHandler}>
+          {name}
+        </button>
       </div>
       {isOpen && (
-        <div className={contentClassName}>
+        <div className={s.content}>
           <button
             onClick={() => console.log('hey')}
             className={addButtonClassName}
           >
             <span>Create new person</span>
           </button>
-          {options}
+          {filteredOptionsElems}
         </div>
       )}
     </div>

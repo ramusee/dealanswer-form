@@ -4,12 +4,11 @@
   position: relative;
   font-size: 14px;
   font-family: inherit;
-  width: 590px;
-  height: 50px;
+  width: 100%;
+  max-width: 590px;
   border: 1px solid $greyBorder;
   border-radius: 12px;
   transition: box-shadow .2s ease-out;
-  overflow: hidden;
 
   &:hover {
     box-shadow: 0 5px 10px $greyBorder;
@@ -17,48 +16,49 @@
 }
 
 .dropdownOpen {
-  height: 285px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
   box-shadow: 0 5px 10px $greyBorder;
 }
 
 .buttonContainer {
+  overflow: hidden;
   width: 100%;
   height: 48px;
   border-radius: 12px;
   position: relative;
+}
 
-  button {
+.dropButton {
+  position: absolute;
+  padding: 0 0 0 20px;
+  width: 100%;
+  height: 100%;
+  background-color: $whiteBase;
+  color: $greyBase;
+  cursor: pointer;
+  text-align: start;
+  border: none;
+  transition: .2s;
+  z-index: 1;
+
+  &:hover {
+    color: $blackBase;
+  }
+
+  &:after {
+    content: '';
     position: absolute;
-    padding: 0 0 0 20px;
-    border-radius: 12px;
-    width: 100%;
-    height: 100%;
-    background-color: $whiteBase;
-    color: $greyBase;
-    cursor: pointer;
-    text-align: start;
-    border: none;
-    transition: .2s;
-    z-index: 1;
-
-    &:hover {
-      color: $blackBase;
-    }
-
-    &:after {
-      content: '';
-      position: absolute;
-      width: 15px;
-      height: 12px;
-      background-image: url("../../assets/icons/arrowBottom.svg");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      right: 4%;
-      top: 20px;
-      transition: .2s ease-out;
-      pointer-events: none;
-    }
+    width: 15px;
+    height: 12px;
+    background-image: url("../../assets/icons/arrowBottom.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    right: 4%;
+    top: 20px;
+    transition: .2s ease-out;
+    pointer-events: none;
   }
 }
 
@@ -71,7 +71,6 @@
   border: none;
   outline: none;
   border-radius: 12px;
-  //margin-right: 50px;
   z-index: 2;
 }
 
@@ -80,11 +79,19 @@
 }
 
 .content {
+  position: absolute;
   background-color: $whiteBase;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   max-height: 234px;
   width: 100%;
-
+  border: 1px solid $greyBorder;
+  border-top: none;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  box-shadow: 0 5px 10px $greyBorder;
+  box-sizing: content-box;
+  z-index: 100;
   scrollbar-width: thin;
   scrollbar-color: $greenBase $greyBackground;
   scrollbar-gutter: stable;
@@ -95,6 +102,7 @@
 
   &::-webkit-scrollbar-track {
     background-color: $greyBackground;
+    overflow: hidden;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -118,7 +126,6 @@
     border-bottom: none;
   }
 }
-
 
 .addButton {
   background-color: $greyBackground;
@@ -147,11 +154,6 @@
 
 }
 
-.contentCurrentOption {
-  text-align: start;
-  background-color: $greenLight;
-  border: none;
-}
 
 .rotate:after {
   transform: rotate(180deg);

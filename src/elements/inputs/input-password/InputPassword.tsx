@@ -50,7 +50,9 @@ const InputPassword: FC<InputPasswordProps> = ({ isDisabled = false }) => {
         />
       </div>
       <div className={s.iconContainer}>
-        <EyeIcon onClick={showPasswordHandler} />
+        <button onClick={showPasswordHandler}>
+          <EyeIcon />
+        </button>
       </div>
     </label>
   );

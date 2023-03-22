@@ -40,7 +40,7 @@
     height: 32px;
     z-index: 2;
     outline: none;
- 
+
     &:checked + .checkIcon {
       background-image: url('src/assets/icons/filledCheckbox.svg');
       background-position: center;

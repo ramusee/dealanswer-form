@@ -39,6 +39,7 @@
   &:not(.disabled):hover {
     color: $whiteBase;
     background-color: $greenBase;
+
     & svg {
       & path {
         transition: .2s ease-out;
@@ -54,6 +55,7 @@
   max-width: 285px;
   height: 50px;
 }
+
 .coverSize {
   height: 120px;
 }

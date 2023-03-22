@@ -1,0 +1,94 @@
+@import "src/assets/styles/colors";
+
+.accordion {
+  font-size: 14px;
+  font-family: inherit;
+  width: 100%;
+  max-width: 384px;
+  height: 57px;
+  border: 1px solid $greyBorder;
+  border-radius: 12px;
+  transition: .4s ease-out;
+  overflow: hidden;
+  color: $blackBase;
+
+  &:hover {
+    box-shadow: 0 5px 10px $greyBorder;
+  }
+}
+
+.accordionOpen {
+  border-color: $greenBase;
+  height: 140px;
+  color: $greenBase;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 0 20px 0 50px;
+  width: 100%;
+  height: 57px;
+  background-color: $whiteBase;
+  cursor: pointer;
+  text-align: start;
+  border: none;
+  transition: .2s;
+  font-weight: 500;
+  color: inherit;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 12px;
+    background-image: url("../../assets/icons/arrowBottom.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    left: 5%;
+    top: 40%;
+    transition: .2s ease-out;
+    pointer-events: none;
+  }
+}
+
+.iconButton {
+  border: none;
+  width: 45px;
+  height: 56px;
+  cursor: pointer;
+  background-color: $whiteBase;
+  transition: 2s ease-out;
+
+  path {
+    stroke: $greyBase;
+  }
+
+  &:hover {
+    path {
+      stroke: $greenBase;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  background-color: $whiteBase;
+  margin: 0 16px;
+  gap: 10px;
+  color: $blackBase;
+}
+
+.rotate:after {
+  transform: rotate(180deg);
+}

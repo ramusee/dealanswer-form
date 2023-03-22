@@ -33,6 +33,7 @@
       background-image: url('src/assets/icons/checkGreen.svg');
     }
   }
+
   & .content {
     height: 17px;
     margin: 0;
@@ -70,9 +71,11 @@
   min-width: 15px;
   height: 15px;
 }
+
 .withText {
   color: $greyBase;
 }
+
 .active {
   border-color: $greenBase;
 }

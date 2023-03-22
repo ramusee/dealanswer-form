@@ -13,12 +13,13 @@
   padding: 0 20px;
   transition: box-shadow .2s ease-out;
 
-  &:hover {
-    box-shadow: 0 5px 10px $greyBorder;
+  button {
+    background-color: $whiteBase;
+    border: none;
   }
 
-  &:active {
-    border-color: $greenBase;
+  &:not(.disabled):hover {
+    box-shadow: 0 5px 10px $greyBorder;
   }
 
   .content {

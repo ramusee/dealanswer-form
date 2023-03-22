@@ -1,7 +1,6 @@
 interface DropdownProps {
   name: string;
   optionsList: string[];
-  currentOption: string;
   isDisabled?: boolean;
 }
 
