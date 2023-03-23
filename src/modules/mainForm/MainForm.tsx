@@ -6,7 +6,7 @@ import { InputFile } from '../../elements/inputs/input-file';
 import { InputFileSize, InputType } from '../../types/inputFile';
 import { RadioGroup } from '../../components/radio-group';
 import { CalendarSelect } from '../../components/calendar-select';
-import { InputRadioItem } from '../../types/radioInputGroup';
+import { InputRadioContent, InputRadioItem } from '../../types/radioInputGroup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { InputText } from '../../elements/inputs/input-text';
 import { InputPassword } from '../../elements/inputs/input-password';
@@ -18,9 +18,10 @@ import { Dropdown } from '../../components/dropdown';
 import { Accordion } from '../../components/accordion';
 
 const inputRadioList: InputRadioItem[] = [
-  { title: 'Yes' },
-  { title: 'No' },
-  { title: 'Other', withText: true },
+  { title: 'Yes', content: InputRadioContent.Default },
+  { title: 'No', content: InputRadioContent.Default },
+  { title: 'Other', content: InputRadioContent.InputText },
+  { title: 'date', content: InputRadioContent.Calendar },
 ];
 
 const dropDownOptionsList: string[] = [

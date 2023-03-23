@@ -1,8 +1,10 @@
+import { InputRadioContent } from '../../../types/radioInputGroup';
+
 interface InputRadioProps {
   title: string;
   name: string;
   isDisabled?: boolean;
-  isWithText?: boolean;
+  content: InputRadioContent;
 }
 
 export type { InputRadioProps };

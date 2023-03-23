@@ -1,45 +1,29 @@
 @import "../../../assets/styles/colors";
 
-.inputRadioContainer {
+.container {
   display: flex;
   align-items: center;
   border: 1px solid $greyBorder;
   border-radius: 12px;
-  padding: 15px 16px;
-  max-width: 200px;
+  height: 50px;
+  min-width: 68px;
+  max-width: 285px;
   width: fit-content;
   background-color: $whiteBase;
   font-size: 14px;
   transition: .2s ease-out;
-  gap: 8px;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
 
   &:not(.disabled):hover {
     border-color: $greenBase;
   }
+}
 
-  & > input {
-    position: absolute;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    z-index: 2;
-    outline: none;
-
-    &:checked + .radioIcon {
-      background-image: url('src/assets/icons/checkGreen.svg');
-    }
-  }
-
-  & .content {
-    height: 17px;
-    margin: 0;
-    padding-left: 25px;
-    word-break: break-all;
-  }
+.inputRadioContainer {
+  position: relative;
+  width: 20px;
 }
 
 .inputTextContainer {
@@ -47,6 +31,7 @@
   align-items: center;
   width: fit-content;
   transition: 2s ease-out;
+  padding-left: 30px;
 
   & input {
     display: inline-block;
@@ -61,6 +46,24 @@
   }
 }
 
+.inputRadio {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  outline: none;
+  left: 15px;
+  top: -8px;
+  &:checked + .radioIcon {
+    left: 15px;
+    background-image: url('src/assets/icons/checkGreen.svg');
+  }
+}
+
 .radioIcon {
   position: absolute;
   background-image: url('src/assets/icons/check.svg');
@@ -70,6 +73,19 @@
   z-index: 1;
   min-width: 15px;
   height: 15px;
+  left: 15px;
+  top: -8px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  word-break: break-all;
+  & > span {
+    padding: 16px 16px 16px 25px;
+  }
 }
 
 .withText {

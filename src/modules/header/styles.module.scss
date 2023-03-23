@@ -1,7 +1,8 @@
 @import "src/assets/styles/breakpoints";
+@import "src/assets/styles/colors";
 
 .header {
-  box-shadow: 0 4px 25px -5px #b6b6b6;
+  box-shadow: 0 5px 10px $greyBorder;
 }
 
 .container {

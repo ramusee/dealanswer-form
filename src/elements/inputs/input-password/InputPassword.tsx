@@ -45,6 +45,7 @@ const InputPassword: FC<InputPasswordProps> = ({ isDisabled = false }) => {
           })}
           type={!isShowPassword ? PASSWORD : 'text'}
           placeholder="Password"
+          autoComplete="off"
           onFocus={activeHandler}
           onBlur={activeHandler}
         />

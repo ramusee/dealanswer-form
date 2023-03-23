@@ -1,10 +1,9 @@
 import React, { FC, useMemo, useRef, useState } from 'react';
 import cn from 'classnames';
-// import { ReactComponent as ArrowBottom } from '../../assets/icons/arrowBottom.svg';
 import { DropdownProps } from './types';
 
-import s from './styles.module.scss';
 import { useOnClickOutside } from '../../hooks/useOnclickOutside';
+import s from './styles.module.scss';
 
 const Dropdown: FC<DropdownProps> = ({
   name,

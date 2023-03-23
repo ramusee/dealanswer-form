@@ -11,6 +11,7 @@ const InputText: FC<InputTextProps> = ({ name, isDisabled }) => {
 
   const { register, watch } = useFormContext();
   const inputValue = watch(name);
+
   const activeHandler = () => {
     setIsActive(prevState => !prevState);
   };
@@ -21,6 +22,7 @@ const InputText: FC<InputTextProps> = ({ name, isDisabled }) => {
     inputValue && s.filled,
     isDisabled && s.disabled,
   );
+
   return (
     <label className={containerClassName}>
       {inputValue && <span>{name}</span>}

@@ -1,44 +1,47 @@
 @import "src/assets/styles/colors";
 
-.inputContainer {
+.container {
+  overflow: hidden;
+}
+.datepickerButton {
   display: flex;
   align-items: center;
-  border: 1px solid $greyBorder;
-  border-radius: 12px;
-  padding: 15px 16px;
-  max-width: 200px;
-  width: fit-content;
   background-color: $whiteBase;
+  border: none;
+  color: $greyBase;
   font-size: 14px;
-  transition: .2s ease-out;
-  gap: 8px;
   cursor: pointer;
+  height: 50px;
+  width: 280px;
+  padding-left: 50px;
+}
 
-  &:not(.disabled):hover {
-    border-color: $greenBase;
+.headerCalendarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $whiteBase;
+  text-transform: uppercase;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80px;
   }
-
-  & > input {
-    position: absolute;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    z-index: 2;
-    outline: none;
-
-    &:checked + .radioIcon {
-      background-image: url('src/assets/icons/checkGreen.svg');
-    }
+  & > div:last-child {
+    width: 160px;
   }
 }
 
-.customInputText {
-  width: 120px;
-  height: 10px;
-  background-color: inherit;
+.buttonCount {
+  padding-top: 2px;
+  background-color: $whiteBase;
+  cursor: pointer;
   border: none;
-  outline: none;
+}
+
+.increaseIcon {
+  transform: rotate(180deg);
+
 }

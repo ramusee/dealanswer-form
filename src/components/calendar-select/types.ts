@@ -1,9 +1,13 @@
-import { ChangeEventHandler } from 'react';
-
-interface InputRadioCalendarProps {
-  value: string;
-  // onChange: ChangeEventHandler<HTMLInputElement>;
-  onClick: () => void;
+interface CustomHeaderCalendarProps {
+  date: Date;
+  decreaseMonth: () => void;
+  increaseMonth: () => void;
+  decreaseYear: () => void;
+  increaseYear: () => void;
 }
 
-export type { InputRadioCalendarProps };
+interface CalendarSelectProps {
+  isDisabled?: boolean;
+}
+
+export type { CustomHeaderCalendarProps, CalendarSelectProps };
