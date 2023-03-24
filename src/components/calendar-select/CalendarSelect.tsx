@@ -2,7 +2,7 @@ import React, { FC, forwardRef, LegacyRef, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 
 import { CustomHeaderCalendar } from './components/CustomHeaderCalendar';
-import { weekDays } from '../../consts/calendar';
+import { weekDays } from './utils';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './globalCalendar.scss';

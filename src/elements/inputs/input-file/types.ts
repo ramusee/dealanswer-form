@@ -3,11 +3,11 @@ import { IconProps } from '../../../types/icons';
 import { InputFileSize, InputType } from '../../../types/inputFile';
 
 interface InputFileProps {
-  type: InputType;
+  type?: InputType;
   text: string;
-  Icon: React.FC<IconProps> | null;
-  size: InputFileSize;
-  inputFileHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  Icon?: React.FC<IconProps> | null;
+  size?: InputFileSize;
+  onUpload: (file: File) => void;
   isDisabled?: boolean;
 }
 

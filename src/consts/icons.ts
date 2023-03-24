@@ -6,9 +6,9 @@ import { ReactComponent as paperclipIcon } from '../assets/icons/paperclip.svg';
 import { ReactComponent as trashIcon } from '../assets/icons/trash.svg';
 import { ReactComponent as loginIcon } from '../assets/icons/login.svg';
 
-import { ButtonIconKey } from '../types/button';
+import { IconsKey } from '../types/icons';
 
-const BUTTON_ICONS: Record<ButtonIconKey, React.FC | null> = {
+const ICONS: Record<IconsKey, React.FC | null> = {
   ArrowRight: arrowRightIcon,
   Close: closeIcon,
   Edit: editIcon,
@@ -17,4 +17,4 @@ const BUTTON_ICONS: Record<ButtonIconKey, React.FC | null> = {
   Login: loginIcon,
 };
 
-export { BUTTON_ICONS };
+export { ICONS };

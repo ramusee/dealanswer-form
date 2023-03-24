@@ -1,4 +1,4 @@
-import { ProgressItem, Statuses } from '../types/progressBar';
+import { ProgressItem, Statuses } from '../../types/progressBar';
 
 const spvSteps: ProgressItem[] = [
   {

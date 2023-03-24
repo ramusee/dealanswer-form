@@ -38,5 +38,14 @@
         "prettier/prettier": "error",
         "react/prop-types": "off",
         "sonarjs/prefer-immediate-return": "off"
-    }
+    },
+    "overrides": [
+        {
+            "files": ["**/*.tsx"],
+            "rules": {
+                "react/prop-types": "off",
+                "react/display-name": "off"
+            }
+        }
+    ]
 }

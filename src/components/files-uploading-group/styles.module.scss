@@ -1,0 +1,29 @@
+@import 'src/assets/styles/colors';
+
+.uploadingGroupContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 590px;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: $greyBackground;
+  & > span {
+    font-size: 18px;
+  }
+}
+
+.inputDescBlockContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  & > p {
+    color: $greyBase;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+}

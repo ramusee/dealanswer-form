@@ -4,7 +4,7 @@ import { ReactComponent as DealAnswerLogo } from '../../assets/images/dealAnswer
 import { Button } from '../../elements/button';
 
 import { ButtonColor, ButtonSize } from '../../types/button';
-import { BUTTON_ICONS } from '../../consts/button';
+import { ICONS } from '../../consts/icons';
 import { ProgressBar } from '../../components/progress-bar';
 
 import s from './styles.module.scss';
@@ -20,7 +20,7 @@ const Header = () => {
             size={ButtonSize.S}
             onClick={() => console.log('login')}
             color={ButtonColor.White}
-            Icon={BUTTON_ICONS.Login}
+            Icon={ICONS.Login}
           />
         </div>
         <ProgressBar />

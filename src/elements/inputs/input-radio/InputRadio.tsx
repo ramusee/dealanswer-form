@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, memo, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import cn from 'classnames';
 
@@ -6,17 +6,17 @@ import { InputRadioProps } from './types';
 
 import { InputRadioContent } from '../../../types/radioInputGroup';
 import { CalendarSelect } from '../../../components/calendar-select';
+
 import s from './styles.module.scss';
 
-const InputRadio: FC<InputRadioProps> = props => {
-  const { title, name, content, isDisabled = false } = props;
+const InputRadio: FC<InputRadioProps> = memo(props => {
+  const { value, name, content, isDisabled = false } = props;
   const [inputTextValue, setInputTextValue] = useState<string>('');
 
-  const { register, watch } = useFormContext();
-  // const textValue = watch('radioTextValue');
-  const radioValue = watch(name);
+  const { register, watch, setValue } = useFormContext();
+  const currentRadioValue = watch(name);
 
-  const isChecked = radioValue === title;
+  const isChecked = inputTextValue === value || currentRadioValue === value;
 
   const containerClassName = cn(
     s.container,
@@ -29,22 +29,21 @@ const InputRadio: FC<InputRadioProps> = props => {
       case InputRadioContent.Default:
         return (
           <div className={s.content}>
-            <span>{title}</span>
+            <span>{value}</span>
           </div>
         );
       case InputRadioContent.InputText:
         return (
           <div className={s.content}>
-            {!isChecked && <span className={s.withText}>{title}</span>}
+            {!isChecked && <span className={s.withText}>{value}</span>}
             {isChecked && (
               <div className={s.inputTextContainer}>
                 <input
-                  {...register('radioTextValue', {
-                    disabled: isDisabled,
-                  })}
+                  onChange={e => setInputTextValue(e.target.value)}
+                  value={inputTextValue}
                   type="text"
                   autoFocus={isChecked}
-                  placeholder={title}
+                  placeholder={value}
                 />
               </div>
             )}
@@ -57,7 +56,7 @@ const InputRadio: FC<InputRadioProps> = props => {
           </div>
         );
       default:
-        return <span className={s.content}>{title}</span>;
+        return <span className={s.content}>{value}</span>;
     }
   };
 
@@ -70,7 +69,7 @@ const InputRadio: FC<InputRadioProps> = props => {
           {...register(name, {
             disabled: isDisabled,
           })}
-          value={title}
+          value={value}
           disabled={isDisabled}
         />
         <span className={s.radioIcon} />
@@ -78,6 +77,6 @@ const InputRadio: FC<InputRadioProps> = props => {
       {renderContent()}
     </label>
   );
-};
+});
 
 export { InputRadio };

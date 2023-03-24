@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { ProgressBarItem } from '../../elements/items/progress-bar-item/ProgressBarItem';
-import { spvSteps } from '../../consts/progressBar';
+import { spvSteps } from './utils';
 import s from './styles.module.scss';
 
 const ProgressBar: FC = () => {

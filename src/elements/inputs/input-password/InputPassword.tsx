@@ -23,7 +23,7 @@ const InputPassword: FC<InputPasswordProps> = ({ isDisabled = false }) => {
     isActive && s.active,
   );
 
-  const showPasswordHandler = () => {
+  const togglePasswordHandler = () => {
     if (!inputValue) {
       return;
     }
@@ -41,6 +41,7 @@ const InputPassword: FC<InputPasswordProps> = ({ isDisabled = false }) => {
         {inputValue && <span>Password</span>}
         <input
           {...register(PASSWORD, {
+            required: true,
             disabled: isDisabled,
           })}
           type={!isShowPassword ? PASSWORD : 'text'}
@@ -51,7 +52,7 @@ const InputPassword: FC<InputPasswordProps> = ({ isDisabled = false }) => {
         />
       </div>
       <div className={s.iconContainer}>
-        <button onClick={showPasswordHandler}>
+        <button onClick={togglePasswordHandler}>
           <EyeIcon />
         </button>
       </div>

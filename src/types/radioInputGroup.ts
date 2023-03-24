@@ -1,5 +1,5 @@
 interface InputRadioItem {
-  title: string;
+  value: string;
   content: InputRadioContent;
 }
 
