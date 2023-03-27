@@ -16,12 +16,13 @@ const Header = () => {
         <div className={s.headerContent}>
           <DealAnswerLogo />
           <Button
-            title="Log In"
             size={ButtonSize.S}
             onClick={() => console.log('login')}
             color={ButtonColor.White}
             Icon={ICONS.Login}
-          />
+          >
+            Log In
+          </Button>
         </div>
         <ProgressBar />
       </div>

@@ -2,6 +2,8 @@
 @import "./fonts-styles/roboto.css";
 
 html, body, #root {
+  min-height: 100vh;
+  height: 100vh;
   font-family: 'Poppins', -apple-system, 'BlinkMacSystemFont', 'Roboto', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif';
 }
 

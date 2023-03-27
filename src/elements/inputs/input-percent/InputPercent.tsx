@@ -30,20 +30,22 @@ const InputPercent: FC<InputPercentProps> = ({
   };
 
   return (
-    <label className={containerClassName}>
+    <label
+      onFocus={activeHandler}
+      onBlur={activeHandler}
+      className={containerClassName}
+    >
       <div className={s.content}>
         {inputValue && <span>{name}</span>}
         <input
           {...register(name, {
             disabled: isDisabled,
           })}
-          onFocus={activeHandler}
-          onBlur={activeHandler}
           type="number"
           placeholder={name}
         />
       </div>
-      <button className={s.checkButton} onClick={onClick}>
+      <button type="button" className={s.checkButton} onClick={onClick}>
         <CheckIcon />
       </button>
     </label>

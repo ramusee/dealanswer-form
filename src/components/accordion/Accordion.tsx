@@ -19,11 +19,15 @@ const Accordion: FC<AccordionProps> = ({ title, contentList, price }) => {
   return (
     <div className={accordionClassName}>
       <div className={s.buttonContainer}>
-        <button className={buttonClassName} onClick={openClickHandler}>
+        <button
+          type="button"
+          className={buttonClassName}
+          onClick={openClickHandler}
+        >
           {title}
-          <span>${price}</span>
+          <span>${price.toLocaleString('en')}</span>
         </button>
-        <button className={s.iconButton}>
+        <button type="button" className={s.iconButton}>
           <CloseIcon />
         </button>
       </div>

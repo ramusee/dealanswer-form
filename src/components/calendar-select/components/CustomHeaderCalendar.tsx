@@ -18,20 +18,20 @@ const CustomHeaderCalendar: FC<CustomHeaderCalendarProps> = ({
   return (
     <div className={s.headerCalendarContainer}>
       <div>
-        <button className={s.buttonCount} onClick={decreaseYear}>
+        <button type="button" className={s.buttonCount} onClick={decreaseYear}>
           <ArrowCalendarIcon />
         </button>
         <span>{date.getFullYear()}</span>
-        <button className={s.buttonCount} onClick={increaseYear}>
+        <button type="button" className={s.buttonCount} onClick={increaseYear}>
           <ArrowCalendarIcon className={s.increaseIcon} />
         </button>
       </div>
       <div>
-        <button className={s.buttonCount} onClick={decreaseMonth}>
+        <button type="button" className={s.buttonCount} onClick={decreaseMonth}>
           <ArrowCalendarIcon />
         </button>
         <span>{monthName}</span>
-        <button className={s.buttonCount} onClick={increaseMonth}>
+        <button type="button" className={s.buttonCount} onClick={increaseMonth}>
           <ArrowCalendarIcon className={s.increaseIcon} />
         </button>
       </div>

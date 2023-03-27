@@ -9,11 +9,11 @@ import s from './styles.module.scss';
 
 const Button: FC<ButtonProps> = ({
   size,
-  title = '',
   onClick,
   isDisabled = false,
   color,
   Icon,
+  children,
 }) => {
   const buttonClassname = cn(
     s.button,
@@ -29,9 +29,14 @@ const Button: FC<ButtonProps> = ({
   const iconClassName = cn(s.icon, size !== ButtonSize.XL && s.iconLeft);
 
   return (
-    <button onClick={onClick} className={buttonClassname} disabled={isDisabled}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={buttonClassname}
+      disabled={isDisabled}
+    >
       {Icon && <Icon className={iconClassName} />}
-      {title}
+      {children}
     </button>
   );
 };

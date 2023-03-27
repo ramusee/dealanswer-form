@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { RadioGroupProps } from './types';
-import { InputRadio } from '../../elements/inputs/input-radio';
+import { InputRadio } from '../../../elements/inputs/input-radio';
 
 import s from './styles.module.scss';
 

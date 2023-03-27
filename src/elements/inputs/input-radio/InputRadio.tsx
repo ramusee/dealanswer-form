@@ -16,7 +16,7 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
   const { register, watch, setValue } = useFormContext();
   const currentRadioValue = watch(name);
 
-  const isChecked = inputTextValue === value || currentRadioValue === value;
+  const isChecked = currentRadioValue === value;
 
   const containerClassName = cn(
     s.container,
@@ -52,7 +52,7 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
       case InputRadioContent.Calendar:
         return (
           <div className={s.content}>
-            <CalendarSelect />
+            <CalendarSelect isChecked={isChecked} />
           </div>
         );
       default:

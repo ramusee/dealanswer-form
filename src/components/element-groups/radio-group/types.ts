@@ -1,4 +1,4 @@
-import { InputRadioItem } from '../../types/radioInputGroup';
+import { InputRadioItem } from '../../../types/radioInputGroup';
 
 interface RadioGroupProps {
   radioList: InputRadioItem[];

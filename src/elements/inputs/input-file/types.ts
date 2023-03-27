@@ -4,7 +4,7 @@ import { InputFileSize, InputType } from '../../../types/inputFile';
 
 interface InputFileProps {
   type?: InputType;
-  text: string;
+  title: string;
   Icon?: React.FC<IconProps> | null;
   size?: InputFileSize;
   onUpload: (file: File) => void;

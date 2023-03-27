@@ -36,7 +36,11 @@ const InputPassword: FC<InputPasswordProps> = ({ isDisabled = false }) => {
   };
 
   return (
-    <label className={containerClassName}>
+    <label
+      onFocus={activeHandler}
+      onBlur={activeHandler}
+      className={containerClassName}
+    >
       <div className={s.content}>
         {inputValue && <span>Password</span>}
         <input
@@ -47,12 +51,10 @@ const InputPassword: FC<InputPasswordProps> = ({ isDisabled = false }) => {
           type={!isShowPassword ? PASSWORD : 'text'}
           placeholder="Password"
           autoComplete="off"
-          onFocus={activeHandler}
-          onBlur={activeHandler}
         />
       </div>
       <div className={s.iconContainer}>
-        <button onClick={togglePasswordHandler}>
+        <button type="button" onClick={togglePasswordHandler}>
           <EyeIcon />
         </button>
       </div>

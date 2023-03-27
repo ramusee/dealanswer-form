@@ -1,4 +1,11 @@
-import React, { FC, forwardRef, LegacyRef, useRef, useState } from 'react';
+import React, {
+  FC,
+  forwardRef,
+  LegacyRef,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import DatePicker from 'react-datepicker';
 
 import { CustomHeaderCalendar } from './components/CustomHeaderCalendar';
@@ -8,20 +15,39 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './globalCalendar.scss';
 import s from './styles.module.scss';
 import { CalendarSelectProps } from './types';
+import cn from 'classnames';
 
 const CustomButton = forwardRef(function Button(
-  { value, onClick }: any,
+  { value, onClick, isSelected }: any,
   ref: LegacyRef<HTMLButtonElement> | undefined,
 ) {
+  const buttonClassName = cn(s.datepickerButton, isSelected && s.activeButton);
   return (
-    <button className={s.datepickerButton} onClick={onClick} ref={ref}>
+    <button
+      type="button"
+      className={buttonClassName}
+      onClick={onClick}
+      ref={ref}
+    >
       {value}
     </button>
   );
 });
 
-const CalendarSelect: FC<CalendarSelectProps> = ({ isDisabled = false }) => {
+const CalendarSelect: FC<CalendarSelectProps> = ({
+  isChecked,
+  isDisabled = false,
+}) => {
   const [date, setDate] = useState<Date | null>(new Date());
+  const [isSelected, setIsSelected] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isChecked) {
+      setIsSelected(true);
+    } else {
+      setIsSelected(false);
+    }
+  }, [isChecked]);
 
   // const handleCalendarClose = () => console.log('Calendar closed');
   // const handleCalendarOpen = () => console.log('Calendar opened');
@@ -30,9 +56,11 @@ const CalendarSelect: FC<CalendarSelectProps> = ({ isDisabled = false }) => {
     <div className={s.container}>
       <DatePicker
         selected={date}
-        customInput={<CustomButton />}
+        customInput={<CustomButton isSelected={isSelected} />}
         dateFormat="MMMM d, yyyy "
-        onChange={date => setDate(date)}
+        onChange={date => {
+          setDate(date);
+        }}
         formatWeekDay={date => weekDays[date.getDay()]}
         disabledKeyboardNavigation
         calendarStartDay={1}

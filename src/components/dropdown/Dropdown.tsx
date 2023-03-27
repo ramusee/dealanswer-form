@@ -15,7 +15,11 @@ const Dropdown: FC<DropdownProps> = ({
 
   const dropdownRef = useRef(null);
 
-  const dropdownClassName = cn(s.dropdown, isOpen && s.dropdownOpen);
+  const dropdownClassName = cn(
+    s.dropdown,
+    isOpen && s.dropdownOpen,
+    isDisabled && s.disabled,
+  );
   const dropButtonClassName = cn(s.dropButton, isOpen && s.rotate);
   const inputDropClassName = cn(s.inputHidden, isOpen && s.showInput);
   const addButtonClassName = cn(s.option, s.addButton);
@@ -68,13 +72,18 @@ const Dropdown: FC<DropdownProps> = ({
           type="text"
           placeholder={name}
         />
-        <button className={dropButtonClassName} onClick={openClickHandler}>
+        <button
+          type="button"
+          className={dropButtonClassName}
+          onClick={openClickHandler}
+        >
           {name}
         </button>
       </div>
       {isOpen && (
         <div className={s.content}>
           <button
+            type="button"
             onClick={() => console.log('hey')}
             className={addButtonClassName}
           >

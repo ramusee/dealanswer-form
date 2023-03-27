@@ -1,0 +1,83 @@
+@import '../../assets/styles/colors';
+
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  max-width: 590px;
+  width: 100%;
+  max-height: 405px;
+  border: 1px solid $greyBorder;
+  border-radius: 20px;
+  padding: 32px;
+  gap: 32px;
+  transition: .2s ease-out;
+
+  & > span {
+    font-size: 22px;
+  }
+}
+
+.subscribeContent {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  list-style-type: none;
+  font-size: 14px;
+  max-height: 163px;
+  gap: 15px;
+  width: 100%;
+
+  li {
+    position: relative;
+    word-break: break-word;
+    max-width: 253px;
+    padding-left: 30px;
+  }
+
+  li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 0;
+    background-image: url("src/assets/icons/checkGreen.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+.active {
+  border-color: $greenBase;
+}
+
+.subscribeFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 69px;
+
+  & > span {
+    color: $greenBase;
+  }
+}
+
+.subscribeSuccess {
+  align-self: start;
+  width: 253px;
+
+  & > span {
+    display: inline-block;
+    color: $greyBase;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  svg {
+    & path {
+      stroke: $greenBase;
+    }
+
+  }
+}

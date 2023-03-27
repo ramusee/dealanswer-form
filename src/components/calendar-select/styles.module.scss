@@ -16,6 +16,10 @@
   padding-left: 50px;
 }
 
+.activeButton {
+  color: $blackBase;
+}
+
 .headerCalendarContainer {
   display: flex;
   justify-content: space-between;

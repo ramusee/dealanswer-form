@@ -154,7 +154,10 @@
 
 }
 
-
+.disabled {
+  opacity: .6;
+  pointer-events: none;
+}
 .rotate:after {
   transform: rotate(180deg);
 }

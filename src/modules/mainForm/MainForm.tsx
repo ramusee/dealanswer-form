@@ -4,20 +4,21 @@ import { ButtonColor, ButtonSize } from '../../types/button';
 import { ICONS } from '../../consts/icons';
 import { InputFile } from '../../elements/inputs/input-file';
 import { InputFileSize, InputType } from '../../types/inputFile';
-import { RadioGroup } from '../../components/radio-group';
+import { RadioGroup } from '../../components/element-groups/radio-group';
 import { InputRadioContent, InputRadioItem } from '../../types/radioInputGroup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { InputText } from '../../elements/inputs/input-text';
 import { InputPassword } from '../../elements/inputs/input-password';
 import { InputPercent } from '../../elements/inputs/input-percent';
-
 import s from './styles.module.scss';
-import { CheckboxGroup } from '../../components/checkbox-group';
+import { CheckboxGroup } from '../../components/element-groups/checkbox-group';
 import { Dropdown } from '../../components/dropdown';
 import { Accordion } from '../../components/accordion';
 import { format } from 'date-fns';
-import { FilesUploadingGroup } from '../../components/files-uploading-group';
+import { FilesUploadingGroup } from '../../components/element-groups/files-uploading-group';
 import { filesUploadingExample } from '../../configs/FilesUploading';
+import { Subscribe } from '../subscribe/Subscribe';
+import { subscribeAdministrationServices } from '../../consts/subscribe';
 
 const inputRadioList: InputRadioItem[] = [
   { value: 'Yes', content: InputRadioContent.Default },
@@ -61,24 +62,27 @@ const MainForm = () => {
         <Button
           size={ButtonSize.XL}
           color={ButtonColor.Green}
-          title="Next, Add-Ons"
           Icon={ICONS.ArrowRight}
           onClick={() => console.log('button')}
-        />
+        >
+          Next, Add-Ons
+        </Button>
         <Button
           size={ButtonSize.M}
           color={ButtonColor.Grey}
           Icon={ICONS.Trash}
-          title="Remove"
           onClick={() => console.log('button')}
-        />
+        >
+          Remove
+        </Button>
         <Button
           size={ButtonSize.S}
           color={ButtonColor.White}
           Icon={ICONS.Edit}
-          title="Edit"
-          onClick={() => console.log('button')}
-        />
+          onClick={() => console.log('hey')}
+        >
+          Edit
+        </Button>
         <Button
           size={ButtonSize.XS}
           color={ButtonColor.White}
@@ -87,20 +91,24 @@ const MainForm = () => {
         />
         <InputFile
           type={InputType.Solid}
-          text="Second ID Document"
+          title="Second ID Document"
           Icon={ICONS.Paperclip}
           size={InputFileSize.Fix}
           onUpload={inputFileHandler}
         />
         <InputFile
           type={InputType.Dashed}
-          text="Second ID Document"
+          title="Second ID Document"
           Icon={ICONS.Paperclip}
           size={InputFileSize.Fix}
           onUpload={inputFileHandler}
         />
-        {filesUploadingExample.map(name => (
-          <FilesUploadingGroup key={name} title={name} />
+        {filesUploadingExample.map(({ name, withCitizenship }) => (
+          <FilesUploadingGroup
+            key={name}
+            title={name}
+            withCitizenship={withCitizenship}
+          />
         ))}
         <RadioGroup radioList={inputRadioList} groupName="isMan" />
         <InputText name="Full Legal Name" />
@@ -112,6 +120,10 @@ const MainForm = () => {
         <Dropdown name="Add Manager" optionsList={dropDownOptionsList} />
         <CheckboxGroup checkboxList={checkboxList} groupName="planet" />
         <Accordion price={5000} title="SPV" contentList={accordionList} />
+        <Subscribe
+          title="Do you need administration services?"
+          contentList={subscribeAdministrationServices}
+        />
       </form>
     </FormProvider>
   );

@@ -11,7 +11,7 @@ import { ERROR_MESSAGES, MAX_SIZE, VALID_FORMATS } from './utils';
 const InputFile: FC<InputFileProps> = ({
   type = InputType.Dashed,
   size = InputFileSize.Fix,
-  text,
+  title,
   Icon = ICONS.Paperclip,
   onUpload,
   isDisabled = false,
@@ -79,7 +79,7 @@ const InputFile: FC<InputFileProps> = ({
   return (
     <label className={inputFileContainerClassname}>
       {Icon && <Icon />}
-      {text}
+      {title}
       <input
         type="file"
         ref={inputFileRef}

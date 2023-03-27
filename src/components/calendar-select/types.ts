@@ -7,6 +7,7 @@ interface CustomHeaderCalendarProps {
 }
 
 interface CalendarSelectProps {
+  isChecked: boolean;
   isDisabled?: boolean;
 }
 
