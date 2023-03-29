@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  forwardRef,
-  LegacyRef,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { FC, forwardRef, LegacyRef, useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 
 import { CustomHeaderCalendar } from './components/CustomHeaderCalendar';
@@ -23,21 +16,13 @@ const CustomButton = forwardRef(function Button(
 ) {
   const buttonClassName = cn(s.datepickerButton, isSelected && s.activeButton);
   return (
-    <button
-      type="button"
-      className={buttonClassName}
-      onClick={onClick}
-      ref={ref}
-    >
+    <button type="button" className={buttonClassName} onClick={onClick} ref={ref}>
       {value}
     </button>
   );
 });
 
-const CalendarSelect: FC<CalendarSelectProps> = ({
-  isChecked,
-  isDisabled = false,
-}) => {
+const CalendarSelect: FC<CalendarSelectProps> = ({ isChecked, isDisabled = false }) => {
   const [date, setDate] = useState<Date | null>(new Date());
   const [isSelected, setIsSelected] = useState<boolean>(false);
 
@@ -65,13 +50,7 @@ const CalendarSelect: FC<CalendarSelectProps> = ({
         disabledKeyboardNavigation
         calendarStartDay={1}
         disabled={isDisabled}
-        renderCustomHeader={({
-          date,
-          decreaseMonth,
-          increaseMonth,
-          decreaseYear,
-          increaseYear,
-        }) => (
+        renderCustomHeader={({ date, decreaseMonth, increaseMonth, decreaseYear, increaseYear }) => (
           <CustomHeaderCalendar
             date={date}
             decreaseMonth={decreaseMonth}

@@ -1,19 +1,24 @@
-import React from 'react';
-import { ProSidebarProvider } from 'react-pro-sidebar';
+import React, { FC } from 'react';
+import { AppLayout } from './layout';
 
 import './assets/styles/normalize.css';
 import './assets/styles/global.scss';
+import { withCommonHocs } from './hocs/common';
+import { Route, Routes } from 'react-router';
+import { ExampleUiForm } from './pages/exampleUiFormPage';
+import { RouteNames } from './routing/routeNames';
+import { SpvPage } from './pages/spvPage';
 
-import { MainPage } from './pages/main';
-
-function App() {
+const AppComponent: FC = () => {
   return (
-    <ProSidebarProvider>
-      <div className="App">
-        <MainPage />
-      </div>
-    </ProSidebarProvider>
+    <Routes>
+      <Route path={RouteNames.root} element={<AppLayout />}>
+        <Route index element={<SpvPage />} />
+        <Route path={RouteNames.exampleUiForm} element={<ExampleUiForm />} />
+        {/*<Route path={RouteNames.mySpvDetails} element={}*/}
+      </Route>
+    </Routes>
   );
-}
+};
 
-export default App;
+export const App = withCommonHocs(AppComponent);

@@ -6,7 +6,7 @@ import { ReactComponent as paperclipIcon } from '../assets/icons/paperclip.svg';
 import { ReactComponent as trashIcon } from '../assets/icons/trash.svg';
 import { ReactComponent as loginIcon } from '../assets/icons/login.svg';
 
-import { IconsKey } from '../types/icons';
+import { IconsKey } from '../types/ui/icons';
 
 const ICONS: Record<IconsKey, React.FC | null> = {
   ArrowRight: arrowRightIcon,

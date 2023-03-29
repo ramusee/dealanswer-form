@@ -1,10 +1,31 @@
 @import "./fonts-styles/poppins.css";
 @import "./fonts-styles/roboto.css";
+@import "./colors";
 
 html, body, #root {
   min-height: 100vh;
   height: 100vh;
   font-family: 'Poppins', -apple-system, 'BlinkMacSystemFont', 'Roboto', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif';
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(133, 133, 133, 0.3) $greyBackground;
+  scrollbar-gutter: stable;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: $greyBackground;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(133, 133, 133, 0.3);
+  border-radius: 50px;
 }
 
 *,

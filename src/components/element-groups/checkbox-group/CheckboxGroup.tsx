@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { CheckboxGroupProps } from './types';
-import { InputCheckbox } from '../../../elements/inputs/input-checkbox';
+import { InputCheckbox } from '../../../ui/inputs/input-checkbox';
 
 import s from './styles.module.scss';
 

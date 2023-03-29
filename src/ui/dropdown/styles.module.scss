@@ -1,0 +1,164 @@
+@import "../../assets/styles/colors";
+
+.dropdown {
+  position: relative;
+  font-size: 14px;
+  font-family: inherit;
+  width: 100%;
+  max-width: 590px;
+  border: 1px solid $greyBorder;
+  border-radius: 12px;
+  transition: box-shadow .2s ease-out;
+
+  &:hover {
+    box-shadow: 0 5px 10px $greyBorder;
+  }
+}
+
+.dropdownOpen {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  box-shadow: 0 5px 10px $greyBorder;
+}
+
+.buttonContainer {
+  overflow: hidden;
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.dropButton {
+  position: absolute;
+  padding: 0 0 0 20px;
+  width: 100%;
+  height: 100%;
+  background-color: $whiteBase;
+  color: $greyBase;
+  cursor: pointer;
+  text-align: start;
+  border: none;
+  transition: .2s;
+  z-index: 1;
+
+  &:hover {
+    color: $blackBase;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 12px;
+    background-image: url("../../assets/icons/arrowBottom.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    right: 4%;
+    top: 20px;
+    transition: .2s ease-out;
+    pointer-events: none;
+  }
+}
+
+.inputHidden {
+  display: none;
+  position: absolute;
+  padding: 0 0 0 20px;
+  width: 85%;
+  height: 100%;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  z-index: 2;
+}
+
+.showInput {
+  display: block;
+}
+
+.content {
+  position: absolute;
+  background-color: $whiteBase;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 234px;
+  width: 100%;
+  border: 1px solid $greyBorder;
+  border-top: none;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  box-shadow: 0 5px 10px $greyBorder;
+  box-sizing: content-box;
+  z-index: 100;
+  scrollbar-width: thin;
+  scrollbar-color: $greenBase $greyBackground;
+  scrollbar-gutter: stable;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $greyBackground;
+    overflow: hidden;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $greenBase;
+  }
+}
+
+.option {
+  display: block;
+  padding: 12px 20px;
+  border-bottom: 1px solid #e3e3e3;
+  cursor: pointer;
+  transition: .1s ease-out;
+  width: 100%;
+
+  &:hover {
+    background-color: $greenLight;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.addButton {
+  background-color: $greyBackground;
+  color: $greenBase;
+  border: none;
+  text-align: start;
+  position: relative;
+
+  & span {
+    padding-left: 25px;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-image: url("../../assets/icons/add.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    left: 3%;
+    top: 30%;
+    transition: .2s ease-out;
+    pointer-events: none;
+  }
+
+}
+
+.disabled {
+  opacity: .6;
+  pointer-events: none;
+}
+
+.rotate:after {
+  transform: rotate(180deg);
+}

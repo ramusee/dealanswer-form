@@ -1,0 +1,1 @@
+export { SpvWelcomeBlock } from './SpvWelcomeBlock';

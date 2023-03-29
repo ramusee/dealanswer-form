@@ -1,6 +1,12 @@
-.headerProgressBar {
+.progressBar {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 12px;
   height: 60px;
+}
+
+.progressBarDisabled {
+  opacity: .6;
+  pointer-events: none;
 }

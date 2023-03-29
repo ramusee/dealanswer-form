@@ -3,6 +3,7 @@
 .container {
   overflow: hidden;
 }
+
 .datepickerButton {
   display: flex;
   align-items: center;
@@ -33,6 +34,7 @@
     align-items: center;
     width: 80px;
   }
+
   & > div:last-child {
     width: 160px;
   }
