@@ -8,11 +8,13 @@ interface IconProps {
 
 enum IconsKey {
   ArrowRight = 'ArrowRight',
+  ArrowLeft = 'ArrowLeft',
   Close = 'Close',
   Edit = 'Edit',
   Paperclip = 'Paperclip',
   Trash = 'Trash',
   Login = 'Login',
+  CheckGreen = 'CheckGreen',
 }
 
 export type { IconProps };

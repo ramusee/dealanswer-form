@@ -4,9 +4,9 @@ import cn from 'classnames';
 import { ButtonProps } from './types';
 
 import { ButtonColor, ButtonSize } from '../../types/ui/button';
+import { Link } from 'react-router-dom';
 
 import s from './styles.module.scss';
-import { Link } from 'react-router-dom';
 
 const Button: FC<ButtonProps> = ({
   size,
@@ -17,6 +17,7 @@ const Button: FC<ButtonProps> = ({
   Icon,
   children,
   link,
+  iconRight = false,
 }) => {
   const buttonClassname = cn(
     s.button,
@@ -28,8 +29,10 @@ const Button: FC<ButtonProps> = ({
     size === ButtonSize.M && s.m,
     size === ButtonSize.S && s.s,
     size === ButtonSize.XS && s.xs,
+    iconRight && s.iconRight,
   );
-  const iconClassName = cn(s.icon, size !== ButtonSize.XL && s.iconLeft);
+
+  const iconClassName = cn(s.icon, iconRight && s.iconRight);
 
   return (
     <button type={type} onClick={onClick} className={buttonClassname} disabled={isDisabled}>

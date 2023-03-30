@@ -5,7 +5,6 @@
   align-items: center;
   width: fit-content;
   max-width: 285px;
-  background-color: $whiteBase;
   font-size: 16px;
   transition: .2s ease-out;
   gap: 8px;
@@ -29,6 +28,7 @@
   height: 32px;
   transition: .2s ease-out;
   position: relative;
+  background-color: $whiteBase;
 
   & input {
     position: absolute;

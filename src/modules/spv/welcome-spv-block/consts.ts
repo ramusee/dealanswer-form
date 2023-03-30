@@ -1,43 +1,53 @@
 import { InputRadioContent } from '../../../types/ui/radioInputGroup';
-import { SpvMemberRole, SpvWelcomeFieldsetValue } from '../../../types/spv/welcomeBlock';
+import { SpvMemberRole } from '../../../types/projects/spv/welcomeBlock';
+import { FieldsetValue } from '../../../types/projects/projects';
 
 type ValueOf<T> = T[keyof T];
 
-const FieldsetName = {
+const RadioValue = {
+  No: 'No',
+  Yes: 'Yes',
+} as const;
+type RadioValue = ValueOf<typeof RadioValue>;
+
+const FieldsetWelcomeBlockName = {
   isFirstTimeSpv: 'isFirstTimeSpv',
   isChangeSpvInvestmentStructure: 'isChangeSpvInvestmentStructure',
   isChangeSpvInvestmentTerms: 'isChangeSpvInvestmentTerms',
   changeMemberRoleInformation: 'changeMemberRoleInformation',
 } as const;
-type FieldsetName = ValueOf<typeof FieldsetName>;
+type FieldsetName = ValueOf<typeof FieldsetWelcomeBlockName>;
 
-const spvWelcomeFieldset: Record<FieldsetName, SpvWelcomeFieldsetValue> = {
-  [FieldsetName.isFirstTimeSpv]: {
+const spvWelcomeFieldset: Record<FieldsetName, FieldsetValue> = {
+  [FieldsetWelcomeBlockName.isFirstTimeSpv]: {
     title: 'Is it your first time forming an SPV with Deal Answer?',
     radioList: [
-      { value: 'Yes', content: InputRadioContent.Default },
-      { value: 'No', content: InputRadioContent.Default },
+      { value: RadioValue.Yes, content: InputRadioContent.Default },
+      { value: RadioValue.No, content: InputRadioContent.Default },
     ],
-    inputPlaceholder: 'What is the name of your previous SPV?',
+    inputText: {
+      value: 'previousSpvName',
+      placeholder: 'What is the name of your previous SPV?',
+    },
   },
-  [FieldsetName.isChangeSpvInvestmentStructure]: {
+  [FieldsetWelcomeBlockName.isChangeSpvInvestmentStructure]: {
     title: 'Do you want to change your SPV Investment Structure?',
     radioList: [
-      { value: 'Yes', content: InputRadioContent.Default },
-      { value: 'No', content: InputRadioContent.Default },
+      { value: RadioValue.Yes, content: InputRadioContent.Default },
+      { value: RadioValue.No, content: InputRadioContent.Default },
     ],
   },
-  [FieldsetName.isChangeSpvInvestmentTerms]: {
+  [FieldsetWelcomeBlockName.isChangeSpvInvestmentTerms]: {
     title: 'Do you want to change your SPV Investment Terms?',
     radioList: [
-      { value: 'Yes', content: InputRadioContent.Default },
-      { value: 'No', content: InputRadioContent.Default },
+      { value: RadioValue.Yes, content: InputRadioContent.Default },
+      { value: RadioValue.No, content: InputRadioContent.Default },
     ],
   },
-  [FieldsetName.changeMemberRoleInformation]: {
+  [FieldsetWelcomeBlockName.changeMemberRoleInformation]: {
     title: 'Do you want to change or amend information about:',
     checkboxList: Object.values(SpvMemberRole),
   },
 };
 
-export { spvWelcomeFieldset, FieldsetName };
+export { spvWelcomeFieldset, FieldsetWelcomeBlockName, RadioValue };

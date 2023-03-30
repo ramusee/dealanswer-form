@@ -34,7 +34,7 @@
 }
 
 .white {
-  background-color: $whiteBase;
+  background-color: inherit;
   color: $blackBase;
 
   &:not([disabled]):hover {
@@ -74,7 +74,7 @@
 .xl {
   height: 64px;
   font-size: 16px;
-  flex-direction: row-reverse;
+  //
 }
 
 .l {
@@ -112,8 +112,8 @@
   display: block;
 }
 
-.iconLeft {
-  justify-self: start;
+.iconRight {
+  flex-direction: row-reverse;
 }
 
 //icon colors

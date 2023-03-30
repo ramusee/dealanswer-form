@@ -5,9 +5,9 @@ import './assets/styles/normalize.css';
 import './assets/styles/global.scss';
 import { withCommonHocs } from './hocs/common';
 import { Route, Routes } from 'react-router';
-import { ExampleUiForm } from './pages/exampleUiFormPage';
+import { ExampleUiForm } from './pages/example-ui-form-page';
 import { RouteNames } from './routing/routeNames';
-import { SpvPage } from './pages/spvPage';
+import { SpvPage } from './pages/spv-page';
 
 const AppComponent: FC = () => {
   return (
@@ -15,7 +15,7 @@ const AppComponent: FC = () => {
       <Route path={RouteNames.root} element={<AppLayout />}>
         <Route index element={<SpvPage />} />
         <Route path={RouteNames.exampleUiForm} element={<ExampleUiForm />} />
-        {/*<Route path={RouteNames.mySpvDetails} element={}*/}
+        {/*<Route path={RouteNames.mySpvDetails} element={} />*/}
       </Route>
     </Routes>
   );

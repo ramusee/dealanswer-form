@@ -4,12 +4,12 @@ const spvSteps: ProgressItem[] = [
   {
     id: 1,
     title: 'My SPV Details',
-    status: Statuses.InProgress,
+    status: Statuses.Done,
   },
   {
     id: 2,
     title: 'Investment Terms',
-    status: Statuses.ToDo,
+    status: Statuses.InProgress,
   },
   {
     id: 3,

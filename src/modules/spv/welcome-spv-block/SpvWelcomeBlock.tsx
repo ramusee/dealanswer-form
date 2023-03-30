@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { FieldsetName, spvWelcomeFieldset } from './consts';
+import React, { FC, useEffect } from 'react';
+import { FieldsetWelcomeBlockName, RadioValue, spvWelcomeFieldset } from './consts';
 
 import { RadioGroup } from '../../../components/element-groups/radio-group';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -10,7 +10,7 @@ import { CheckboxGroup } from '../../../components/element-groups/checkbox-group
 
 import { ButtonColor, ButtonSize } from '../../../types/ui/button';
 import { ICONS } from '../../../consts/icons';
-import { ISpvWelcomeBlock } from '../../../types/spv/welcomeBlock';
+import { ISpvWelcomeBlock } from '../../../types/projects/spv/welcomeBlock';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectChangeMemberRoleInformation,
@@ -18,19 +18,25 @@ import {
   selectIsChangeSpvInvestTerms,
   selectIsFirstTimeSpv,
   selectPreviousSpvName,
+  selectSpvWelcomeBlock,
   setChangeMemberRoleInformation,
   setIsChangeSpvInvestmentStructure,
   setIsChangeSpvInvestmentTerms,
   setIsFirstTimeSpv,
   setPreviousSpvName,
 } from '../../../store/reducers/spv';
-
-import s from './styles.module.scss';
 import { useDebounce } from '../../../hooks/useDebounce';
+import { selectCurrentTab } from '../../../store/reducers/common';
+import s from './styles.module.scss';
 
-const no = 'No';
+interface SpvWelcomeBlockProps {
+  nextTabHandler: () => void;
+}
 
-const SpvWelcomeBlock = () => {
+const SpvWelcomeBlock: FC<SpvWelcomeBlockProps> = ({ nextTabHandler }) => {
+  const currentTab = useSelector(selectCurrentTab);
+
+  const formDefaultValues = useSelector(selectSpvWelcomeBlock);
   const isFirstTimeSpv = useSelector(selectIsFirstTimeSpv);
   const isChangeSpvInvestmentStructure = useSelector(selectIsChangeSpvInvestStr);
   const isChangeSpvInvestmentTerms = useSelector(selectIsChangeSpvInvestTerms);
@@ -39,22 +45,17 @@ const SpvWelcomeBlock = () => {
   const dispatch = useDispatch();
 
   const methods = useForm<ISpvWelcomeBlock>({
-    defaultValues: {
-      isFirstTimeSpv,
-      previousSpvName,
-      isChangeSpvInvestmentStructure,
-      isChangeSpvInvestmentTerms,
-      changeMemberRoleInformation,
-    },
+    defaultValues: formDefaultValues,
   });
   const { watch } = methods;
 
-  const isFirstTimeSpvValue = watch(FieldsetName.isFirstTimeSpv);
+  const isFirstTimeSpvValue = watch(FieldsetWelcomeBlockName.isFirstTimeSpv);
   const previousSpvNameValue = useDebounce(watch('previousSpvName'), 1000);
-  const isChangeSpvStructureValue = watch(FieldsetName.isChangeSpvInvestmentStructure);
-  const isChangeSpvTermsValue = watch(FieldsetName.isChangeSpvInvestmentTerms);
-  const memberRoleValue = watch(FieldsetName.changeMemberRoleInformation);
+  const isChangeSpvStructureValue = watch(FieldsetWelcomeBlockName.isChangeSpvInvestmentStructure);
+  const isChangeSpvTermsValue = watch(FieldsetWelcomeBlockName.isChangeSpvInvestmentTerms);
+  const memberRoleValue = watch(FieldsetWelcomeBlockName.changeMemberRoleInformation);
 
+  console.log(previousSpvNameValue);
   useEffect(() => {
     if (!isFirstTimeSpvValue || isFirstTimeSpv === isFirstTimeSpvValue) {
       return;
@@ -85,6 +86,7 @@ const SpvWelcomeBlock = () => {
 
   const onSubmit = (data: any) => {
     console.log(data);
+    nextTabHandler();
   };
 
   useEffect(() => {
@@ -94,41 +96,49 @@ const SpvWelcomeBlock = () => {
     dispatch(setChangeMemberRoleInformation(memberRoleValue));
   }, [memberRoleValue]);
 
+  if (currentTab !== 0) {
+    return null;
+  }
+
   return (
     <FormProvider {...methods}>
-      <form className={s.welcomeSpvContainer} onSubmit={methods.handleSubmit(onSubmit)}>
+      <form className={s.welcomeSpvForm} onSubmit={methods.handleSubmit(onSubmit)}>
         <Fieldset title={spvWelcomeFieldset.isFirstTimeSpv.title}>
           <RadioGroup
             radioList={spvWelcomeFieldset.isFirstTimeSpv.radioList || []}
-            groupName={FieldsetName.isFirstTimeSpv}
+            groupName={FieldsetWelcomeBlockName.isFirstTimeSpv}
           />
-          {isFirstTimeSpvValue === no && (
+          {isFirstTimeSpvValue === RadioValue.No && (
             <InputText
               isRequired
-              placeholder={spvWelcomeFieldset.isFirstTimeSpv.inputPlaceholder || ''}
-              value={'previousSpvName'}
+              placeholder={spvWelcomeFieldset.isFirstTimeSpv.inputText?.placeholder || ''}
+              value={spvWelcomeFieldset.isFirstTimeSpv.inputText?.value || ''}
             />
           )}
         </Fieldset>
         <Fieldset title={spvWelcomeFieldset.isChangeSpvInvestmentStructure.title}>
           <RadioGroup
             radioList={spvWelcomeFieldset.isChangeSpvInvestmentStructure.radioList || []}
-            groupName={FieldsetName.isChangeSpvInvestmentStructure}
+            groupName={FieldsetWelcomeBlockName.isChangeSpvInvestmentStructure}
           />
         </Fieldset>
-        <Fieldset title={spvWelcomeFieldset.isChangeSpvInvestmentTerms.title}>
-          <RadioGroup
-            radioList={spvWelcomeFieldset.isChangeSpvInvestmentTerms.radioList || []}
-            groupName={FieldsetName.isChangeSpvInvestmentTerms}
-          />
-        </Fieldset>
-        <Fieldset title={spvWelcomeFieldset.changeMemberRoleInformation.title}>
-          <CheckboxGroup
-            groupName={FieldsetName.changeMemberRoleInformation}
-            checkboxList={spvWelcomeFieldset.changeMemberRoleInformation.checkboxList || []}
-          />
-        </Fieldset>
-        <Button size={ButtonSize.XL} color={ButtonColor.Green} Icon={ICONS.ArrowRight} type="submit">
+        {isChangeSpvStructureValue === RadioValue.No && (
+          <Fieldset title={spvWelcomeFieldset.isChangeSpvInvestmentTerms.title}>
+            <RadioGroup
+              radioList={spvWelcomeFieldset.isChangeSpvInvestmentTerms.radioList || []}
+              groupName={FieldsetWelcomeBlockName.isChangeSpvInvestmentTerms}
+            />
+          </Fieldset>
+        )}
+        {isChangeSpvStructureValue === RadioValue.Yes && (
+          <Fieldset title={spvWelcomeFieldset.changeMemberRoleInformation.title}>
+            <CheckboxGroup
+              groupName={FieldsetWelcomeBlockName.changeMemberRoleInformation}
+              checkboxList={spvWelcomeFieldset.changeMemberRoleInformation.checkboxList || []}
+            />
+          </Fieldset>
+        )}
+        <Button size={ButtonSize.XL} color={ButtonColor.Green} Icon={ICONS.ArrowRight} type="submit" iconRight>
           Next, my SPV details
         </Button>
       </form>

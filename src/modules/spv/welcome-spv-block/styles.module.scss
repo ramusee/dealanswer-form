@@ -1,16 +1,6 @@
-.welcomeSpvContainer {
+.welcomeSpvForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 32px;
-}
-
-.fieldset {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  & > span {
-    font-size: 22px;
-  }
 }

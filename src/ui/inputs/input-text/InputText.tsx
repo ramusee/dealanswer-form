@@ -3,15 +3,21 @@ import { useFormContext } from 'react-hook-form';
 import cn from 'classnames';
 
 import { InputTextProps } from './types';
-
+import { useDebounce } from '../../../hooks/useDebounce';
+// import { debounce } from 'debounce';
 import s from './styles.module.scss';
 
-const InputText: FC<InputTextProps> = ({ placeholder, value, isDisabled = false, isRequired = false }) => {
+const InputText: FC<InputTextProps> = ({
+  placeholder,
+  type = 'text',
+  value,
+  isDisabled = false,
+  isRequired = false,
+}) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
-  const { register, watch } = useFormContext();
-  const inputValue = watch(value);
-
+  const { register, watch, trigger } = useFormContext();
+  const inputValue = useDebounce(watch(value), 500);
   const activeHandler = () => {
     setIsActive(prevState => !prevState);
   };
@@ -26,10 +32,12 @@ const InputText: FC<InputTextProps> = ({ placeholder, value, isDisabled = false,
           disabled: isDisabled,
           required: isRequired,
         })}
+        name={value}
         placeholder={placeholder}
+        // onChange={debounce(async () => await trigger(value), 500)}
         onFocus={activeHandler}
         onBlur={activeHandler}
-        type="text"
+        type={type}
       />
     </label>
   );

@@ -2,8 +2,8 @@ import React, { FC, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import cn from 'classnames';
 
+import { ReactComponent as CheckGreenIcon } from '../../../assets/icons/checkGreen.svg';
 import { InputPercentProps } from './types';
-import { ReactComponent as CheckIcon } from '../../../assets/icons/check.svg';
 
 import s from './styles.module.scss';
 
@@ -33,7 +33,7 @@ const InputPercent: FC<InputPercentProps> = ({ name, isDisabled = false, onClick
         />
       </div>
       <button type="button" className={s.checkButton} onClick={onClick}>
-        <CheckIcon />
+        <CheckGreenIcon />
       </button>
     </label>
   );

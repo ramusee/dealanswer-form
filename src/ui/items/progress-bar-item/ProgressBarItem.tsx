@@ -7,13 +7,17 @@ import { ProgressBarItemProps } from './types';
 import { Statuses } from '../../../components/progress-bar/types';
 
 import s from './styles.module.scss';
+import { useSelector } from 'react-redux';
+import { selectCurrentTab } from '../../../store/reducers/common';
 
 const ProgressBarItem: FC<ProgressBarItemProps> = ({ id, title, status }) => {
+  const currentTab = useSelector(selectCurrentTab);
   const isDone = status === Statuses.Done;
-  const isActiveItem = status === Statuses.InProgress && s.activeIcon;
+  const isActiveItem = id === currentTab && s.activeIcon;
 
   const iconClassName = cn(s.icon, isActiveItem && s.activeIcon);
   const contentClassName = cn(s.content, isActiveItem && s.contentActive);
+
   return (
     <div className={s.container}>
       <div className={contentClassName}>

@@ -9,7 +9,6 @@ type Statuses = ValueOf<typeof Statuses>;
 
 interface ProgressBarProps {
   contentList: ProgressItem[];
-  isDisabled?: boolean;
 }
 
 interface ProgressItem {

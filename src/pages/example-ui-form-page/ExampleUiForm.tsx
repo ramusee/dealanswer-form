@@ -15,7 +15,7 @@ import { Dropdown } from '../../ui/dropdown';
 import { Accordion } from '../../ui/accordion';
 import { format } from 'date-fns';
 import { FilesUploadingGroup } from '../../components/element-groups/files-uploading-group';
-import { filesUploadingExample } from '../../configs/FilesUploading';
+import { filesUploadingExample } from '../../consts/filesUploading';
 import { Subscribe } from '../../components/subscribe/Subscribe';
 import { subscribeAdministrationServices } from '../../components/subscribe/consts';
 import s from './styles.module.scss';
@@ -65,6 +65,7 @@ const ExampleUiForm = () => {
           color={ButtonColor.Green}
           Icon={ICONS.ArrowRight}
           onClick={() => console.log('button')}
+          iconRight
         >
           Next, Add-Ons
         </Button>

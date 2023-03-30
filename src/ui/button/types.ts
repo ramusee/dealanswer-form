@@ -11,6 +11,7 @@ interface ButtonProps {
   color: ButtonColor;
   Icon?: React.FC<IconProps> | null;
   link?: string;
+  iconRight?: boolean;
 }
 
 export type { ButtonProps };

@@ -6,7 +6,7 @@ import s from './styles.module.scss';
 const Fieldset: FC<FieldsetProps> = ({ title, subTitle, children }) => {
   return (
     <div className={s.fieldset}>
-      <span>{title}</span>
+      <p>{title}</p>
       {subTitle && <span>{subTitle}</span>}
       {children}
     </div>
