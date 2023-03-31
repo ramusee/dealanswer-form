@@ -3,11 +3,18 @@ import { ISpvWelcomeBlock } from '../../../types/projects/spv/welcomeBlock';
 import { IMySpvDetails } from '../../../types/projects/spv/mySpvDetails';
 import {
   setChangeMemberRoleInformation,
+  setFinalClosingDate,
+  setInitialClosingDate,
+  setInitialClosingDateTextValue,
   setIsChangeSpvInvestmentStructure,
   setIsChangeSpvInvestmentTerms,
   setIsFirstTimeSpv,
-  setMySpvDetailsTabOneForm,
+  setMinimumCommitment,
   setPreviousSpvName,
+  setSpvExtension,
+  setSpvName,
+  setTargetInvestAmount,
+  setTermSpv,
 } from './actions';
 
 interface SpvState {
@@ -26,11 +33,12 @@ const initialCommonState: SpvState = {
   mySpvDetails: {
     tabOne: {
       spvName: '',
-      targetInvestmentAmount: null,
-      minimumCommitment: null,
+      targetInvestmentAmount: '',
+      minimumCommitment: '',
     },
     tabTwo: {
-      initialClosingDate: null,
+      initialClosingDate: '',
+      initialClosingDateTextValue: '',
       finalClosingDate: '',
       termSpv: '',
       spvExtension: '',
@@ -60,7 +68,28 @@ export const spv = createReducer(initialCommonState, {
   [setChangeMemberRoleInformation.type]: (state, action) => {
     state.welcomeBlock.changeMemberRoleInformation = action.payload;
   },
-  [setMySpvDetailsTabOneForm.type]: (state, action) => {
-    state.mySpvDetails.tabOne = action.payload;
+  [setSpvName.type]: (state, action) => {
+    state.mySpvDetails.tabOne.spvName = action.payload;
+  },
+  [setTargetInvestAmount.type]: (state, action) => {
+    state.mySpvDetails.tabOne.targetInvestmentAmount = action.payload;
+  },
+  [setMinimumCommitment.type]: (state, action) => {
+    state.mySpvDetails.tabOne.minimumCommitment = action.payload;
+  },
+  [setInitialClosingDate.type]: (state, action) => {
+    state.mySpvDetails.tabTwo.initialClosingDate = action.payload;
+  },
+  [setFinalClosingDate.type]: (state, action) => {
+    state.mySpvDetails.tabTwo.finalClosingDate = action.payload;
+  },
+  [setTermSpv.type]: (state, action) => {
+    state.mySpvDetails.tabTwo.termSpv = action.payload;
+  },
+  [setSpvExtension.type]: (state, action) => {
+    state.mySpvDetails.tabTwo.spvExtension = action.payload;
+  },
+  [setInitialClosingDateTextValue.type]: (state, action) => {
+    state.mySpvDetails.tabTwo.initialClosingDateTextValue = action.payload;
   },
 });

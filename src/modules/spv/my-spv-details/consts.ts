@@ -55,7 +55,7 @@ const spvDetailsFieldset: Record<FieldsetMySpvDetailsName, FieldsetValue> = {
       { value: 'When the aggregate Commitments equal to or exceed', content: InputRadioContent.Default },
     ],
     inputText: {
-      value: FieldsetSpvDetailsName.initialClosingDate,
+      value: 'initialClosingDateTextValue',
       placeholder: '1,000,000',
     },
   },
@@ -80,8 +80,8 @@ const spvDetailsFieldset: Record<FieldsetMySpvDetailsName, FieldsetValue> = {
     ],
   },
   [FieldsetSpvDetailsName.spvExtension]: {
-    title: 'Term of SPV',
-    subTitle: 'Indicate the deadline for the SPV to fully liquidate the investment and distribute the capital gain.',
+    title: 'SPV Extension',
+    subTitle: 'For how long can the term of the SPV be extended?',
     radioList: [
       { value: 'One-year', content: InputRadioContent.Default },
       { value: 'Two one-year', content: InputRadioContent.Default },

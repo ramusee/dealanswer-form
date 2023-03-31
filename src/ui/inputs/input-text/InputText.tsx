@@ -3,8 +3,6 @@ import { useFormContext } from 'react-hook-form';
 import cn from 'classnames';
 
 import { InputTextProps } from './types';
-import { useDebounce } from '../../../hooks/useDebounce';
-// import { debounce } from 'debounce';
 import s from './styles.module.scss';
 
 const InputText: FC<InputTextProps> = ({
@@ -17,11 +15,10 @@ const InputText: FC<InputTextProps> = ({
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const { register, watch, trigger } = useFormContext();
-  const inputValue = useDebounce(watch(value), 500);
+  const inputValue = watch(value);
   const activeHandler = () => {
     setIsActive(prevState => !prevState);
   };
-
   const containerClassName = cn(s.container, isActive && s.active, inputValue && s.filled, isDisabled && s.disabled);
 
   return (
@@ -32,9 +29,7 @@ const InputText: FC<InputTextProps> = ({
           disabled: isDisabled,
           required: isRequired,
         })}
-        name={value}
         placeholder={placeholder}
-        // onChange={debounce(async () => await trigger(value), 500)}
         onFocus={activeHandler}
         onBlur={activeHandler}
         type={type}

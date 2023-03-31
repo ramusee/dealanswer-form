@@ -13,11 +13,6 @@ import { ICONS } from '../../../consts/icons';
 import { ISpvWelcomeBlock } from '../../../types/projects/spv/welcomeBlock';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectChangeMemberRoleInformation,
-  selectIsChangeSpvInvestStr,
-  selectIsChangeSpvInvestTerms,
-  selectIsFirstTimeSpv,
-  selectPreviousSpvName,
   selectSpvWelcomeBlock,
   setChangeMemberRoleInformation,
   setIsChangeSpvInvestmentStructure,
@@ -27,6 +22,7 @@ import {
 } from '../../../store/reducers/spv';
 import { useDebounce } from '../../../hooks/useDebounce';
 import { selectCurrentTab } from '../../../store/reducers/common';
+
 import s from './styles.module.scss';
 
 interface SpvWelcomeBlockProps {
@@ -36,16 +32,11 @@ interface SpvWelcomeBlockProps {
 const SpvWelcomeBlock: FC<SpvWelcomeBlockProps> = ({ nextTabHandler }) => {
   const currentTab = useSelector(selectCurrentTab);
 
-  const formDefaultValues = useSelector(selectSpvWelcomeBlock);
-  const isFirstTimeSpv = useSelector(selectIsFirstTimeSpv);
-  const isChangeSpvInvestmentStructure = useSelector(selectIsChangeSpvInvestStr);
-  const isChangeSpvInvestmentTerms = useSelector(selectIsChangeSpvInvestTerms);
-  const previousSpvName = useSelector(selectPreviousSpvName);
-  const changeMemberRoleInformation = useSelector(selectChangeMemberRoleInformation);
+  const spvWelcomeBlock = useSelector(selectSpvWelcomeBlock);
   const dispatch = useDispatch();
 
   const methods = useForm<ISpvWelcomeBlock>({
-    defaultValues: formDefaultValues,
+    defaultValues: spvWelcomeBlock,
   });
   const { watch } = methods;
 
@@ -55,30 +46,30 @@ const SpvWelcomeBlock: FC<SpvWelcomeBlockProps> = ({ nextTabHandler }) => {
   const isChangeSpvTermsValue = watch(FieldsetWelcomeBlockName.isChangeSpvInvestmentTerms);
   const memberRoleValue = watch(FieldsetWelcomeBlockName.changeMemberRoleInformation);
 
-  console.log(previousSpvNameValue);
+  // console.log(previousSpvNameValue);
   useEffect(() => {
-    if (!isFirstTimeSpvValue || isFirstTimeSpv === isFirstTimeSpvValue) {
+    if (!isFirstTimeSpvValue || spvWelcomeBlock.isFirstTimeSpv === isFirstTimeSpvValue) {
       return;
     }
     dispatch(setIsFirstTimeSpv(isFirstTimeSpvValue));
   }, [isFirstTimeSpvValue]);
 
   useEffect(() => {
-    if (previousSpvName === previousSpvNameValue) {
+    if (spvWelcomeBlock.previousSpvName === previousSpvNameValue) {
       return;
     }
     dispatch(setPreviousSpvName(previousSpvNameValue));
   }, [previousSpvNameValue]);
 
   useEffect(() => {
-    if (!isChangeSpvStructureValue || isChangeSpvStructureValue === isChangeSpvInvestmentStructure) {
+    if (!isChangeSpvStructureValue || isChangeSpvStructureValue === spvWelcomeBlock.isChangeSpvInvestmentStructure) {
       return;
     }
     dispatch(setIsChangeSpvInvestmentStructure(isChangeSpvStructureValue));
   }, [isChangeSpvStructureValue]);
 
   useEffect(() => {
-    if (!isChangeSpvTermsValue || isChangeSpvTermsValue === isChangeSpvInvestmentTerms) {
+    if (!isChangeSpvTermsValue || isChangeSpvTermsValue === spvWelcomeBlock.isChangeSpvInvestmentTerms) {
       return;
     }
     dispatch(setIsChangeSpvInvestmentTerms(isChangeSpvTermsValue));
@@ -90,7 +81,7 @@ const SpvWelcomeBlock: FC<SpvWelcomeBlockProps> = ({ nextTabHandler }) => {
   };
 
   useEffect(() => {
-    if (!memberRoleValue || memberRoleValue.length === changeMemberRoleInformation?.length) {
+    if (!memberRoleValue || memberRoleValue.length === spvWelcomeBlock.changeMemberRoleInformation?.length) {
       return;
     }
     dispatch(setChangeMemberRoleInformation(memberRoleValue));

@@ -5,12 +5,13 @@ interface IMySpvDetails {
 
 interface IMySpvDetailsTabOne {
   spvName: string;
-  targetInvestmentAmount: number | null;
-  minimumCommitment: number | null;
+  targetInvestmentAmount: string;
+  minimumCommitment: string;
 }
 
 interface IMySPVDetailsTabTwo {
-  initialClosingDate: Date | number | null;
+  initialClosingDate: Date | string;
+  initialClosingDateTextValue: string;
   finalClosingDate: Date | string;
   termSpv: string;
   spvExtension: string;

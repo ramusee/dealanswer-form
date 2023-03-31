@@ -1,5 +1,4 @@
 import React, { FC, useEffect } from 'react';
-import s from '../styles.module.scss';
 import { SectionTitle } from '../../../../components/section-title';
 import { FieldsetSpvDetailsName, sectionTitle, spvDetailsFieldset } from '../consts';
 import { Fieldset } from '../../../../components/fieldset/Fieldset';
@@ -7,27 +6,53 @@ import { InputText } from '../../../../ui/inputs/input-text';
 import { RadioGroup } from '../../../../components/element-groups/radio-group';
 import { NavigationButtons } from '../../../../components/navigation-buttons';
 import { FormProvider, useForm } from 'react-hook-form';
-import { IMySpvDetails, IMySpvDetailsTabOne } from '../../../../types/projects/spv/mySpvDetails';
+import { IMySpvDetailsTabOne } from '../../../../types/projects/spv/mySpvDetails';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSpvMyDetailsTabOne, setMySpvDetailsTabOneForm } from '../../../../store/reducers/spv';
+import {
+  selectMySpvDetailsTabOne,
+  setMinimumCommitment,
+  setSpvName,
+  setTargetInvestAmount,
+} from '../../../../store/reducers/spv';
 import { MySpvDetailTabProps } from '../types';
 import { useDebounce } from '../../../../hooks/useDebounce';
 
-const MySpvDetailsTabOne: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, previousTabHandler }) => {
-  const formDefaultValues = useSelector(selectSpvMyDetailsTabOne);
-  const dispatch = useDispatch();
+import s from '../styles.module.scss';
 
+const MySpvDetailsTabOne: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, previousTabHandler }) => {
+  const mySpvDetailsTabOne = useSelector(selectMySpvDetailsTabOne);
+  const dispatch = useDispatch();
   const methods = useForm<IMySpvDetailsTabOne>({
-    defaultValues: formDefaultValues,
+    defaultValues: mySpvDetailsTabOne,
   });
   const { watch } = methods;
-
-  const allFieldsValue = watch();
-  console.log(allFieldsValue);
+  const spvNameValue = useDebounce(watch(FieldsetSpvDetailsName.spvName), 1000);
+  const targetInvestAmountValue = useDebounce(watch(FieldsetSpvDetailsName.targetInvestmentAmount), 1000);
+  const minimumCommitmentValue = watch(FieldsetSpvDetailsName.minimumCommitment);
 
   useEffect(() => {
-    dispatch(setMySpvDetailsTabOneForm);
-  }, [allFieldsValue]);
+    if (mySpvDetailsTabOne.spvName === spvNameValue) {
+      return;
+    }
+
+    dispatch(setSpvName(spvNameValue));
+  }, [spvNameValue]);
+
+  useEffect(() => {
+    if (mySpvDetailsTabOne.targetInvestmentAmount === targetInvestAmountValue) {
+      return;
+    }
+    dispatch(setTargetInvestAmount(targetInvestAmountValue));
+  }, [targetInvestAmountValue]);
+
+  useEffect(() => {
+    if (mySpvDetailsTabOne.minimumCommitment === minimumCommitmentValue) {
+      return;
+    }
+
+    dispatch(setMinimumCommitment(minimumCommitmentValue));
+  }, [minimumCommitmentValue]);
+
   const onSubmit = (data: any) => {
     console.log(data);
     changeCurrentLocalTab('next');
@@ -71,5 +96,4 @@ const MySpvDetailsTabOne: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, pr
     </FormProvider>
   );
 };
-
 export { MySpvDetailsTabOne };
