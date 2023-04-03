@@ -6,6 +6,6 @@ interface MySpvDetailsProps {
 interface MySpvDetailTabProps {
   nextTabHandler?: () => void;
   previousTabHandler?: () => void;
-  changeCurrentLocalTab: (step: string) => void;
+  changeCurrentLocalTab: (step: number) => void;
 }
 export type { MySpvDetailsProps, MySpvDetailTabProps };

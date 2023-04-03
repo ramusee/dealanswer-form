@@ -1,3 +1,5 @@
+import { IRadioValueText } from '../../../ui/inputs/input-radio/types';
+
 type ValueOf<T> = T[keyof T];
 
 const SpvMemberRole = {
@@ -15,5 +17,13 @@ interface ISpvWelcomeBlock {
   changeMemberRoleInformation: string[] | null;
 }
 
+interface ISpvWelcomeBlockForm {
+  isFirstTimeSpv: IRadioValueText;
+  previousSpvName: string;
+  isChangeSpvInvestmentStructure: IRadioValueText;
+  isChangeSpvInvestmentTerms: IRadioValueText;
+  changeMemberRoleInformation: string[] | null;
+}
+
 export { SpvMemberRole };
-export type { ISpvWelcomeBlock };
+export type { ISpvWelcomeBlock, ISpvWelcomeBlockForm };

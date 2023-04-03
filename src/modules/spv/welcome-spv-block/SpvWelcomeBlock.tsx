@@ -10,7 +10,7 @@ import { CheckboxGroup } from '../../../components/element-groups/checkbox-group
 
 import { ButtonColor, ButtonSize } from '../../../types/ui/button';
 import { ICONS } from '../../../consts/icons';
-import { ISpvWelcomeBlock } from '../../../types/projects/spv/welcomeBlock';
+import { ISpvWelcomeBlockForm } from '../../../types/projects/spv/welcomeBlock';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectSpvWelcomeBlock,
@@ -24,6 +24,7 @@ import { useDebounce } from '../../../hooks/useDebounce';
 import { selectCurrentTab } from '../../../store/reducers/common';
 
 import s from './styles.module.scss';
+import { defaultDebounceValue } from '../../../consts/common';
 
 interface SpvWelcomeBlockProps {
   nextTabHandler: () => void;
@@ -31,28 +32,38 @@ interface SpvWelcomeBlockProps {
 
 const SpvWelcomeBlock: FC<SpvWelcomeBlockProps> = ({ nextTabHandler }) => {
   const currentTab = useSelector(selectCurrentTab);
-
   const spvWelcomeBlock = useSelector(selectSpvWelcomeBlock);
   const dispatch = useDispatch();
 
-  const methods = useForm<ISpvWelcomeBlock>({
-    defaultValues: spvWelcomeBlock,
+  const methods = useForm<ISpvWelcomeBlockForm>({
+    defaultValues: {
+      isFirstTimeSpv: {
+        radioValue: spvWelcomeBlock.isFirstTimeSpv,
+      },
+      previousSpvName: spvWelcomeBlock.previousSpvName,
+      isChangeSpvInvestmentStructure: {
+        radioValue: spvWelcomeBlock.isChangeSpvInvestmentStructure,
+      },
+      isChangeSpvInvestmentTerms: {
+        radioValue: spvWelcomeBlock.isChangeSpvInvestmentStructure,
+      },
+      changeMemberRoleInformation: spvWelcomeBlock.changeMemberRoleInformation,
+    },
   });
   const { watch } = methods;
 
   const isFirstTimeSpvValue = watch(FieldsetWelcomeBlockName.isFirstTimeSpv);
-  const previousSpvNameValue = useDebounce(watch('previousSpvName'), 1000);
+  const previousSpvNameValue = useDebounce(watch('previousSpvName'), defaultDebounceValue);
   const isChangeSpvStructureValue = watch(FieldsetWelcomeBlockName.isChangeSpvInvestmentStructure);
   const isChangeSpvTermsValue = watch(FieldsetWelcomeBlockName.isChangeSpvInvestmentTerms);
   const memberRoleValue = watch(FieldsetWelcomeBlockName.changeMemberRoleInformation);
 
-  // console.log(previousSpvNameValue);
   useEffect(() => {
-    if (!isFirstTimeSpvValue || spvWelcomeBlock.isFirstTimeSpv === isFirstTimeSpvValue) {
+    if (!isFirstTimeSpvValue.radioValue || isFirstTimeSpvValue.radioValue === spvWelcomeBlock.isFirstTimeSpv) {
       return;
     }
-    dispatch(setIsFirstTimeSpv(isFirstTimeSpvValue));
-  }, [isFirstTimeSpvValue]);
+    dispatch(setIsFirstTimeSpv(isFirstTimeSpvValue.radioValue));
+  }, [isFirstTimeSpvValue.radioValue]);
 
   useEffect(() => {
     if (spvWelcomeBlock.previousSpvName === previousSpvNameValue) {
@@ -62,23 +73,24 @@ const SpvWelcomeBlock: FC<SpvWelcomeBlockProps> = ({ nextTabHandler }) => {
   }, [previousSpvNameValue]);
 
   useEffect(() => {
-    if (!isChangeSpvStructureValue || isChangeSpvStructureValue === spvWelcomeBlock.isChangeSpvInvestmentStructure) {
+    if (
+      !isChangeSpvStructureValue.radioValue ||
+      isChangeSpvStructureValue.radioValue === spvWelcomeBlock.isChangeSpvInvestmentStructure
+    ) {
       return;
     }
-    dispatch(setIsChangeSpvInvestmentStructure(isChangeSpvStructureValue));
-  }, [isChangeSpvStructureValue]);
+    dispatch(setIsChangeSpvInvestmentStructure(isChangeSpvStructureValue.radioValue));
+  }, [isChangeSpvStructureValue.radioValue]);
 
   useEffect(() => {
-    if (!isChangeSpvTermsValue || isChangeSpvTermsValue === spvWelcomeBlock.isChangeSpvInvestmentTerms) {
+    if (
+      !isChangeSpvTermsValue.radioValue ||
+      isChangeSpvTermsValue.radioValue === spvWelcomeBlock.isChangeSpvInvestmentTerms
+    ) {
       return;
     }
-    dispatch(setIsChangeSpvInvestmentTerms(isChangeSpvTermsValue));
-  }, [isChangeSpvTermsValue]);
-
-  const onSubmit = (data: any) => {
-    console.log(data);
-    nextTabHandler();
-  };
+    dispatch(setIsChangeSpvInvestmentTerms(isChangeSpvTermsValue.radioValue));
+  }, [isChangeSpvTermsValue.radioValue]);
 
   useEffect(() => {
     if (!memberRoleValue || memberRoleValue.length === spvWelcomeBlock.changeMemberRoleInformation?.length) {
@@ -86,6 +98,11 @@ const SpvWelcomeBlock: FC<SpvWelcomeBlockProps> = ({ nextTabHandler }) => {
     }
     dispatch(setChangeMemberRoleInformation(memberRoleValue));
   }, [memberRoleValue]);
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+    nextTabHandler();
+  };
 
   if (currentTab !== 0) {
     return null;
@@ -99,7 +116,7 @@ const SpvWelcomeBlock: FC<SpvWelcomeBlockProps> = ({ nextTabHandler }) => {
             radioList={spvWelcomeFieldset.isFirstTimeSpv.radioList || []}
             groupName={FieldsetWelcomeBlockName.isFirstTimeSpv}
           />
-          {isFirstTimeSpvValue === RadioValue.No && (
+          {isFirstTimeSpvValue.radioValue === RadioValue.No && (
             <InputText
               isRequired
               placeholder={spvWelcomeFieldset.isFirstTimeSpv.inputText?.placeholder || ''}
@@ -113,7 +130,7 @@ const SpvWelcomeBlock: FC<SpvWelcomeBlockProps> = ({ nextTabHandler }) => {
             groupName={FieldsetWelcomeBlockName.isChangeSpvInvestmentStructure}
           />
         </Fieldset>
-        {isChangeSpvStructureValue === RadioValue.No && (
+        {isChangeSpvStructureValue.radioValue === RadioValue.No && (
           <Fieldset title={spvWelcomeFieldset.isChangeSpvInvestmentTerms.title}>
             <RadioGroup
               radioList={spvWelcomeFieldset.isChangeSpvInvestmentTerms.radioList || []}
@@ -121,7 +138,7 @@ const SpvWelcomeBlock: FC<SpvWelcomeBlockProps> = ({ nextTabHandler }) => {
             />
           </Fieldset>
         )}
-        {isChangeSpvStructureValue === RadioValue.Yes && (
+        {isChangeSpvStructureValue.radioValue === RadioValue.Yes && (
           <Fieldset title={spvWelcomeFieldset.changeMemberRoleInformation.title}>
             <CheckboxGroup
               groupName={FieldsetWelcomeBlockName.changeMemberRoleInformation}

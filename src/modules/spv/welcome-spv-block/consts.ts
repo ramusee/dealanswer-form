@@ -22,9 +22,16 @@ const spvWelcomeFieldset: Record<FieldsetName, FieldsetValue> = {
   [FieldsetWelcomeBlockName.isFirstTimeSpv]: {
     title: 'Is it your first time forming an SPV with Deal Answer?',
     radioList: [
-      { value: RadioValue.Yes, content: InputRadioContent.Default },
-      { value: RadioValue.No, content: InputRadioContent.Default },
+      {
+        value: RadioValue.Yes,
+        content: InputRadioContent.Default,
+      },
+      {
+        value: RadioValue.No,
+        content: InputRadioContent.Default,
+      },
     ],
+
     inputText: {
       value: 'previousSpvName',
       placeholder: 'What is the name of your previous SPV?',
@@ -33,15 +40,27 @@ const spvWelcomeFieldset: Record<FieldsetName, FieldsetValue> = {
   [FieldsetWelcomeBlockName.isChangeSpvInvestmentStructure]: {
     title: 'Do you want to change your SPV Investment Structure?',
     radioList: [
-      { value: RadioValue.Yes, content: InputRadioContent.Default },
-      { value: RadioValue.No, content: InputRadioContent.Default },
+      {
+        value: RadioValue.Yes,
+        content: InputRadioContent.Default,
+      },
+      {
+        value: RadioValue.No,
+        content: InputRadioContent.Default,
+      },
     ],
   },
   [FieldsetWelcomeBlockName.isChangeSpvInvestmentTerms]: {
     title: 'Do you want to change your SPV Investment Terms?',
     radioList: [
-      { value: RadioValue.Yes, content: InputRadioContent.Default },
-      { value: RadioValue.No, content: InputRadioContent.Default },
+      {
+        value: RadioValue.Yes,
+        content: InputRadioContent.Default,
+      },
+      {
+        value: RadioValue.No,
+        content: InputRadioContent.Default,
+      },
     ],
   },
   [FieldsetWelcomeBlockName.changeMemberRoleInformation]: {

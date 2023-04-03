@@ -1,4 +1,4 @@
-import React, { FC, memo, useState } from 'react';
+import React, { FC, memo } from 'react';
 import { useFormContext } from 'react-hook-form';
 import cn from 'classnames';
 
@@ -11,13 +11,12 @@ import s from './styles.module.scss';
 
 const InputRadio: FC<InputRadioProps> = memo(props => {
   const { value, name, content, isDisabled = false } = props;
-  const [inputTextValue, setInputTextValue] = useState<string>('');
 
-  const { register, watch, setValue } = useFormContext();
-  const currentRadioValue = watch(name);
+  const { register, watch } = useFormContext();
+
+  const currentRadioValue = watch(`${name}.radioValue`);
 
   const isChecked = currentRadioValue === value;
-
   const containerClassName = cn(s.container, isChecked && s.active, isDisabled && s.disabled);
 
   const renderContent = () => {
@@ -35,11 +34,12 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
             {isChecked && (
               <div className={s.inputTextContainer}>
                 <input
-                  onChange={e => setInputTextValue(e.target.value)}
-                  value={inputTextValue}
+                  {...register(`${name}.contentValue`, {
+                    required: true,
+                  })}
                   type="text"
                   autoFocus={isChecked}
-                  placeholder={value}
+                  placeholder="Other"
                 />
               </div>
             )}
@@ -48,7 +48,7 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
       case InputRadioContent.Calendar:
         return (
           <div className={s.content}>
-            <CalendarSelect isChecked={isChecked} />
+            <CalendarSelect name={name} isChecked={isChecked} />
           </div>
         );
       default:
@@ -62,8 +62,9 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
         <input
           className={s.inputRadio}
           type="radio"
-          {...register(name, {
+          {...register(`${name}.radioValue`, {
             disabled: isDisabled,
+            required: true,
           })}
           value={value}
           disabled={isDisabled}

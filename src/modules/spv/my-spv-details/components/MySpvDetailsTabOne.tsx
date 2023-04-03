@@ -11,30 +11,41 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectMySpvDetailsTabOne,
   setMinimumCommitment,
+  setMinimumCommitmentTextValue,
   setSpvName,
   setTargetInvestAmount,
 } from '../../../../store/reducers/spv';
 import { MySpvDetailTabProps } from '../types';
 import { useDebounce } from '../../../../hooks/useDebounce';
 
+import { defaultDebounceValue } from '../../../../consts/common';
+
 import s from '../styles.module.scss';
 
 const MySpvDetailsTabOne: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, previousTabHandler }) => {
   const mySpvDetailsTabOne = useSelector(selectMySpvDetailsTabOne);
   const dispatch = useDispatch();
+
   const methods = useForm<IMySpvDetailsTabOne>({
     defaultValues: mySpvDetailsTabOne,
   });
+
   const { watch } = methods;
-  const spvNameValue = useDebounce(watch(FieldsetSpvDetailsName.spvName), 1000);
-  const targetInvestAmountValue = useDebounce(watch(FieldsetSpvDetailsName.targetInvestmentAmount), 1000);
-  const minimumCommitmentValue = watch(FieldsetSpvDetailsName.minimumCommitment);
+  const spvNameValue = useDebounce(watch(FieldsetSpvDetailsName.spvName), defaultDebounceValue);
+  const targetInvestAmountValue = useDebounce(
+    watch(FieldsetSpvDetailsName.targetInvestmentAmount),
+    defaultDebounceValue,
+  );
+  const minimumCommitmentValue = watch(`${FieldsetSpvDetailsName.minimumCommitment}.radioValue`);
+  const minimumCommitmentTextValue = useDebounce(
+    watch(`${FieldsetSpvDetailsName.minimumCommitment}.contentValue`),
+    defaultDebounceValue,
+  );
 
   useEffect(() => {
     if (mySpvDetailsTabOne.spvName === spvNameValue) {
       return;
     }
-
     dispatch(setSpvName(spvNameValue));
   }, [spvNameValue]);
 
@@ -46,18 +57,23 @@ const MySpvDetailsTabOne: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, pr
   }, [targetInvestAmountValue]);
 
   useEffect(() => {
-    if (mySpvDetailsTabOne.minimumCommitment === minimumCommitmentValue) {
+    if (mySpvDetailsTabOne.minimumCommitment.radioValue === minimumCommitmentValue) {
       return;
     }
-
     dispatch(setMinimumCommitment(minimumCommitmentValue));
   }, [minimumCommitmentValue]);
 
+  useEffect(() => {
+    if (mySpvDetailsTabOne.minimumCommitment.contentValue === minimumCommitmentTextValue) {
+      return;
+    }
+    dispatch(setMinimumCommitmentTextValue(minimumCommitmentTextValue));
+  }, [minimumCommitmentTextValue]);
+
   const onSubmit = (data: any) => {
     console.log(data);
-    changeCurrentLocalTab('next');
+    changeCurrentLocalTab(2);
   };
-
   return (
     <FormProvider {...methods}>
       <div className={s.spvDetailsContainer}>

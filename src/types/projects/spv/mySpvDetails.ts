@@ -1,4 +1,7 @@
+import { IRadioValueWithDate, IRadioValueText } from '../../../ui/inputs/input-radio/types';
+
 interface IMySpvDetails {
+  currentLocalTab: number;
   tabOne: IMySpvDetailsTabOne;
   tabTwo: IMySPVDetailsTabTwo;
 }
@@ -6,15 +9,15 @@ interface IMySpvDetails {
 interface IMySpvDetailsTabOne {
   spvName: string;
   targetInvestmentAmount: string;
-  minimumCommitment: string;
+  minimumCommitment: IRadioValueText;
 }
 
 interface IMySPVDetailsTabTwo {
-  initialClosingDate: Date | string;
+  initialClosingDate: IRadioValueWithDate;
   initialClosingDateTextValue: string;
-  finalClosingDate: Date | string;
-  termSpv: string;
-  spvExtension: string;
+  finalClosingDate: IRadioValueWithDate;
+  termSpv: IRadioValueText;
+  spvExtension: IRadioValueText;
 }
 
 export type { IMySpvDetails, IMySpvDetailsTabOne, IMySPVDetailsTabTwo };

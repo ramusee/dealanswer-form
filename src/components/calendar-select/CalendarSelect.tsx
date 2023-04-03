@@ -6,9 +6,11 @@ import { weekDays } from './utils';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './globalCalendar.scss';
-import s from './styles.module.scss';
 import { CalendarSelectProps } from './types';
 import cn from 'classnames';
+
+import s from './styles.module.scss';
+import { Controller, useFormContext } from 'react-hook-form';
 
 const CustomButton = forwardRef(function Button(
   { value, onClick, isSelected }: any,
@@ -22,10 +24,10 @@ const CustomButton = forwardRef(function Button(
   );
 });
 
-const CalendarSelect: FC<CalendarSelectProps> = ({ isChecked, isDisabled = false }) => {
+const CalendarSelect: FC<CalendarSelectProps> = ({ name, isChecked, isDisabled = false }) => {
   const [date, setDate] = useState<Date | null>(new Date());
   const [isSelected, setIsSelected] = useState<boolean>(false);
-
+  const { setValue } = useFormContext();
   useEffect(() => {
     if (isChecked) {
       setIsSelected(true);
@@ -36,6 +38,8 @@ const CalendarSelect: FC<CalendarSelectProps> = ({ isChecked, isDisabled = false
 
   // const handleCalendarClose = () => console.log('Calendar closed');
   // const handleCalendarOpen = () => console.log('Calendar opened');
+  // Todo использовать Controller
+  // Todo исправить очищение contentValue при изменение radioValue
 
   return (
     <div className={s.container}>
@@ -45,6 +49,7 @@ const CalendarSelect: FC<CalendarSelectProps> = ({ isChecked, isDisabled = false
         dateFormat="MMMM d, yyyy "
         onChange={date => {
           setDate(date);
+          setValue(`${name}.contentDateValue`, date);
         }}
         formatWeekDay={date => weekDays[date.getDay()]}
         disabledKeyboardNavigation

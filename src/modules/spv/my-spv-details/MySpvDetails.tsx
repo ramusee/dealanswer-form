@@ -1,16 +1,18 @@
-import React, { FC, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentTab } from '../../../store/reducers/common';
 import { MySpvDetailsTabOne } from './components/MySpvDetailsTabOne';
 import { MySpvDetailsProps } from './types';
 import { MySpvDetailsTabTwo } from './components/MySpvDetailsTabTwo';
+import { selectMySpvDetailsCurrentLocalTab, setMySpvDetailCurrentLocalTab } from '../../../store/reducers/spv';
 
 const MySpvDetails: FC<MySpvDetailsProps> = ({ nextTabHandler, previousTabHandler }) => {
-  const [currentLocalTab, setCurrentLocalTab] = useState<number>(1);
   const currentTab = useSelector(selectCurrentTab);
+  const currentLocalTab = useSelector(selectMySpvDetailsCurrentLocalTab);
+  const dispatch = useDispatch();
 
-  const changeCurrentLocalTab = (step: string) => {
-    step === 'next' ? setCurrentLocalTab(prevState => prevState + 1) : setCurrentLocalTab(prevState => prevState - 1);
+  const changeCurrentLocalTab = (tab: number) => {
+    dispatch(setMySpvDetailCurrentLocalTab(tab));
   };
 
   if (currentTab !== 1) {

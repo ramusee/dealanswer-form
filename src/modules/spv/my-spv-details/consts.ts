@@ -41,7 +41,7 @@ const spvDetailsFieldset: Record<FieldsetMySpvDetailsName, FieldsetValue> = {
     subTitle: 'Is there a minimum investment requirement?',
     radioList: [
       { value: '10K', content: InputRadioContent.Default },
-      { value: '100k', content: InputRadioContent.Default },
+      { value: '100K', content: InputRadioContent.Default },
       { value: '1M', content: InputRadioContent.Default },
       { value: 'None', content: InputRadioContent.Default },
       { value: 'Other', content: InputRadioContent.InputText },
@@ -51,20 +51,17 @@ const spvDetailsFieldset: Record<FieldsetMySpvDetailsName, FieldsetValue> = {
     title: 'Initial Closing Date',
     subTitle: 'What would be the date on wich the SPV first accepts capital commitments from investors?',
     radioList: [
-      { value: 'calendar', content: InputRadioContent.Calendar },
+      { value: 'date', content: InputRadioContent.Calendar },
       { value: 'When the aggregate Commitments equal to or exceed', content: InputRadioContent.Default },
     ],
-    inputText: {
-      value: 'initialClosingDateTextValue',
-      placeholder: '1,000,000',
-    },
+    inputText: { value: 'initialClosingDateTextValue', placeholder: '1,000,000' },
   },
   [FieldsetSpvDetailsName.finalClosingDate]: {
     title: 'Final Closing Date',
     subTitle:
       'What would be the last date for the SPV to accept capital commitments from investors after the Initial Closing Date?',
     radioList: [
-      { value: 'calendar', content: InputRadioContent.Calendar },
+      { value: 'date', content: InputRadioContent.Calendar },
       { value: '1 year', content: InputRadioContent.Default },
       { value: 'Other', content: InputRadioContent.InputText },
     ],

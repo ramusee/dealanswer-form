@@ -1,4 +1,5 @@
 import { createAction } from '@reduxjs/toolkit/src';
+import { IMySPVDetailsTabTwo } from '../../../types/projects/spv/mySpvDetails';
 
 // welcomeBlock
 const setIsFirstTimeSpv = createAction<string>('set is first time spv');
@@ -11,13 +12,10 @@ const setChangeMemberRoleInformation = createAction<string[]>('set change member
 const setSpvName = createAction<string>('set spv name');
 const setTargetInvestAmount = createAction<string>('set target invest amount');
 const setMinimumCommitment = createAction<string>('set minimum commitment');
-
+const setMinimumCommitmentTextValue = createAction<string>('set minimum commitment text value');
+const setMySpvDetailCurrentLocalTab = createAction<number>('set my spv details current local tab');
 // mySpvDetailsTabTwo
-const setInitialClosingDate = createAction<string | Date>('set initial closing date');
-const setFinalClosingDate = createAction<string | Date>('set final closing');
-const setTermSpv = createAction<string>('set term spv');
-const setSpvExtension = createAction<string>('set spv extension');
-const setInitialClosingDateTextValue = createAction<string>('set initial closing date text value');
+const setMySpvDetailsTabTwo = createAction<IMySPVDetailsTabTwo>('set my spv details tab two');
 
 export {
   setIsFirstTimeSpv,
@@ -28,9 +26,7 @@ export {
   setSpvName,
   setTargetInvestAmount,
   setMinimumCommitment,
-  setInitialClosingDate,
-  setFinalClosingDate,
-  setTermSpv,
-  setSpvExtension,
-  setInitialClosingDateTextValue,
+  setMySpvDetailCurrentLocalTab,
+  setMinimumCommitmentTextValue,
+  setMySpvDetailsTabTwo,
 };
