@@ -1,6 +1,6 @@
 interface SectionTitleProps {
   title: string;
-  subTitle: string;
+  subTitle?: string;
 }
 
 export type { SectionTitleProps };

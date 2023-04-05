@@ -1,4 +1,4 @@
-import { IRadioValueWithDate, IRadioValueText } from '../../../ui/inputs/input-radio/types';
+import { IRadioValue, IRadioValueText, IRadioValueDate } from '../../../ui/inputs/input-radio/types';
 
 interface IMySpvDetails {
   currentLocalTab: number;
@@ -13,9 +13,9 @@ interface IMySpvDetailsTabOne {
 }
 
 interface IMySPVDetailsTabTwo {
-  initialClosingDate: IRadioValueWithDate;
+  initialClosingDate: IRadioValueDate;
   initialClosingDateTextValue: string;
-  finalClosingDate: IRadioValueWithDate;
+  finalClosingDate: IRadioValue;
   termSpv: IRadioValueText;
   spvExtension: IRadioValueText;
 }

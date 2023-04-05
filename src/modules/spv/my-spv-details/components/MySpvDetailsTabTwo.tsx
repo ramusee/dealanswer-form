@@ -1,19 +1,21 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMySpvDetailsTabTwo, setMySpvDetailsTabTwo } from '../../../../store/reducers/spv';
 import { FormProvider, useForm } from 'react-hook-form';
+
+import { FieldsetSpvDetailsName, sectionTitleMySpvDetails, spvDetailsFieldset } from '../consts';
+import { defaultDebounceValue } from '../../../../consts/common';
 import { IMySPVDetailsTabTwo } from '../../../../types/projects/spv/mySpvDetails';
-import { SectionTitle } from '../../../../components/section-title';
-import { FieldsetSpvDetailsName, sectionTitle, spvDetailsFieldset } from '../consts';
 import { MySpvDetailTabProps } from '../types';
+import { useDebounce } from '../../../../hooks/useDebounce';
+
+import { selectMySpvDetailsTabTwo, setMySpvDetailsTabTwo } from '../../../../store/reducers/spv';
+import { SectionTitle } from '../../../../components/section-title';
 import { NavigationButtons } from '../../../../components/navigation-buttons';
 import { Fieldset } from '../../../../components/fieldset/Fieldset';
 import { RadioGroup } from '../../../../components/element-groups/radio-group';
 import { InputText } from '../../../../ui/inputs/input-text';
 
 import s from '../styles.module.scss';
-import { useDebounce } from '../../../../hooks/useDebounce';
-import { defaultDebounceValue } from '../../../../consts/common';
 
 const MySpvDetailsTabTwo: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, nextTabHandler }) => {
   const mySpvDetailsTabTwo = useSelector(selectMySpvDetailsTabTwo);
@@ -22,28 +24,33 @@ const MySpvDetailsTabTwo: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, ne
     defaultValues: mySpvDetailsTabTwo,
   });
   const { watch } = methods;
-  const all = watch();
-  const cloneAll = structuredClone(all);
+  const allFields = watch();
+  const cloneAllFields = structuredClone(allFields);
+
   const debounceInitialClosingDateTextValue = useDebounce(
-    cloneAll.finalClosingDate.contentTextValue,
+    cloneAllFields.initialClosingDateTextValue,
     defaultDebounceValue,
   );
-  const debounceTermSpvTextValue = useDebounce(cloneAll.termSpv.contentTextValue, defaultDebounceValue);
-  const debounceSpvExtensionTextValue = useDebounce(cloneAll.spvExtension.contentTextValue, defaultDebounceValue);
+  const debounceFinalClosingDateTextValue = useDebounce(
+    cloneAllFields.finalClosingDate.contentTextValue,
+    defaultDebounceValue,
+  );
+  const debounceTermSpvTextValue = useDebounce(cloneAllFields.termSpv.contentTextValue, defaultDebounceValue);
+  const debounceSpvExtensionTextValue = useDebounce(cloneAllFields.spvExtension.contentTextValue, defaultDebounceValue);
 
   useEffect(() => {
-    dispatch(setMySpvDetailsTabTwo(cloneAll));
+    dispatch(setMySpvDetailsTabTwo(cloneAllFields));
   }, [
-    cloneAll.initialClosingDate.contentDateValue,
-    cloneAll.initialClosingDate.radioValue,
-    cloneAll.initialClosingDateTextValue,
+    cloneAllFields.initialClosingDate.radioValue,
+    cloneAllFields.initialClosingDate.contentDateValue,
     debounceInitialClosingDateTextValue,
-    cloneAll.finalClosingDate.contentDateValue,
-    cloneAll.finalClosingDate.radioValue,
+    cloneAllFields.finalClosingDate.radioValue,
+    cloneAllFields.finalClosingDate.contentDateValue,
+    debounceFinalClosingDateTextValue,
     debounceTermSpvTextValue,
-    cloneAll.termSpv.radioValue,
+    cloneAllFields.termSpv.radioValue,
+    cloneAllFields.spvExtension.radioValue,
     debounceSpvExtensionTextValue,
-    cloneAll.spvExtension.radioValue,
   ]);
 
   const onSubmit = (data: IMySPVDetailsTabTwo) => {
@@ -53,8 +60,8 @@ const MySpvDetailsTabTwo: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, ne
   return (
     <FormProvider {...methods}>
       <div className={s.spvDetailsContainer}>
-        <SectionTitle title={sectionTitle.title} subTitle={sectionTitle.subTitle} />
-        <form className={s.spvDetailsFrom} onSubmit={methods.handleSubmit(onSubmit)}>
+        <SectionTitle title={sectionTitleMySpvDetails.title} subTitle={sectionTitleMySpvDetails.subTitle} />
+        <form className={s.spvDetailsForm} onSubmit={methods.handleSubmit(onSubmit)}>
           <Fieldset
             title={spvDetailsFieldset.initialClosingDate.title}
             subTitle={spvDetailsFieldset.initialClosingDate.subTitle}

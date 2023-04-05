@@ -13,6 +13,7 @@ const MySpvDetails: FC<MySpvDetailsProps> = ({ nextTabHandler, previousTabHandle
 
   const changeCurrentLocalTab = (tab: number) => {
     dispatch(setMySpvDetailCurrentLocalTab(tab));
+    nextTabHandler();
   };
 
   if (currentTab !== 1) {

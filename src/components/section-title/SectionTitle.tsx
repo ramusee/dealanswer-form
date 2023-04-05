@@ -8,7 +8,7 @@ const SectionTitle: FC<SectionTitleProps> = ({ title, subTitle }) => {
   return (
     <div className={s.sectionTitleContainer}>
       <h2>{title}</h2>
-      <span>{subTitle}</span>
+      {subTitle && <span>{subTitle}</span>}
     </div>
   );
 };

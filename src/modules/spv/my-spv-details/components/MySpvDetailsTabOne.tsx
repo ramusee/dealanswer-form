@@ -1,22 +1,18 @@
 import React, { FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { FormProvider, useForm } from 'react-hook-form';
+
+import { FieldsetSpvDetailsName, sectionTitleMySpvDetails, spvDetailsFieldset } from '../consts';
+import { IMySpvDetailsTabOne } from '../../../../types/projects/spv/mySpvDetails';
+import { MySpvDetailTabProps } from '../types';
+
 import { SectionTitle } from '../../../../components/section-title';
-import { FieldsetSpvDetailsName, sectionTitle, spvDetailsFieldset } from '../consts';
 import { Fieldset } from '../../../../components/fieldset/Fieldset';
 import { InputText } from '../../../../ui/inputs/input-text';
 import { RadioGroup } from '../../../../components/element-groups/radio-group';
 import { NavigationButtons } from '../../../../components/navigation-buttons';
-import { FormProvider, useForm } from 'react-hook-form';
-import { IMySpvDetailsTabOne } from '../../../../types/projects/spv/mySpvDetails';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectMySpvDetailsTabOne,
-  setMinimumCommitment,
-  setMinimumCommitmentTextValue,
-  setSpvName,
-  setTargetInvestAmount,
-} from '../../../../store/reducers/spv';
-import { MySpvDetailTabProps } from '../types';
 import { useDebounce } from '../../../../hooks/useDebounce';
+import { selectMySpvDetailsTabOne, setMySpvDetailsTabOne } from '../../../../store/reducers/spv';
 
 import { defaultDebounceValue } from '../../../../consts/common';
 
@@ -29,46 +25,20 @@ const MySpvDetailsTabOne: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, pr
   const methods = useForm<IMySpvDetailsTabOne>({
     defaultValues: mySpvDetailsTabOne,
   });
-
   const { watch } = methods;
-  const spvNameValue = useDebounce(watch(FieldsetSpvDetailsName.spvName), defaultDebounceValue);
-  const targetInvestAmountValue = useDebounce(
-    watch(FieldsetSpvDetailsName.targetInvestmentAmount),
-    defaultDebounceValue,
-  );
-  const minimumCommitmentValue = watch(`${FieldsetSpvDetailsName.minimumCommitment}.radioValue`);
+  const allFields = watch();
+  const cloneAllFields = structuredClone(allFields);
+
+  const spvNameValue = useDebounce(cloneAllFields.spvName, defaultDebounceValue);
+  const targetInvestAmountValue = useDebounce(cloneAllFields.targetInvestmentAmount, defaultDebounceValue);
   const minimumCommitmentTextValue = useDebounce(
-    watch(`${FieldsetSpvDetailsName.minimumCommitment}.contentTextValue`),
+    cloneAllFields.minimumCommitment.contentTextValue,
     defaultDebounceValue,
   );
 
   useEffect(() => {
-    if (mySpvDetailsTabOne.spvName === spvNameValue) {
-      return;
-    }
-    dispatch(setSpvName(spvNameValue));
-  }, [spvNameValue]);
-
-  useEffect(() => {
-    if (mySpvDetailsTabOne.targetInvestmentAmount === targetInvestAmountValue) {
-      return;
-    }
-    dispatch(setTargetInvestAmount(targetInvestAmountValue));
-  }, [targetInvestAmountValue]);
-
-  useEffect(() => {
-    if (mySpvDetailsTabOne.minimumCommitment.radioValue === minimumCommitmentValue) {
-      return;
-    }
-    dispatch(setMinimumCommitment(minimumCommitmentValue));
-  }, [minimumCommitmentValue]);
-
-  useEffect(() => {
-    if (mySpvDetailsTabOne.minimumCommitment.contentTextValue === minimumCommitmentTextValue) {
-      return;
-    }
-    dispatch(setMinimumCommitmentTextValue(minimumCommitmentTextValue));
-  }, [minimumCommitmentTextValue]);
+    dispatch(setMySpvDetailsTabOne(cloneAllFields));
+  }, [spvNameValue, targetInvestAmountValue, cloneAllFields.minimumCommitment.radioValue, minimumCommitmentTextValue]);
 
   const onSubmit = (data: IMySpvDetailsTabOne) => {
     console.log(data);
@@ -77,8 +47,8 @@ const MySpvDetailsTabOne: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, pr
   return (
     <FormProvider {...methods}>
       <div className={s.spvDetailsContainer}>
-        <SectionTitle title={sectionTitle.title} subTitle={sectionTitle.subTitle} />
-        <form className={s.spvDetailsFrom} onSubmit={methods.handleSubmit(onSubmit)}>
+        <SectionTitle title={sectionTitleMySpvDetails.title} subTitle={sectionTitleMySpvDetails.subTitle} />
+        <form className={s.spvDetailsForm} onSubmit={methods.handleSubmit(onSubmit)}>
           <Fieldset title={spvDetailsFieldset.spvName.title} subTitle={spvDetailsFieldset.spvName.subTitle}>
             <InputText
               value={spvDetailsFieldset.spvName.inputText?.value || ''}

@@ -7,15 +7,12 @@ interface InputRadioProps {
   content: InputRadioContent;
 }
 
-interface IRadioValueText {
-  radioValue: string;
-  contentTextValue: string;
-}
-
-interface IRadioValueWithDate {
+interface IRadioValue {
   radioValue: string;
   contentTextValue: string;
   contentDateValue: Date | null;
 }
+type IRadioValueText = Pick<IRadioValue, 'radioValue' | 'contentTextValue'>;
+type IRadioValueDate = Pick<IRadioValue, 'radioValue' | 'contentDateValue'>;
 
-export type { InputRadioProps, IRadioValueText, IRadioValueWithDate };
+export type { InputRadioProps, IRadioValue, IRadioValueText, IRadioValueDate };

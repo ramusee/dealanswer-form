@@ -3,7 +3,7 @@ import { InputRadioContent } from '../../../types/ui/radioInputGroup';
 
 type ValueOf<T> = T[keyof T];
 
-const sectionTitle = {
+const sectionTitleMySpvDetails = {
   title: 'My SPV Details',
   subTitle: 'We will be asking you some general questions about your SPV.',
 };
@@ -87,4 +87,4 @@ const spvDetailsFieldset: Record<FieldsetMySpvDetailsName, FieldsetValue> = {
   },
 };
 
-export { FieldsetSpvDetailsName, spvDetailsFieldset, sectionTitle };
+export { FieldsetSpvDetailsName, spvDetailsFieldset, sectionTitleMySpvDetails };

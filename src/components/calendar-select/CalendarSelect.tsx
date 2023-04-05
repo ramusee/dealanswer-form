@@ -2,7 +2,7 @@ import React, { FC, forwardRef, LegacyRef, useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 
 import { CustomHeaderCalendar } from './components/CustomHeaderCalendar';
-import { weekDays } from './utils';
+import { weekDays } from './consts';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './globalCalendar.scss';
@@ -10,7 +10,7 @@ import { CalendarSelectProps } from './types';
 import cn from 'classnames';
 
 import s from './styles.module.scss';
-import { Controller, useController, useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 const CustomButton = forwardRef(function Button(
   { value, onClick, isSelected }: any,
@@ -28,13 +28,7 @@ const CalendarSelect: FC<CalendarSelectProps> = ({ name, isChecked, isDisabled =
   // const [date, setDate] = useState<Date | null>(new Date());
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const { control } = useFormContext();
-  const { field, fieldState } = useController({
-    name,
-    control,
-    rules: {
-      required: true,
-    },
-  });
+
   useEffect(() => {
     if (isChecked) {
       setIsSelected(true);
@@ -45,20 +39,18 @@ const CalendarSelect: FC<CalendarSelectProps> = ({ name, isChecked, isDisabled =
 
   // const handleCalendarClose = () => console.log('Calendar closed');
   // const handleCalendarOpen = () => console.log('Calendar opened');
-  // Todo использовать Controller
-  // Todo исправить очищение contentValue при изменение radioValue
 
   return (
     <div className={s.container}>
       <Controller
-        name={`${name},contentDateValue`}
+        name={`${name}.contentDateValue`}
         control={control}
-        render={({ field }) => (
+        render={({ field: { onChange, value } }) => (
           <DatePicker
-            selected={field.value}
+            selected={value ? new Date(value) : new Date()}
             customInput={<CustomButton isSelected={isSelected} />}
             dateFormat="MMMM d, yyyy "
-            onChange={date => field.onChange(date)}
+            onChange={date => onChange(date?.toISOString())}
             formatWeekDay={date => weekDays[date.getDay()]}
             disabledKeyboardNavigation
             calendarStartDay={1}

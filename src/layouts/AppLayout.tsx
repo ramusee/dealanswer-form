@@ -12,9 +12,9 @@ const AppLayout: FC = () => {
       <BackgroundVideo />
       <Header />
       <main>
-        <div className={s.wrapper}>
+        <section className={s.wrapper}>
           <Outlet />
-        </div>
+        </section>
       </main>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { ReactComponent as ArrowCalendarIcon } from '../../../assets/icons/arrowCalendar.svg';
 import { CustomHeaderCalendarProps } from '../types';
-import { months } from '../utils';
+import { months } from '../consts';
 
 import s from '../styles.module.scss';
 

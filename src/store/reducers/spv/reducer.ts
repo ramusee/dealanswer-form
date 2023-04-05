@@ -6,13 +6,10 @@ import {
   setIsChangeSpvInvestmentStructure,
   setIsChangeSpvInvestmentTerms,
   setIsFirstTimeSpv,
-  setMinimumCommitment,
-  setMinimumCommitmentTextValue,
   setMySpvDetailCurrentLocalTab,
+  setMySpvDetailsTabOne,
   setMySpvDetailsTabTwo,
   setPreviousSpvName,
-  setSpvName,
-  setTargetInvestAmount,
 } from './actions';
 
 interface SpvState {
@@ -41,14 +38,13 @@ const initialCommonState: SpvState = {
     tabTwo: {
       initialClosingDate: {
         radioValue: '',
-        contentTextValue: '',
-        contentDateValue: new Date().getTime(),
+        contentDateValue: null,
       },
       initialClosingDateTextValue: '',
       finalClosingDate: {
         radioValue: '',
         contentTextValue: '',
-        contentDateValue: new Date().getTime(),
+        contentDateValue: null,
       },
       termSpv: {
         radioValue: '',
@@ -67,6 +63,10 @@ const initialCommonState: SpvState = {
 };
 
 export const spv = createReducer(initialCommonState, {
+  // welcomeBlock
+  [setMySpvDetailCurrentLocalTab.type]: (state, action) => {
+    state.mySpvDetails.currentLocalTab = action.payload;
+  },
   [setIsFirstTimeSpv.type]: (state, action) => {
     state.welcomeBlock.isFirstTimeSpv = action.payload;
     state.welcomeBlock.previousSpvName = '';
@@ -84,21 +84,9 @@ export const spv = createReducer(initialCommonState, {
   [setChangeMemberRoleInformation.type]: (state, action) => {
     state.welcomeBlock.changeMemberRoleInformation = action.payload;
   },
-  [setSpvName.type]: (state, action) => {
-    state.mySpvDetails.tabOne.spvName = action.payload;
-  },
-  [setTargetInvestAmount.type]: (state, action) => {
-    state.mySpvDetails.tabOne.targetInvestmentAmount = action.payload;
-  },
-  [setMinimumCommitment.type]: (state, action) => {
-    state.mySpvDetails.tabOne.minimumCommitment.radioValue = action.payload;
-    state.mySpvDetails.tabOne.minimumCommitment.contentTextValue = '';
-  },
-  [setMinimumCommitmentTextValue.type]: (state, action) => {
-    state.mySpvDetails.tabOne.minimumCommitment.contentTextValue = action.payload;
-  },
-  [setMySpvDetailCurrentLocalTab.type]: (state, action) => {
-    state.mySpvDetails.currentLocalTab = action.payload;
+  // mySpvDetails
+  [setMySpvDetailsTabOne.type]: (state, action) => {
+    state.mySpvDetails.tabOne = action.payload;
   },
   [setMySpvDetailsTabTwo.type]: (state, action) => {
     state.mySpvDetails.tabTwo = action.payload;

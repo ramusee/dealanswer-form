@@ -1,5 +1,4 @@
 import { InputRadioContent } from '../../../types/ui/radioInputGroup';
-import { SpvMemberRole } from '../../../types/projects/spv/welcomeBlock';
 import { FieldsetValue } from '../../../types/projects/projects';
 
 type ValueOf<T> = T[keyof T];
@@ -9,6 +8,13 @@ const RadioValue = {
   Yes: 'Yes',
 } as const;
 type RadioValue = ValueOf<typeof RadioValue>;
+
+const SpvMemberRole = {
+  spvInitialMember: "SPV's Initial Member(s)",
+  spvManager: "SPV's Manager",
+  spvSpecialMember: "SPV's Special Member",
+} as const;
+type SpvMemberRole = ValueOf<typeof SpvMemberRole>;
 
 const FieldsetWelcomeBlockName = {
   isFirstTimeSpv: 'isFirstTimeSpv',

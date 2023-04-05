@@ -3,7 +3,7 @@ type ValueOf<T> = T[keyof T];
 const RouteNames = {
   root: '/',
   exampleUiForm: 'exampleUiKit',
-  mySpvDetails: 'mySpvDetails',
+  spv: 'spv',
 } as const;
 
 type RouteNames = ValueOf<typeof RouteNames>;

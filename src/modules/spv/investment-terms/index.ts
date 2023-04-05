@@ -1,0 +1,1 @@
+export { InvestmentTerms } from './InvestmentTerms';
