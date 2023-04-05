@@ -38,7 +38,7 @@ const MySpvDetailsTabOne: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, pr
   );
   const minimumCommitmentValue = watch(`${FieldsetSpvDetailsName.minimumCommitment}.radioValue`);
   const minimumCommitmentTextValue = useDebounce(
-    watch(`${FieldsetSpvDetailsName.minimumCommitment}.contentValue`),
+    watch(`${FieldsetSpvDetailsName.minimumCommitment}.contentTextValue`),
     defaultDebounceValue,
   );
 
@@ -64,13 +64,13 @@ const MySpvDetailsTabOne: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, pr
   }, [minimumCommitmentValue]);
 
   useEffect(() => {
-    if (mySpvDetailsTabOne.minimumCommitment.contentValue === minimumCommitmentTextValue) {
+    if (mySpvDetailsTabOne.minimumCommitment.contentTextValue === minimumCommitmentTextValue) {
       return;
     }
     dispatch(setMinimumCommitmentTextValue(minimumCommitmentTextValue));
   }, [minimumCommitmentTextValue]);
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: IMySpvDetailsTabOne) => {
     console.log(data);
     changeCurrentLocalTab(2);
   };

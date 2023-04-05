@@ -42,13 +42,13 @@ const initialCommonState: SpvState = {
       initialClosingDate: {
         radioValue: '',
         contentTextValue: '',
-        contentDateValue: null,
+        contentDateValue: new Date().getTime(),
       },
       initialClosingDateTextValue: '',
       finalClosingDate: {
         radioValue: '',
         contentTextValue: '',
-        contentDateValue: null,
+        contentDateValue: new Date().getTime(),
       },
       termSpv: {
         radioValue: '',

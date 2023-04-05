@@ -22,15 +22,14 @@
 
 .inputRadioContainer {
   position: relative;
-  width: 20px;
 }
 
 .inputTextContainer {
   display: flex;
   align-items: center;
   width: fit-content;
-  transition: 2s ease-out;
-  padding: 0 10px 0 30px;
+  transition: .2s ease-out;
+  padding: 0 10px 0 45px;
 
   & input {
     display: inline-block;
@@ -81,12 +80,11 @@
   display: flex;
   align-items: center;
   height: 100%;
-  margin: 0;
   word-break: break-all;
 
   & > span {
     width: fit-content;
-    padding: 16px 16px 16px 25px;
+    padding: 16px 16px 16px 45px;
   }
 }
 

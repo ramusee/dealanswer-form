@@ -34,7 +34,7 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
             {isChecked && (
               <div className={s.inputTextContainer}>
                 <input
-                  {...register(`${name}.contentValue`, {
+                  {...register(`${name}.contentTextValue`, {
                     required: true,
                   })}
                   type="text"

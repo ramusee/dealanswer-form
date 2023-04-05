@@ -12,6 +12,8 @@ import { RadioGroup } from '../../../../components/element-groups/radio-group';
 import { InputText } from '../../../../ui/inputs/input-text';
 
 import s from '../styles.module.scss';
+import { useDebounce } from '../../../../hooks/useDebounce';
+import { defaultDebounceValue } from '../../../../consts/common';
 
 const MySpvDetailsTabTwo: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, nextTabHandler }) => {
   const mySpvDetailsTabTwo = useSelector(selectMySpvDetailsTabTwo);
@@ -19,10 +21,15 @@ const MySpvDetailsTabTwo: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, ne
   const methods = useForm<IMySPVDetailsTabTwo>({
     defaultValues: mySpvDetailsTabTwo,
   });
-  const { watch, getValues } = methods;
-  const all = getValues();
+  const { watch } = methods;
+  const all = watch();
   const cloneAll = structuredClone(all);
-  console.log(cloneAll);
+  const debounceInitialClosingDateTextValue = useDebounce(
+    cloneAll.finalClosingDate.contentTextValue,
+    defaultDebounceValue,
+  );
+  const debounceTermSpvTextValue = useDebounce(cloneAll.termSpv.contentTextValue, defaultDebounceValue);
+  const debounceSpvExtensionTextValue = useDebounce(cloneAll.spvExtension.contentTextValue, defaultDebounceValue);
 
   useEffect(() => {
     dispatch(setMySpvDetailsTabTwo(cloneAll));
@@ -30,16 +37,16 @@ const MySpvDetailsTabTwo: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, ne
     cloneAll.initialClosingDate.contentDateValue,
     cloneAll.initialClosingDate.radioValue,
     cloneAll.initialClosingDateTextValue,
-    cloneAll.finalClosingDate.contentTextValue,
+    debounceInitialClosingDateTextValue,
     cloneAll.finalClosingDate.contentDateValue,
     cloneAll.finalClosingDate.radioValue,
-    cloneAll.termSpv.contentTextValue,
+    debounceTermSpvTextValue,
     cloneAll.termSpv.radioValue,
-    cloneAll.spvExtension.contentTextValue,
+    debounceSpvExtensionTextValue,
     cloneAll.spvExtension.radioValue,
   ]);
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: IMySPVDetailsTabTwo) => {
     console.log(data);
   };
 

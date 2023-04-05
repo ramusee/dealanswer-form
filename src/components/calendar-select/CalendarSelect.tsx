@@ -10,7 +10,7 @@ import { CalendarSelectProps } from './types';
 import cn from 'classnames';
 
 import s from './styles.module.scss';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller, useController, useFormContext } from 'react-hook-form';
 
 const CustomButton = forwardRef(function Button(
   { value, onClick, isSelected }: any,
@@ -25,9 +25,16 @@ const CustomButton = forwardRef(function Button(
 });
 
 const CalendarSelect: FC<CalendarSelectProps> = ({ name, isChecked, isDisabled = false }) => {
-  const [date, setDate] = useState<Date | null>(new Date());
+  // const [date, setDate] = useState<Date | null>(new Date());
   const [isSelected, setIsSelected] = useState<boolean>(false);
-  const { setValue } = useFormContext();
+  const { control } = useFormContext();
+  const { field, fieldState } = useController({
+    name,
+    control,
+    rules: {
+      required: true,
+    },
+  });
   useEffect(() => {
     if (isChecked) {
       setIsSelected(true);
@@ -43,25 +50,28 @@ const CalendarSelect: FC<CalendarSelectProps> = ({ name, isChecked, isDisabled =
 
   return (
     <div className={s.container}>
-      <DatePicker
-        selected={date}
-        customInput={<CustomButton isSelected={isSelected} />}
-        dateFormat="MMMM d, yyyy "
-        onChange={date => {
-          setDate(date);
-          setValue(`${name}.contentDateValue`, date);
-        }}
-        formatWeekDay={date => weekDays[date.getDay()]}
-        disabledKeyboardNavigation
-        calendarStartDay={1}
-        disabled={isDisabled}
-        renderCustomHeader={({ date, decreaseMonth, increaseMonth, decreaseYear, increaseYear }) => (
-          <CustomHeaderCalendar
-            date={date}
-            decreaseMonth={decreaseMonth}
-            increaseMonth={increaseMonth}
-            decreaseYear={decreaseYear}
-            increaseYear={increaseYear}
+      <Controller
+        name={`${name},contentDateValue`}
+        control={control}
+        render={({ field }) => (
+          <DatePicker
+            selected={field.value}
+            customInput={<CustomButton isSelected={isSelected} />}
+            dateFormat="MMMM d, yyyy "
+            onChange={date => field.onChange(date)}
+            formatWeekDay={date => weekDays[date.getDay()]}
+            disabledKeyboardNavigation
+            calendarStartDay={1}
+            disabled={isDisabled}
+            renderCustomHeader={({ date, decreaseMonth, increaseMonth, decreaseYear, increaseYear }) => (
+              <CustomHeaderCalendar
+                date={date}
+                decreaseMonth={decreaseMonth}
+                increaseMonth={increaseMonth}
+                decreaseYear={decreaseYear}
+                increaseYear={increaseYear}
+              />
+            )}
           />
         )}
       />
