@@ -10,7 +10,7 @@ const InputText: FC<InputTextProps> = ({
   type = 'text',
   value,
   isDisabled = false,
-  isRequired = false,
+  isRequired = true,
 }) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 

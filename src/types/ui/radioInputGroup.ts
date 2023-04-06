@@ -10,7 +10,6 @@ const InputRadioContent = {
   InputText: 'InputText',
   Calendar: 'Calendar',
 } as const;
-
 type InputRadioContent = ValueOf<typeof InputRadioContent>;
 
 export type { InputRadioItem };

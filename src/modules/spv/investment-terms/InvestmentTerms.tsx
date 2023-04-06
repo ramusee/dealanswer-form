@@ -1,23 +1,23 @@
 import React, { FC } from 'react';
-import { InvestmentTermsTabOne } from './components/InvestmentTermsTabOne';
-import { InvestmentTermsProps } from './types';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentTab } from '../../../store/reducers/common';
 
-const InvestmentTerms: FC<InvestmentTermsProps> = ({ nextTabHandler, previousTabHandler }) => {
-  const currentTab = useSelector(selectCurrentTab);
+import { InvestmentTermsTabOne } from './components/InvestmentTermsTabOne';
+import { selectInvestTermsCurrentTab, setInvestmentTermsCurrentTab } from '../../../store/reducers/spv';
+import { InvestmentTermsTabTwo } from './components/InvestmentTermsTabTwo';
+import { InvestmentTermsTabThree } from './components/InvestmentTermsTabThree';
+
+const InvestmentTerms: FC = () => {
   const dispatch = useDispatch();
-
+  const currentTab = useSelector(selectInvestTermsCurrentTab);
   const changeCurrentLocalTab = (tab: number) => {
-    nextTabHandler();
+    dispatch(setInvestmentTermsCurrentTab(tab));
   };
 
-  if (currentTab !== 3) {
-    return null;
-  }
   return (
     <>
-      <InvestmentTermsTabOne previousTabHandler={previousTabHandler} changeCurrentLocalTab={changeCurrentLocalTab} />
+      {currentTab === 1 && <InvestmentTermsTabOne changeCurrentTab={changeCurrentLocalTab} />}
+      {currentTab === 2 && <InvestmentTermsTabTwo changeCurrentTab={changeCurrentLocalTab} />}
+      {currentTab === 3 && <InvestmentTermsTabThree changeCurrentTab={changeCurrentLocalTab} />}
     </>
   );
 };

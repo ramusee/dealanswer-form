@@ -1,7 +1,7 @@
-interface TabButtonsProps {
+interface NavigationButtonsProps {
   nextButtonTitle?: string;
   nextButtonHandler?: () => void;
   backButtonHandler?: () => void;
 }
 
-export type { TabButtonsProps };
+export type { NavigationButtonsProps };

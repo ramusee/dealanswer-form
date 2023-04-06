@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 import cn from 'classnames';
 
 import { ReactComponent as CircleCheckIcon } from '../../../assets/icons/circleCheck.svg';
 import { ReactComponent as ArrowRightSmIcon } from '../../../assets/icons/arrowRightSm.svg';
 import { ProgressBarItemProps } from './types';
 import { Statuses } from '../../../components/progress-bar/types';
+import { selectCurrentProgressStep } from '../../../store/reducers/common';
 
 import s from './styles.module.scss';
-import { useSelector } from 'react-redux';
-import { selectCurrentTab } from '../../../store/reducers/common';
 
 const ProgressBarItem: FC<ProgressBarItemProps> = ({ id, title, status }) => {
-  const currentTab = useSelector(selectCurrentTab);
+  const currentProgressStep = useSelector(selectCurrentProgressStep);
   const isDone = status === Statuses.Done;
-  const isActiveItem = id === currentTab && s.activeIcon;
+  const isActiveItem = id === currentProgressStep && s.activeIcon;
 
   const iconClassName = cn(s.icon, isActiveItem && s.activeIcon);
   const contentClassName = cn(s.content, isActiveItem && s.contentActive);

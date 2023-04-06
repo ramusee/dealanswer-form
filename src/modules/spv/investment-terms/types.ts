@@ -1,12 +1,5 @@
-interface InvestmentTermsProps {
-  nextTabHandler: () => void;
-  previousTabHandler?: () => void;
-}
-
 interface InvestmentTermsTabProps {
-  nextTabHandler?: () => void;
-  previousTabHandler?: () => void;
-  changeCurrentLocalTab: (step: number) => void;
+  changeCurrentTab: (tab: number) => void;
 }
 
-export type { InvestmentTermsProps, InvestmentTermsTabProps };
+export type { InvestmentTermsTabProps };

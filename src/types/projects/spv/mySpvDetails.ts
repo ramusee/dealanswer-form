@@ -1,7 +1,7 @@
 import { IRadioValue, IRadioValueText, IRadioValueDate } from '../../../ui/inputs/input-radio/types';
 
 interface IMySpvDetails {
-  currentLocalTab: number;
+  currentTab: number;
   tabOne: IMySpvDetailsTabOne;
   tabTwo: IMySPVDetailsTabTwo;
 }

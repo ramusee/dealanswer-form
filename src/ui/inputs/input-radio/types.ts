@@ -14,5 +14,6 @@ interface IRadioValue {
 }
 type IRadioValueText = Pick<IRadioValue, 'radioValue' | 'contentTextValue'>;
 type IRadioValueDate = Pick<IRadioValue, 'radioValue' | 'contentDateValue'>;
+type IRadioValueDefault = Pick<IRadioValue, 'radioValue'>;
 
-export type { InputRadioProps, IRadioValue, IRadioValueText, IRadioValueDate };
+export type { InputRadioProps, IRadioValue, IRadioValueText, IRadioValueDate, IRadioValueDefault };

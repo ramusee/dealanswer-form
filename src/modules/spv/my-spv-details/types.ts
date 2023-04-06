@@ -1,11 +1,5 @@
-interface MySpvDetailsProps {
-  previousTabHandler: () => void;
-  nextTabHandler: () => void;
+interface MySpvDetailsTabProps {
+  changeCurrentTab: (tab: number) => void;
 }
 
-interface MySpvDetailTabProps {
-  nextTabHandler?: () => void;
-  previousTabHandler?: () => void;
-  changeCurrentLocalTab: (step: number) => void;
-}
-export type { MySpvDetailsProps, MySpvDetailTabProps };
+export type { MySpvDetailsTabProps };

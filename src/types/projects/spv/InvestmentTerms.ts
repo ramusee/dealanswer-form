@@ -1,4 +1,33 @@
+import { IRadioValueText, IRadioValueDefault } from '../../../ui/inputs/input-radio/types';
+
 interface IInvestmentTerms {
-  carriedInterestFor: string[];
+  currentTab: number;
+  tabOne: IInvestmentTermsTabOne;
+  tabTwo: IInvestmentTermsTabTwo;
+  tabThree: IInvestmentTermsTabThree;
 }
-export type { IInvestmentTerms };
+
+interface IInvestmentTermsTabOne {
+  carriedInterestFor: string[] | null;
+  carriedInterest: IRadioValueText;
+  preferredReturn: IRadioValueText;
+}
+
+interface IInvestmentTermsTabTwo {
+  managementFee: IRadioValueText;
+  typeManagementFee: IRadioValueDefault;
+  subscriptionFee: IRadioValueText;
+  isSubscriptionFeeCapital: IRadioValueDefault;
+}
+
+interface IInvestmentTermsTabThree {
+  isUsdcFromInvestors: IRadioValueDefault;
+  isMultiAssetSpv: IRadioValueDefault;
+  portfolioInformation: {
+    fullLegalName: string;
+    state: string;
+    briefDescription: string;
+  };
+  isDistributePortfolio: IRadioValueDefault;
+}
+export type { IInvestmentTerms, IInvestmentTermsTabOne, IInvestmentTermsTabTwo, IInvestmentTermsTabThree };

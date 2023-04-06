@@ -3,18 +3,24 @@ import { ISpvWelcomeBlock } from '../../../types/projects/spv/welcomeBlock';
 import { IMySpvDetails } from '../../../types/projects/spv/mySpvDetails';
 import {
   setChangeMemberRoleInformation,
+  setInvestmentTermsCurrentTab,
+  setInvestmentTermsTabOne,
+  setInvestmentTermsTabThree,
+  setInvestmentTermsTabTwo,
   setIsChangeSpvInvestmentStructure,
   setIsChangeSpvInvestmentTerms,
   setIsFirstTimeSpv,
-  setMySpvDetailCurrentLocalTab,
+  setMySpvDetailCurrentTab,
   setMySpvDetailsTabOne,
   setMySpvDetailsTabTwo,
   setPreviousSpvName,
 } from './actions';
+import { IInvestmentTerms } from '../../../types/projects/spv/InvestmentTerms';
 
 interface SpvState {
   welcomeBlock: ISpvWelcomeBlock;
   mySpvDetails: IMySpvDetails;
+  investmentTerms: IInvestmentTerms;
 }
 
 const initialCommonState: SpvState = {
@@ -26,7 +32,7 @@ const initialCommonState: SpvState = {
     changeMemberRoleInformation: null,
   },
   mySpvDetails: {
-    currentLocalTab: 1,
+    currentTab: 1,
     tabOne: {
       spvName: '',
       targetInvestmentAmount: '',
@@ -56,7 +62,52 @@ const initialCommonState: SpvState = {
       },
     },
   },
-  // investmentTerms: {},
+  investmentTerms: {
+    currentTab: 1,
+    tabOne: {
+      carriedInterestFor: null,
+      carriedInterest: {
+        radioValue: '',
+        contentTextValue: '',
+      },
+      preferredReturn: {
+        radioValue: '',
+        contentTextValue: '',
+      },
+    },
+    tabTwo: {
+      managementFee: {
+        radioValue: '',
+        contentTextValue: '',
+      },
+      typeManagementFee: {
+        radioValue: '',
+      },
+      subscriptionFee: {
+        radioValue: '',
+        contentTextValue: '',
+      },
+      isSubscriptionFeeCapital: {
+        radioValue: '',
+      },
+    },
+    tabThree: {
+      isUsdcFromInvestors: {
+        radioValue: '',
+      },
+      isMultiAssetSpv: {
+        radioValue: '',
+      },
+      portfolioInformation: {
+        fullLegalName: '',
+        state: '',
+        briefDescription: '',
+      },
+      isDistributePortfolio: {
+        radioValue: '',
+      },
+    },
+  },
   // investmentStructure: {},
   // addOns: {},
   // orderSummary: {},
@@ -64,8 +115,8 @@ const initialCommonState: SpvState = {
 
 export const spv = createReducer(initialCommonState, {
   // welcomeBlock
-  [setMySpvDetailCurrentLocalTab.type]: (state, action) => {
-    state.mySpvDetails.currentLocalTab = action.payload;
+  [setMySpvDetailCurrentTab.type]: (state, action) => {
+    state.mySpvDetails.currentTab = action.payload;
   },
   [setIsFirstTimeSpv.type]: (state, action) => {
     state.welcomeBlock.isFirstTimeSpv = action.payload;
@@ -90,5 +141,18 @@ export const spv = createReducer(initialCommonState, {
   },
   [setMySpvDetailsTabTwo.type]: (state, action) => {
     state.mySpvDetails.tabTwo = action.payload;
+  },
+  //  investment terms
+  [setInvestmentTermsCurrentTab.type]: (state, action) => {
+    state.investmentTerms.currentTab = action.payload;
+  },
+  [setInvestmentTermsTabOne.type]: (state, action) => {
+    state.investmentTerms.tabOne = action.payload;
+  },
+  [setInvestmentTermsTabTwo.type]: (state, action) => {
+    state.investmentTerms.tabTwo = action.payload;
+  },
+  [setInvestmentTermsTabThree.type]: (state, action) => {
+    state.investmentTerms.tabThree = action.payload;
   },
 });

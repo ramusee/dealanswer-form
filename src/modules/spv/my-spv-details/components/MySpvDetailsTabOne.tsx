@@ -4,7 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { FieldsetSpvDetailsName, sectionTitleMySpvDetails, spvDetailsFieldset } from '../consts';
 import { IMySpvDetailsTabOne } from '../../../../types/projects/spv/mySpvDetails';
-import { MySpvDetailTabProps } from '../types';
+import { MySpvDetailsTabProps } from '../types';
 
 import { SectionTitle } from '../../../../components/section-title';
 import { Fieldset } from '../../../../components/fieldset/Fieldset';
@@ -13,12 +13,13 @@ import { RadioGroup } from '../../../../components/element-groups/radio-group';
 import { NavigationButtons } from '../../../../components/navigation-buttons';
 import { useDebounce } from '../../../../hooks/useDebounce';
 import { selectMySpvDetailsTabOne, setMySpvDetailsTabOne } from '../../../../store/reducers/spv';
+import { previousProgressStep } from '../../../../store/reducers/common';
 
 import { defaultDebounceValue } from '../../../../consts/common';
 
 import s from '../styles.module.scss';
 
-const MySpvDetailsTabOne: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, previousTabHandler }) => {
+const MySpvDetailsTabOne: FC<MySpvDetailsTabProps> = ({ changeCurrentTab }) => {
   const mySpvDetailsTabOne = useSelector(selectMySpvDetailsTabOne);
   const dispatch = useDispatch();
 
@@ -42,7 +43,7 @@ const MySpvDetailsTabOne: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, pr
 
   const onSubmit = (data: IMySpvDetailsTabOne) => {
     console.log(data);
-    changeCurrentLocalTab(2);
+    changeCurrentTab(2);
   };
   return (
     <FormProvider {...methods}>
@@ -76,7 +77,7 @@ const MySpvDetailsTabOne: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, pr
               groupName={FieldsetSpvDetailsName.minimumCommitment}
             />
           </Fieldset>
-          <NavigationButtons backButtonHandler={previousTabHandler} />
+          <NavigationButtons backButtonHandler={() => dispatch(previousProgressStep())} />
         </form>
       </div>
     </FormProvider>

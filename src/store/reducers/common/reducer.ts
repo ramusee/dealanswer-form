@@ -1,13 +1,13 @@
 import { createReducer } from '@reduxjs/toolkit/src';
-import { setCurrentTab, changeSidebarStatus } from './actions';
+import { changeSidebarStatus, nextProgressStep, previousProgressStep } from './actions';
 
 interface CommonState {
-  currentTab: number;
+  currentProgressStep: number;
   isOpenSideBar: boolean;
 }
 
 const initialCommonState: CommonState = {
-  currentTab: 0,
+  currentProgressStep: 0,
   isOpenSideBar: false,
 };
 
@@ -15,7 +15,10 @@ export const common = createReducer(initialCommonState, {
   [changeSidebarStatus.type]: state => {
     state.isOpenSideBar = !state.isOpenSideBar;
   },
-  [setCurrentTab.type]: (state, action) => {
-    state.currentTab = action.payload;
+  [nextProgressStep.type]: state => {
+    state.currentProgressStep = state.currentProgressStep + 1;
+  },
+  [previousProgressStep.type]: state => {
+    state.currentProgressStep = state.currentProgressStep - 1;
   },
 });

@@ -5,7 +5,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { FieldsetSpvDetailsName, sectionTitleMySpvDetails, spvDetailsFieldset } from '../consts';
 import { defaultDebounceValue } from '../../../../consts/common';
 import { IMySPVDetailsTabTwo } from '../../../../types/projects/spv/mySpvDetails';
-import { MySpvDetailTabProps } from '../types';
+import { MySpvDetailsTabProps } from '../types';
 import { useDebounce } from '../../../../hooks/useDebounce';
 
 import { selectMySpvDetailsTabTwo, setMySpvDetailsTabTwo } from '../../../../store/reducers/spv';
@@ -16,8 +16,9 @@ import { RadioGroup } from '../../../../components/element-groups/radio-group';
 import { InputText } from '../../../../ui/inputs/input-text';
 
 import s from '../styles.module.scss';
+import { nextProgressStep } from '../../../../store/reducers/common';
 
-const MySpvDetailsTabTwo: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, nextTabHandler }) => {
+const MySpvDetailsTabTwo: FC<MySpvDetailsTabProps> = ({ changeCurrentTab }) => {
   const mySpvDetailsTabTwo = useSelector(selectMySpvDetailsTabTwo);
   const dispatch = useDispatch();
   const methods = useForm<IMySPVDetailsTabTwo>({
@@ -27,36 +28,42 @@ const MySpvDetailsTabTwo: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, ne
   const allFields = watch();
   const cloneAllFields = structuredClone(allFields);
 
-  const debounceInitialClosingDateTextValue = useDebounce(
+  const debouncedInitialClosingDateTextValue = useDebounce(
     cloneAllFields.initialClosingDateTextValue,
     defaultDebounceValue,
   );
-  const debounceFinalClosingDateTextValue = useDebounce(
+  const debouncedFinalClosingDateTextValue = useDebounce(
     cloneAllFields.finalClosingDate.contentTextValue,
     defaultDebounceValue,
   );
-  const debounceTermSpvTextValue = useDebounce(cloneAllFields.termSpv.contentTextValue, defaultDebounceValue);
-  const debounceSpvExtensionTextValue = useDebounce(cloneAllFields.spvExtension.contentTextValue, defaultDebounceValue);
+  const debouncedTermSpvTextValue = useDebounce(cloneAllFields.termSpv.contentTextValue, defaultDebounceValue);
+  const debouncedSpvExtensionTextValue = useDebounce(
+    cloneAllFields.spvExtension.contentTextValue,
+    defaultDebounceValue,
+  );
+
+  const isRequiredInitialClosingText =
+    cloneAllFields.initialClosingDate.radioValue === 'When the aggregate Commitments equal to or exceed';
 
   useEffect(() => {
     dispatch(setMySpvDetailsTabTwo(cloneAllFields));
   }, [
     cloneAllFields.initialClosingDate.radioValue,
     cloneAllFields.initialClosingDate.contentDateValue,
-    debounceInitialClosingDateTextValue,
+    debouncedInitialClosingDateTextValue,
     cloneAllFields.finalClosingDate.radioValue,
     cloneAllFields.finalClosingDate.contentDateValue,
-    debounceFinalClosingDateTextValue,
-    debounceTermSpvTextValue,
+    debouncedFinalClosingDateTextValue,
+    debouncedTermSpvTextValue,
     cloneAllFields.termSpv.radioValue,
     cloneAllFields.spvExtension.radioValue,
-    debounceSpvExtensionTextValue,
+    debouncedSpvExtensionTextValue,
   ]);
 
   const onSubmit = (data: IMySPVDetailsTabTwo) => {
     console.log(data);
+    dispatch(nextProgressStep());
   };
-
   return (
     <FormProvider {...methods}>
       <div className={s.spvDetailsContainer}>
@@ -75,6 +82,7 @@ const MySpvDetailsTabTwo: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, ne
                 value={spvDetailsFieldset.initialClosingDate.inputText?.value || ''}
                 placeholder={spvDetailsFieldset.initialClosingDate.inputText?.placeholder || ''}
                 type="number"
+                isRequired={isRequiredInitialClosingText}
               />
             </div>
           </Fieldset>
@@ -99,7 +107,7 @@ const MySpvDetailsTabTwo: FC<MySpvDetailTabProps> = ({ changeCurrentLocalTab, ne
               groupName={FieldsetSpvDetailsName.spvExtension}
             />
           </Fieldset>
-          <NavigationButtons backButtonHandler={() => changeCurrentLocalTab(1)} />
+          <NavigationButtons backButtonHandler={() => changeCurrentTab(1)} />
         </form>
       </div>
     </FormProvider>

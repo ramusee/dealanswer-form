@@ -1,3 +1,10 @@
+.investmentTermsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+}
+
 .investmentTermsForm {
   display: flex;
   flex-direction: column;

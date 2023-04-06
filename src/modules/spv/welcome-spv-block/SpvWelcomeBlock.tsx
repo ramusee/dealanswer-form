@@ -21,17 +21,12 @@ import {
   setPreviousSpvName,
 } from '../../../store/reducers/spv';
 import { useDebounce } from '../../../hooks/useDebounce';
-import { selectCurrentTab } from '../../../store/reducers/common';
-
-import s from './styles.module.scss';
 import { defaultDebounceValue } from '../../../consts/common';
 
-interface SpvWelcomeBlockProps {
-  nextTabHandler: () => void;
-}
+import s from './styles.module.scss';
+import { nextProgressStep } from '../../../store/reducers/common';
 
-const SpvWelcomeBlock: FC<SpvWelcomeBlockProps> = ({ nextTabHandler }) => {
-  const currentTab = useSelector(selectCurrentTab);
+const SpvWelcomeBlock: FC = () => {
   const spvWelcomeBlock = useSelector(selectSpvWelcomeBlock);
   const dispatch = useDispatch();
 
@@ -101,12 +96,8 @@ const SpvWelcomeBlock: FC<SpvWelcomeBlockProps> = ({ nextTabHandler }) => {
 
   const onSubmit = (data: any) => {
     console.log(data);
-    nextTabHandler();
+    dispatch(nextProgressStep());
   };
-
-  if (currentTab !== 0) {
-    return null;
-  }
 
   return (
     <FormProvider {...methods}>

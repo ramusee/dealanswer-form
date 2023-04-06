@@ -1,7 +1,12 @@
 import { createAction } from '@reduxjs/toolkit/src';
 import { IMySpvDetailsTabOne, IMySPVDetailsTabTwo } from '../../../types/projects/spv/mySpvDetails';
+import {
+  IInvestmentTermsTabOne,
+  IInvestmentTermsTabThree,
+  IInvestmentTermsTabTwo,
+} from '../../../types/projects/spv/InvestmentTerms';
 
-const setMySpvDetailCurrentLocalTab = createAction<number>('set my spv details current local tab');
+const setMySpvDetailCurrentTab = createAction<number>('set my spv details current local tab');
 
 // welcomeBlock
 const setIsFirstTimeSpv = createAction<string>('set is first time spv');
@@ -10,19 +15,27 @@ const setIsChangeSpvInvestmentStructure = createAction<string>('set is change sp
 const setIsChangeSpvInvestmentTerms = createAction<string>('set is change spv investment terms');
 const setChangeMemberRoleInformation = createAction<string[]>('set change member role information');
 
-//mySpvDetailsTabOne
+//mySpvDetails
 const setMySpvDetailsTabOne = createAction<IMySpvDetailsTabOne>('set my spv details tab one');
-
-// mySpvDetailsTabTwo
 const setMySpvDetailsTabTwo = createAction<IMySPVDetailsTabTwo>('set my spv details tab two');
 
+// investmentTerms
+const setInvestmentTermsCurrentTab = createAction<number>('set investment terms current tab');
+const setInvestmentTermsTabOne = createAction<IInvestmentTermsTabOne>(' set investment terms tab one');
+const setInvestmentTermsTabTwo = createAction<IInvestmentTermsTabTwo>('set investment terms tab two');
+const setInvestmentTermsTabThree = createAction<IInvestmentTermsTabThree>('set investment terms tab three');
+
 export {
-  setMySpvDetailCurrentLocalTab,
   setIsFirstTimeSpv,
   setPreviousSpvName,
   setIsChangeSpvInvestmentStructure,
   setIsChangeSpvInvestmentTerms,
   setChangeMemberRoleInformation,
+  setMySpvDetailCurrentTab,
   setMySpvDetailsTabOne,
   setMySpvDetailsTabTwo,
+  setInvestmentTermsCurrentTab,
+  setInvestmentTermsTabOne,
+  setInvestmentTermsTabTwo,
+  setInvestmentTermsTabThree,
 };
