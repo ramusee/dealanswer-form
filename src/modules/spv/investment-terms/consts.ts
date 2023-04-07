@@ -97,7 +97,7 @@ const investTermsFieldset: Record<FieldsetInvestTermsName, FieldsetValue> = {
     ],
   },
   [FieldsetInvestTermsName.isMultiAssetSpv]: {
-    title: 'Do you accept USDC from investors?',
+    title: 'Do you want to form multi-asset SPV?',
     radioList: [
       { value: 'Yes', content: InputRadioContent.Default },
       { value: 'No', content: InputRadioContent.Default },

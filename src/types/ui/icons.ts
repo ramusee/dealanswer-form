@@ -15,6 +15,7 @@ enum IconsKey {
   Trash = 'Trash',
   Login = 'Login',
   CheckGreen = 'CheckGreen',
+  Download = 'Download',
 }
 
 export type { IconProps };

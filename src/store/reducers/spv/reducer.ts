@@ -21,9 +21,10 @@ interface SpvState {
   welcomeBlock: ISpvWelcomeBlock;
   mySpvDetails: IMySpvDetails;
   investmentTerms: IInvestmentTerms;
+  // investmentStructure:
 }
 
-const initialCommonState: SpvState = {
+const initialSpvState: SpvState = {
   welcomeBlock: {
     isFirstTimeSpv: '',
     previousSpvName: '',
@@ -113,7 +114,7 @@ const initialCommonState: SpvState = {
   // orderSummary: {},
 };
 
-export const spv = createReducer(initialCommonState, {
+export const spv = createReducer(initialSpvState, {
   // welcomeBlock
   [setMySpvDetailCurrentTab.type]: (state, action) => {
     state.mySpvDetails.currentTab = action.payload;
@@ -155,4 +156,5 @@ export const spv = createReducer(initialCommonState, {
   [setInvestmentTermsTabThree.type]: (state, action) => {
     state.investmentTerms.tabThree = action.payload;
   },
+  //
 });

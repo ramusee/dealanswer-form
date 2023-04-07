@@ -7,7 +7,7 @@ import { ReactComponent as paperclipIcon } from '../assets/icons/paperclip.svg';
 import { ReactComponent as trashIcon } from '../assets/icons/trash.svg';
 import { ReactComponent as loginIcon } from '../assets/icons/login.svg';
 import { ReactComponent as CheckGreenIcon } from '../assets/icons/checkGreen.svg';
-
+import { ReactComponent as DownloadIcon } from '../assets/icons/download.svg';
 import { IconsKey } from '../types/ui/icons';
 
 const ICONS: Record<IconsKey, React.FC | null> = {
@@ -19,6 +19,7 @@ const ICONS: Record<IconsKey, React.FC | null> = {
   Trash: trashIcon,
   Login: loginIcon,
   CheckGreen: CheckGreenIcon,
+  Download: DownloadIcon,
 };
 
 export { ICONS };

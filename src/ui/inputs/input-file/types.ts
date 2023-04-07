@@ -1,9 +1,9 @@
 import React from 'react';
 import { IconProps } from '../../../types/ui/icons';
-import { InputFileSize, InputType } from '../../../types/ui/inputFile';
+import { InputFileSize, InputFileType } from '../../../types/ui/inputFile';
 
 interface InputFileProps {
-  type?: InputType;
+  type?: InputFileType;
   title: string;
   Icon?: React.FC<IconProps> | null;
   size?: InputFileSize;

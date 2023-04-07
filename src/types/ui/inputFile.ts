@@ -1,15 +1,16 @@
 type ValueOf<T> = T[keyof T];
 
 const InputFileSize = {
+  Default: 'Default',
   Cover: 'Cover',
   Fix: 'Fix',
 } as const;
 type InputFileSize = ValueOf<typeof InputFileSize>;
 
-const InputType = {
+const InputFileType = {
   Dashed: 'Dashed',
   Solid: 'Solid',
 } as const;
-type InputType = ValueOf<typeof InputType>;
+type InputFileType = ValueOf<typeof InputFileType>;
 
-export { InputFileSize, InputType };
+export { InputFileSize, InputFileType };

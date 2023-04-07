@@ -16,6 +16,9 @@ import s from '../styles.module.scss';
 import { Fieldset } from '../../../../components/fieldset/Fieldset';
 import { RadioGroup } from '../../../../components/element-groups/radio-group';
 import { InputTextGroup } from '../../../../components/element-groups/input-text-group';
+import { FileBlock } from '../../../../ui/file-block';
+import { InputFileType } from '../../../../types/ui/inputFile';
+import { ICONS } from '../../../../consts/icons';
 
 const InvestmentTermsTabThree: FC<InvestmentTermsTabProps> = ({ changeCurrentTab }) => {
   const investmentTermsTabThree = useSelector(selectInvestmentTermsTabThree);
@@ -31,7 +34,7 @@ const InvestmentTermsTabThree: FC<InvestmentTermsTabProps> = ({ changeCurrentTab
   const debouncedBriefDesc = useDebounce(cloneAllFields.portfolioInformation.briefDescription, defaultDebounceValue);
 
   const dispatch = useDispatch();
-  console.log(cloneAllFields);
+
   const onSubmit = (data: IInvestmentTermsTabThree) => {
     console.log(data);
   };
@@ -68,8 +71,12 @@ const InvestmentTermsTabThree: FC<InvestmentTermsTabProps> = ({ changeCurrentTab
             <InputTextGroup inputList={investTermsFieldset.portfolioInformation.inputTextList || []} />
           </Fieldset>
           <Fieldset title={investTermsFieldset.portfolioPresentation.title}>
-            {/*<InputFile title={investTermsFieldset.portfolioPresentation.inputFile?.title || ''} onUpload={}*/}
-            File will be here
+            <FileBlock
+              value={investTermsFieldset.portfolioPresentation.inputFile?.value || ''}
+              title={investTermsFieldset.portfolioPresentation.inputFile?.title || ''}
+              type={InputFileType.Solid}
+              Icon={ICONS.Download}
+            />
           </Fieldset>
           <Fieldset title={investTermsFieldset.isDistributePortfolio.title}>
             <RadioGroup

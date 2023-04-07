@@ -2,15 +2,15 @@ import React, { FC, useRef, useState } from 'react';
 import cn from 'classnames';
 
 import { InputFileProps } from './types';
-import { InputFileSize, InputType } from '../../../types/ui/inputFile';
+import { InputFileSize, InputFileType } from '../../../types/ui/inputFile';
 
 import s from './styles.module.scss';
 import { ICONS } from '../../../consts/icons';
 import { ERROR_MESSAGES, MAX_SIZE, VALID_FORMATS } from './utils';
 
 const InputFile: FC<InputFileProps> = ({
-  type = InputType.Dashed,
-  size = InputFileSize.Fix,
+  type = InputFileType.Dashed,
+  size,
   title,
   Icon = ICONS.Paperclip,
   onUpload,
@@ -22,7 +22,7 @@ const InputFile: FC<InputFileProps> = ({
 
   const inputFileContainerClassname = cn(
     s.inputContainer,
-    type === InputType.Solid && s.solid,
+    type === InputFileType.Solid && s.solid,
     size === InputFileSize.Fix && s.fixSize,
     size === InputFileSize.Cover && s.coverSize,
     isDisabled && s.disabled,

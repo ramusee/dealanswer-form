@@ -3,7 +3,7 @@ import { Button } from '../../ui/button';
 import { ButtonColor, ButtonSize } from '../../types/ui/button';
 import { ICONS } from '../../consts/icons';
 import { InputFile } from '../../ui/inputs/input-file';
-import { InputFileSize, InputType } from '../../types/ui/inputFile';
+import { InputFileSize, InputFileType } from '../../types/ui/inputFile';
 import { RadioGroup } from '../../components/element-groups/radio-group';
 import { InputRadioContent, InputRadioItem } from '../../types/ui/radioInputGroup';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -82,14 +82,14 @@ const ExampleUiForm = () => {
           onClick={() => console.log('button')}
         />
         <InputFile
-          type={InputType.Solid}
+          type={InputFileType.Solid}
           title="Second ID Document"
           Icon={ICONS.Paperclip}
           size={InputFileSize.Fix}
           onUpload={inputFileHandler}
         />
         <InputFile
-          type={InputType.Dashed}
+          type={InputFileType.Dashed}
           title="Second ID Document"
           Icon={ICONS.Paperclip}
           size={InputFileSize.Fix}

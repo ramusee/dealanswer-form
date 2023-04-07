@@ -7,6 +7,7 @@ import { ButtonColor, ButtonSize } from '../../../../types/ui/button';
 import { ICONS } from '../../../../consts/icons';
 
 import s from '../styles.module.scss';
+import { InputFileSize } from '../../../../types/ui/inputFile';
 
 const InputFileDescBlock: FC<InputDescBlockProps> = ({ inputTitle, description }) => {
   const [currentFile, setCurrentFile] = useState<File | null>(null);
@@ -19,7 +20,7 @@ const InputFileDescBlock: FC<InputDescBlockProps> = ({ inputTitle, description }
     <div className={s.inputDescBlockContainer}>
       {!currentFile ? (
         <>
-          <InputFile title={inputTitle} onUpload={onUpload} />
+          <InputFile title={inputTitle} size={InputFileSize.Fix} onUpload={onUpload} />
           <p>{description}</p>
         </>
       ) : (

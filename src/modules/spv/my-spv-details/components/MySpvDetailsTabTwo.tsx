@@ -107,7 +107,7 @@ const MySpvDetailsTabTwo: FC<MySpvDetailsTabProps> = ({ changeCurrentTab }) => {
               groupName={FieldsetSpvDetailsName.spvExtension}
             />
           </Fieldset>
-          <NavigationButtons backButtonHandler={() => changeCurrentTab(1)} />
+          <NavigationButtons backButtonHandler={() => changeCurrentTab(1)} nextButtonTitle="Investment Terms" />
         </form>
       </div>
     </FormProvider>
