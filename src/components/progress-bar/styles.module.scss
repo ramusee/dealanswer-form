@@ -1,3 +1,19 @@
+@import "src/assets/styles/colors";
+@import "src/assets/styles/breakpoints";
+
+.navBar {
+  border-top: 1px solid $whiteBase;
+  border-bottom: 1px solid $whiteBase;
+}
+
+.container {
+  max-width: $lg;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
 .progressBar {
   display: flex;
   justify-content: center;

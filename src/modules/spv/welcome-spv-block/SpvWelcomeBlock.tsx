@@ -40,7 +40,7 @@ const SpvWelcomeBlock: FC = () => {
         radioValue: spvWelcomeBlock.isChangeSpvInvestmentStructure,
       },
       isChangeSpvInvestmentTerms: {
-        radioValue: spvWelcomeBlock.isChangeSpvInvestmentStructure,
+        radioValue: spvWelcomeBlock.isChangeSpvInvestmentTerms,
       },
       changeMemberRoleInformation: spvWelcomeBlock.changeMemberRoleInformation,
     },

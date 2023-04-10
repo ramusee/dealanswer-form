@@ -102,6 +102,7 @@ const investTermsFieldset: Record<FieldsetInvestTermsName, FieldsetValue> = {
       { value: 'Yes', content: InputRadioContent.Default },
       { value: 'No', content: InputRadioContent.Default },
     ],
+    inputText: { value: 'isMultiAssetSpvTextValue', placeholder: "Please describe an SPV's investment strategy" },
   },
   [FieldsetInvestTermsName.portfolioInformation]: {
     title: 'Please provide information about your planned portfolio investment',

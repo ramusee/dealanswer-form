@@ -5,7 +5,13 @@ import { DropdownProps } from './types';
 import { useOnClickOutside } from '../../hooks/useOnclickOutside';
 import s from './styles.module.scss';
 
-const Dropdown: FC<DropdownProps> = ({ name, optionsList, isDisabled = false }) => {
+const Dropdown: FC<DropdownProps> = ({
+  title,
+  optionList,
+  optionClickHandler,
+  newEntityClickHandler,
+  isDisabled = false,
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>('');
 
@@ -25,13 +31,9 @@ const Dropdown: FC<DropdownProps> = ({ name, optionsList, isDisabled = false }) 
   };
 
   const filteredOptions = useMemo(
-    () => optionsList.filter(item => item.toLowerCase().includes(inputValue.trim().toLowerCase())),
-    [optionsList, inputValue],
+    () => optionList.filter(item => item.toLowerCase().includes(inputValue.trim().toLowerCase())),
+    [optionList, inputValue],
   );
-
-  const optionClickHandler = (option: string) => {
-    console.log(option);
-  };
 
   const openClickHandler = () => {
     setIsOpen(prevState => !prevState);
@@ -59,15 +61,15 @@ const Dropdown: FC<DropdownProps> = ({ name, optionsList, isDisabled = false }) 
           value={inputValue}
           className={inputDropClassName}
           type="text"
-          placeholder={name}
+          placeholder={title}
         />
         <button type="button" className={dropButtonClassName} onClick={openClickHandler}>
-          {name}
+          {title}
         </button>
       </div>
       {isOpen && (
         <div className={s.content}>
-          <button type="button" onClick={() => console.log('hey')} className={addButtonClassName}>
+          <button type="button" onClick={newEntityClickHandler} className={addButtonClassName}>
             <span>Create new person</span>
           </button>
           {filteredOptionsElems}

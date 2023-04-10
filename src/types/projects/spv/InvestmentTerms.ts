@@ -23,6 +23,7 @@ interface IInvestmentTermsTabTwo {
 interface IInvestmentTermsTabThree {
   isUsdcFromInvestors: IRadioValueDefault;
   isMultiAssetSpv: IRadioValueDefault;
+  isMultiAssetSpvTextValue: string;
   portfolioInformation: {
     fullLegalName: string;
     state: string;

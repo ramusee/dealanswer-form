@@ -15,7 +15,7 @@ const FileBlock: FC<FileBlockProps> = ({ title, value, type, size = InputFileSiz
     console.log(file);
   };
   return (
-    <div>
+    <>
       {!currentFile ? (
         <InputFile Icon={Icon} size={size} type={type} title={title} onUpload={onUpload} />
       ) : (
@@ -26,7 +26,7 @@ const FileBlock: FC<FileBlockProps> = ({ title, value, type, size = InputFileSiz
           </Button>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

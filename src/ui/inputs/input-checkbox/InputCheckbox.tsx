@@ -18,6 +18,7 @@ const InputCheckbox: FC<InputCheckboxProps> = ({ title, name, isDisabled = false
         <input
           {...register(name, {
             disabled: isDisabled,
+            required: true,
           })}
           value={title}
           type="checkbox"

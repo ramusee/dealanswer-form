@@ -17,7 +17,12 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
   const currentRadioValue = watch(`${name}.radioValue`);
 
   const isChecked = currentRadioValue === value;
-  const containerClassName = cn(s.container, isChecked && s.active, isDisabled && s.disabled);
+  const containerClassName = cn(
+    s.container,
+    isChecked && s.active,
+    isDisabled && s.disabled,
+    content === InputRadioContent.InputText && s.marginRight,
+  );
 
   const renderContent = () => {
     switch (content) {

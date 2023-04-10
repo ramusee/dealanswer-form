@@ -1,0 +1,29 @@
+@import '/src/assets/styles/colors';
+
+.selectedBlock {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid $greyBorder;
+  border-radius: 12px;
+  padding: 20px;
+  align-items: center;
+  max-height: 80px;
+  width: 100%;
+  height: 100%;
+  background-color: $whiteBase;
+}
+
+.dropdownBlockContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $whiteBase;
+  border: 1px solid $greyBorder;
+  border-radius: 12px;
+  padding: 20px;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}

@@ -26,8 +26,8 @@ const Header = () => {
             Log In
           </Button>
         </div>
-        <ProgressBar contentList={spvSteps} />
       </div>
+      <ProgressBar contentList={spvSteps} />
     </header>
   );
 };

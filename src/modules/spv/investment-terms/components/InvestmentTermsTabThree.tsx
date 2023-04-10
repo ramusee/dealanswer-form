@@ -8,36 +8,35 @@ import { InvestmentTermsTabProps } from '../types';
 import { FieldsetInvestTermsName, investTermsFieldset, sectionTitleInvestmentTerms } from '../consts';
 import { SectionTitle } from '../../../../components/section-title';
 import { selectInvestmentTermsTabThree, setInvestmentTermsTabThree } from '../../../../store/reducers/spv';
+import { InputText } from '../../../../ui/inputs/input-text';
+import { defaultDebounceValue } from '../../../../consts/common';
+import { InputFileType } from '../../../../types/ui/inputFile';
+import { ICONS } from '../../../../consts/icons';
 
 import { NavigationButtons } from '../../../../components/navigation-buttons';
 import { useDebounce } from '../../../../hooks/useDebounce';
-import { defaultDebounceValue } from '../../../../consts/common';
-import s from '../styles.module.scss';
 import { Fieldset } from '../../../../components/fieldset/Fieldset';
 import { RadioGroup } from '../../../../components/element-groups/radio-group';
 import { InputTextGroup } from '../../../../components/element-groups/input-text-group';
 import { FileBlock } from '../../../../ui/file-block';
-import { InputFileType } from '../../../../types/ui/inputFile';
-import { ICONS } from '../../../../consts/icons';
+import { nextProgressStep } from '../../../../store/reducers/common';
+
+import s from '../styles.module.scss';
 
 const InvestmentTermsTabThree: FC<InvestmentTermsTabProps> = ({ changeCurrentTab }) => {
   const investmentTermsTabThree = useSelector(selectInvestmentTermsTabThree);
   const methods = useForm<IInvestmentTermsTabThree>({
     defaultValues: investmentTermsTabThree,
   });
-  const { watch } = methods;
+  const { watch, setValue } = methods;
   const allFields = watch();
   const cloneAllFields = structuredClone(allFields);
 
   const debouncedFullLegalName = useDebounce(cloneAllFields.portfolioInformation.fullLegalName, defaultDebounceValue);
   const debouncedState = useDebounce(cloneAllFields.portfolioInformation.state, defaultDebounceValue);
   const debouncedBriefDesc = useDebounce(cloneAllFields.portfolioInformation.briefDescription, defaultDebounceValue);
-
+  const debouncedIsMultiAssetSpvTextValue = useDebounce(cloneAllFields.isMultiAssetSpvTextValue, defaultDebounceValue);
   const dispatch = useDispatch();
-
-  const onSubmit = (data: IInvestmentTermsTabThree) => {
-    console.log(data);
-  };
 
   useEffect(() => {
     dispatch(setInvestmentTermsTabThree(cloneAllFields));
@@ -48,8 +47,21 @@ const InvestmentTermsTabThree: FC<InvestmentTermsTabProps> = ({ changeCurrentTab
     debouncedFullLegalName,
     debouncedState,
     debouncedBriefDesc,
+    debouncedIsMultiAssetSpvTextValue,
   ]);
 
+  useEffect(() => {
+    if (!cloneAllFields.isMultiAssetSpvTextValue) {
+      return;
+    }
+
+    setValue('isMultiAssetSpvTextValue', '');
+  }, [cloneAllFields.isMultiAssetSpv.radioValue]);
+
+  const onSubmit = (data: IInvestmentTermsTabThree) => {
+    console.log(data);
+    dispatch(nextProgressStep());
+  };
   return (
     <FormProvider {...methods}>
       <div className={s.investmentTermsContainer}>
@@ -66,6 +78,12 @@ const InvestmentTermsTabThree: FC<InvestmentTermsTabProps> = ({ changeCurrentTab
               radioList={investTermsFieldset.isMultiAssetSpv.radioList || []}
               groupName={FieldsetInvestTermsName.isMultiAssetSpv}
             />
+            {cloneAllFields.isMultiAssetSpv.radioValue === 'Yes' && (
+              <InputText
+                value={investTermsFieldset.isMultiAssetSpv.inputText?.value || ''}
+                placeholder={investTermsFieldset.isMultiAssetSpv.inputText?.placeholder || ''}
+              />
+            )}
           </Fieldset>
           <Fieldset title={investTermsFieldset.portfolioInformation.title}>
             <InputTextGroup inputList={investTermsFieldset.portfolioInformation.inputTextList || []} />
@@ -84,7 +102,7 @@ const InvestmentTermsTabThree: FC<InvestmentTermsTabProps> = ({ changeCurrentTab
               groupName={FieldsetInvestTermsName.isDistributePortfolio}
             />
           </Fieldset>
-          <NavigationButtons backButtonHandler={() => changeCurrentTab(2)} />
+          <NavigationButtons backButtonHandler={() => changeCurrentTab(2)} nextButtonTitle="Investment Structure" />
         </form>
       </div>
     </FormProvider>

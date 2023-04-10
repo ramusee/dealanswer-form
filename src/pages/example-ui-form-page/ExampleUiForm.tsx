@@ -102,7 +102,7 @@ const ExampleUiForm = () => {
         <InputText placeholder="Full Legal Name" value="Full Legal Name" />
         <InputPassword />
         <InputPercent name="% in the Carried Interest" onClick={() => console.log('button')} />
-        <Dropdown name="Add Manager" optionsList={dropDownOptionsList} />
+        {/*<Dropdown title="Add Manager" optionList={dropDownOptionsList} />*/}
         <CheckboxGroup checkboxList={checkboxList} groupName="planet" />
         <Accordion price={5000} title="SPV" contentList={accordionList} />
         <Subscribe title="Do you need administration services?" contentList={subscribeAdministrationServices} />

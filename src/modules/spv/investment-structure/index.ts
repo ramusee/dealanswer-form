@@ -1,0 +1,1 @@
+export { InvestmentStructure } from './InvestmentStructure';

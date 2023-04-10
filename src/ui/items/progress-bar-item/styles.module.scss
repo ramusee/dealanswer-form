@@ -21,6 +21,9 @@
   gap: 12px;
   position: relative;
   cursor: pointer;
+  background-color: inherit;
+  border: none;
+  transition: .2s ease-out;
 
   &:before {
     content: '';
@@ -29,9 +32,10 @@
     position: absolute;
     height: 2px;
     width: 100%;
-    bottom: -15px;
+    bottom: -16px;
     background-color: $orangeBase;
     transition: .2s ease-out;
+    pointer-events: none;
   }
 
   &:hover:before {
@@ -54,6 +58,8 @@
   border: 1px solid $greyBase;
   border-radius: 30px;
   font-size: 14px;
+  transition: .2s ease-out;
+
 }
 
 .activeIcon {

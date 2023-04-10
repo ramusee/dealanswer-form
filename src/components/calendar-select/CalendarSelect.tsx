@@ -4,9 +4,11 @@ import DatePicker from 'react-datepicker';
 import { CustomHeaderCalendar } from './components/CustomHeaderCalendar';
 import { weekDays } from './consts';
 
+import { ReactComponent as CalendarIcon } from '../../assets/icons/calendar.svg';
+import { CalendarSelectProps } from './types';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import './globalCalendar.scss';
-import { CalendarSelectProps } from './types';
 import cn from 'classnames';
 
 import s from './styles.module.scss';
@@ -19,7 +21,8 @@ const CustomButton = forwardRef(function Button(
   const buttonClassName = cn(s.datepickerButton, isSelected && s.activeButton);
   return (
     <button type="button" className={buttonClassName} onClick={onClick} ref={ref}>
-      {value}
+      <span>{value}</span>
+      <CalendarIcon />
     </button>
   );
 });

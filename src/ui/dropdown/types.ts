@@ -1,6 +1,8 @@
 interface DropdownProps {
-  name: string;
-  optionsList: string[];
+  title: string;
+  optionList: string[];
+  optionClickHandler: (option: string) => void;
+  newEntityClickHandler: () => void;
   isDisabled?: boolean;
 }
 

@@ -13,6 +13,13 @@
   border-radius: 40px;
   overflow: hidden;
   border: solid 1px $greenBase;
+  padding: 10px 24px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  & svg {
+    min-width: 20px;
+    min-height: 20px;
+  }
 
   &:active {
     opacity: .9;
@@ -24,7 +31,6 @@
 }
 
 // colors
-
 .green {
   background-color: $greenBase;
 
@@ -58,7 +64,7 @@
   &:not([disabled]):hover {
     background-color: $greenBase;
     color: $whiteBase;
-    border: none;
+    border-color: $greenBase;
 
     & svg {
       & path {
@@ -70,11 +76,9 @@
 }
 
 //sizes
-
 .xl {
   height: 64px;
   font-size: 16px;
-  //
 }
 
 .l {
@@ -84,6 +88,7 @@
 }
 
 .m {
+  min-width: 100px;
   max-width: 133px;
   height: 40px;
   font-size: 14px;

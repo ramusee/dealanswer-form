@@ -16,8 +16,10 @@ import {
   setPreviousSpvName,
 } from './actions';
 import { IInvestmentTerms } from '../../../types/projects/spv/InvestmentTerms';
+import { investmentTermsState, mySpvDetailsState, welcomeBlockState } from './consts';
 
 interface SpvState {
+  members: string[] | null;
   welcomeBlock: ISpvWelcomeBlock;
   mySpvDetails: IMySpvDetails;
   investmentTerms: IInvestmentTerms;
@@ -25,90 +27,10 @@ interface SpvState {
 }
 
 const initialSpvState: SpvState = {
-  welcomeBlock: {
-    isFirstTimeSpv: '',
-    previousSpvName: '',
-    isChangeSpvInvestmentStructure: '',
-    isChangeSpvInvestmentTerms: '',
-    changeMemberRoleInformation: null,
-  },
-  mySpvDetails: {
-    currentTab: 1,
-    tabOne: {
-      spvName: '',
-      targetInvestmentAmount: '',
-      minimumCommitment: {
-        radioValue: '',
-        contentTextValue: '',
-      },
-    },
-    tabTwo: {
-      initialClosingDate: {
-        radioValue: '',
-        contentDateValue: null,
-      },
-      initialClosingDateTextValue: '',
-      finalClosingDate: {
-        radioValue: '',
-        contentTextValue: '',
-        contentDateValue: null,
-      },
-      termSpv: {
-        radioValue: '',
-        contentTextValue: '',
-      },
-      spvExtension: {
-        radioValue: '',
-        contentTextValue: '',
-      },
-    },
-  },
-  investmentTerms: {
-    currentTab: 1,
-    tabOne: {
-      carriedInterestFor: null,
-      carriedInterest: {
-        radioValue: '',
-        contentTextValue: '',
-      },
-      preferredReturn: {
-        radioValue: '',
-        contentTextValue: '',
-      },
-    },
-    tabTwo: {
-      managementFee: {
-        radioValue: '',
-        contentTextValue: '',
-      },
-      typeManagementFee: {
-        radioValue: '',
-      },
-      subscriptionFee: {
-        radioValue: '',
-        contentTextValue: '',
-      },
-      isSubscriptionFeeCapital: {
-        radioValue: '',
-      },
-    },
-    tabThree: {
-      isUsdcFromInvestors: {
-        radioValue: '',
-      },
-      isMultiAssetSpv: {
-        radioValue: '',
-      },
-      portfolioInformation: {
-        fullLegalName: '',
-        state: '',
-        briefDescription: '',
-      },
-      isDistributePortfolio: {
-        radioValue: '',
-      },
-    },
-  },
+  members: null,
+  welcomeBlock: welcomeBlockState,
+  mySpvDetails: mySpvDetailsState,
+  investmentTerms: investmentTermsState,
   // investmentStructure: {},
   // addOns: {},
   // orderSummary: {},
@@ -156,5 +78,6 @@ export const spv = createReducer(initialSpvState, {
   [setInvestmentTermsTabThree.type]: (state, action) => {
     state.investmentTerms.tabThree = action.payload;
   },
-  //
+
+  //  investment structure
 });

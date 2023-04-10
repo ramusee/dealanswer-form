@@ -15,6 +15,7 @@ interface FieldsetValue {
     title: string;
     value: string;
   };
+  members?: string[] | null;
 }
 
 export type { FieldsetValue };

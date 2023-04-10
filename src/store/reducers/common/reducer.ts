@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit/src';
-import { changeSidebarStatus, nextProgressStep, previousProgressStep } from './actions';
+import { changeSidebarStatus, nextProgressStep, previousProgressStep, setProgressStep } from './actions';
 
 interface CommonState {
   currentProgressStep: number;
@@ -20,5 +20,8 @@ export const common = createReducer(initialCommonState, {
   },
   [previousProgressStep.type]: state => {
     state.currentProgressStep = state.currentProgressStep - 1;
+  },
+  [setProgressStep.type]: (state, action) => {
+    state.currentProgressStep = action.payload;
   },
 });
