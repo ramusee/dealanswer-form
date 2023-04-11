@@ -1,0 +1,1 @@
+export { LegalEntityMemberForm } from './LegalEntityMemberForm';

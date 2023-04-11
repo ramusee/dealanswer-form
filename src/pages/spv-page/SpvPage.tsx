@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { SpvWelcomeBlock } from '../../modules/spv/welcome-spv-block';
+import { SpvWelcomeBlock } from '../../modules/spv/welcome-block-spv';
 import { MySpvDetails } from '../../modules/spv/my-spv-details';
 import { InvestmentTerms } from '../../modules/spv/investment-terms';
 import { selectCurrentProgressStep } from '../../store/reducers/common';

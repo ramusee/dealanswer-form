@@ -63,6 +63,7 @@ const spvDetailsFieldset: Record<FieldsetMySpvDetailsName, FieldsetValue> = {
     radioList: [
       { value: 'date', content: InputRadioContent.Calendar },
       { value: '1 year', content: InputRadioContent.Default },
+      { value: '6 months', content: InputRadioContent.Default },
       { value: 'Other', content: InputRadioContent.InputText },
     ],
   },

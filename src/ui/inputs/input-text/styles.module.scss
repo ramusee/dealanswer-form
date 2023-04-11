@@ -12,6 +12,7 @@
   transition: box-shadow .2s ease-out;
   background-color: $whiteBase;
   min-width: 60px;
+
   &:hover {
     box-shadow: 0 5px 10px $greyBorder;
   }

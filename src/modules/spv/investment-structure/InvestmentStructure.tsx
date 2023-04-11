@@ -9,6 +9,7 @@ import { NavigationButtons } from '../../../components/navigation-buttons';
 import { useDispatch } from 'react-redux';
 import { previousProgressStep } from '../../../store/reducers/common';
 import { DropdownBlock } from '../../../ui/dropdown-block';
+import { InitialMembers } from './components/InitialMembers';
 
 const InvestmentStructure = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const InvestmentStructure = () => {
               optionList={investStructureFieldset.initialMembers.members || []}
             />
           </Fieldset>
+          <InitialMembers />
           <NavigationButtons backButtonHandler={() => dispatch(previousProgressStep())} nextButtonTitle="Add-Ons" />
         </form>
       </div>

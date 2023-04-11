@@ -28,7 +28,6 @@ const CustomButton = forwardRef(function Button(
 });
 
 const CalendarSelect: FC<CalendarSelectProps> = ({ name, isChecked, isDisabled = false }) => {
-  // const [date, setDate] = useState<Date | null>(new Date());
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const { control } = useFormContext();
 

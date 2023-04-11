@@ -17,13 +17,16 @@ import {
 } from './actions';
 import { IInvestmentTerms } from '../../../types/projects/spv/InvestmentTerms';
 import { investmentTermsState, mySpvDetailsState, welcomeBlockState } from './consts';
+import { IMemberIndividual } from '../../../types/projects/projects';
 
 interface SpvState {
-  members: string[] | null;
+  members: IMemberIndividual[] | null;
   welcomeBlock: ISpvWelcomeBlock;
   mySpvDetails: IMySpvDetails;
   investmentTerms: IInvestmentTerms;
-  // investmentStructure:
+  investmentStructure: {
+    initialMembers: IMemberIndividual[] | null;
+  };
 }
 
 const initialSpvState: SpvState = {
@@ -31,7 +34,9 @@ const initialSpvState: SpvState = {
   welcomeBlock: welcomeBlockState,
   mySpvDetails: mySpvDetailsState,
   investmentTerms: investmentTermsState,
-  // investmentStructure: {},
+  investmentStructure: {
+    initialMembers: null,
+  },
   // addOns: {},
   // orderSummary: {},
 };

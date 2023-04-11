@@ -1,0 +1,1 @@
+export { IndividualMemberForm } from './IndividualMemberForm';

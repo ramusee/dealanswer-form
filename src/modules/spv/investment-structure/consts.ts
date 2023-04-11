@@ -1,4 +1,5 @@
 import { FieldsetValue } from '../../../types/projects/projects';
+import { InputRadioContent } from '../../../types/ui/radioInputGroup';
 
 type ValueOf<T> = T[keyof T];
 
@@ -7,6 +8,7 @@ const sectionTitleInvestmentStructure = 'Investment Structure';
 const FieldsetInvestStructureName = {
   desiredSpvName: 'desiredSpvName',
   initialMembers: 'initialMembers',
+  memberType: 'memberType',
   manager: 'manager',
   specialMembers: 'specialMembers',
 } as const;
@@ -26,7 +28,14 @@ const investStructureFieldset: Record<FieldsetInvestStructureName, FieldsetValue
     with other members. The initial member(s) may cease to be a member at any time
     and may be a manager of the SPV or appoint a third-party manager. They may also
     be foreign individuals or legal entities.`,
-    members: ['Harry Potter'],
+    members: null,
+  },
+  [FieldsetInvestStructureName.memberType]: {
+    title: 'Member Type',
+    radioList: [
+      { value: 'Individual', content: InputRadioContent.Default },
+      { value: 'Legal Entity', content: InputRadioContent.Default },
+    ],
   },
   [FieldsetInvestStructureName.manager]: {
     title: 'Manager',

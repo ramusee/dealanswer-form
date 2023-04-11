@@ -1,6 +1,6 @@
 interface FilesUploadingGroupProps {
   title: string;
-  withCitizenship: boolean;
+  withCitizenship?: boolean;
 }
 
 interface InputDescBlockProps {
