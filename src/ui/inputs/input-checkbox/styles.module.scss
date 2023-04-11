@@ -42,7 +42,7 @@
     outline: none;
 
     &:checked + .checkIcon {
-      background-image: url('src/assets/icons/filledCheckbox.svg');
+      background-image: url('../../../assets/icons/filledCheckbox.svg');
       background-position: center;
       background-repeat: no-repeat;
     }

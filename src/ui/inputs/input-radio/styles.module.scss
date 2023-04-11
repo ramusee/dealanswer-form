@@ -59,13 +59,13 @@
 
   &:checked + .radioIcon {
     left: 15px;
-    background-image: url('src/assets/icons/checkGreen.svg');
+    background-image: url('../../../assets/icons/checkGreen.svg');
   }
 }
 
 .radioIcon {
   position: absolute;
-  background-image: url('src/assets/icons/check.svg');
+  background-image: url('../../../assets/icons/check.svg');
   background-position: center;
   background-repeat: no-repeat;
   width: 20px;
