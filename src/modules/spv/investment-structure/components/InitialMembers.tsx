@@ -1,5 +1,5 @@
-import React from 'react';
-import { IndividualMemberForm } from '../../../individual-member-form';
+import React, { useState } from 'react';
+import { IndividualMemberForm } from '../../../forms/individual-member-form';
 import { RadioGroup } from '../../../../components/element-groups/radio-group';
 import { investStructureFieldset } from '../consts';
 

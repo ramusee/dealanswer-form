@@ -1,15 +1,17 @@
 import React from 'react';
-import { SectionTitle } from '../../../components/section-title';
+import { useDispatch } from 'react-redux';
 import { FormProvider, useForm } from 'react-hook-form';
+
+import { SectionTitle } from '../../../components/section-title';
 import { investStructureFieldset, sectionTitleInvestmentStructure } from './consts';
 import { Fieldset } from '../../../components/fieldset/Fieldset';
 import { InputText } from '../../../ui/inputs/input-text';
-import s from './styles.module.scss';
 import { NavigationButtons } from '../../../components/navigation-buttons';
-import { useDispatch } from 'react-redux';
 import { previousProgressStep } from '../../../store/reducers/common';
 import { DropdownBlock } from '../../../ui/dropdown-block';
 import { InitialMembers } from './components/InitialMembers';
+
+import s from './styles.module.scss';
 
 const InvestmentStructure = () => {
   const dispatch = useDispatch();
@@ -34,7 +36,7 @@ const InvestmentStructure = () => {
             subTitle={investStructureFieldset.initialMembers.subTitle}
           >
             <DropdownBlock
-              title={investStructureFieldset.initialMembers.title}
+              title={investStructureFieldset.initialMembers.select?.placeholder || ''}
               optionList={investStructureFieldset.initialMembers.members || []}
             />
           </Fieldset>

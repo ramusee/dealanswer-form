@@ -11,6 +11,7 @@ const InputText: FC<InputTextProps> = ({
   value,
   isDisabled = false,
   isRequired = true,
+  pattern,
 }) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
@@ -28,6 +29,7 @@ const InputText: FC<InputTextProps> = ({
         {...register(value, {
           disabled: isDisabled,
           required: isRequired,
+          pattern: pattern,
         })}
         placeholder={placeholder}
         onFocus={activeHandler}

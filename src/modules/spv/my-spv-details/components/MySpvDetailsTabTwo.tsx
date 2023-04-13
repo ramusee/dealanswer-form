@@ -24,7 +24,7 @@ const MySpvDetailsTabTwo: FC<MySpvDetailsTabProps> = ({ changeCurrentTab }) => {
   const methods = useForm<IMySPVDetailsTabTwo>({
     defaultValues: mySpvDetailsTabTwo,
   });
-  const { watch } = methods;
+  const { watch, handleSubmit } = methods;
   const allFields = watch();
   const cloneAllFields = structuredClone(allFields);
 
@@ -62,13 +62,13 @@ const MySpvDetailsTabTwo: FC<MySpvDetailsTabProps> = ({ changeCurrentTab }) => {
 
   const onSubmit = (data: IMySPVDetailsTabTwo) => {
     console.log(data);
-    dispatch(nextProgressStep());
+    changeCurrentTab(3);
   };
   return (
     <FormProvider {...methods}>
       <div className={s.spvDetailsContainer}>
         <SectionTitle title={sectionTitleMySpvDetails.title} subTitle={sectionTitleMySpvDetails.subTitle} />
-        <form className={s.spvDetailsForm} onSubmit={methods.handleSubmit(onSubmit)}>
+        <form className={s.spvDetailsForm} onSubmit={handleSubmit(onSubmit)}>
           <Fieldset
             title={spvDetailsFieldset.initialClosingDate.title}
             subTitle={spvDetailsFieldset.initialClosingDate.subTitle}

@@ -26,7 +26,7 @@ const MySpvDetailsTabOne: FC<MySpvDetailsTabProps> = ({ changeCurrentTab }) => {
   const methods = useForm<IMySpvDetailsTabOne>({
     defaultValues: mySpvDetailsTabOne,
   });
-  const { watch } = methods;
+  const { watch, handleSubmit } = methods;
   const allFields = watch();
   const cloneAllFields = structuredClone(allFields);
 
@@ -37,6 +37,8 @@ const MySpvDetailsTabOne: FC<MySpvDetailsTabProps> = ({ changeCurrentTab }) => {
     defaultDebounceValue,
   );
 
+  const sectionTitle = spvNameValue ? spvNameValue : sectionTitleMySpvDetails.title;
+
   useEffect(() => {
     dispatch(setMySpvDetailsTabOne(cloneAllFields));
   }, [spvNameValue, targetInvestAmountValue, cloneAllFields.minimumCommitment.radioValue, minimumCommitmentTextValue]);
@@ -45,11 +47,12 @@ const MySpvDetailsTabOne: FC<MySpvDetailsTabProps> = ({ changeCurrentTab }) => {
     console.log(data);
     changeCurrentTab(2);
   };
+
   return (
     <FormProvider {...methods}>
       <div className={s.spvDetailsContainer}>
-        <SectionTitle title={sectionTitleMySpvDetails.title} subTitle={sectionTitleMySpvDetails.subTitle} />
-        <form className={s.spvDetailsForm} onSubmit={methods.handleSubmit(onSubmit)}>
+        <SectionTitle title={sectionTitle} subTitle={sectionTitleMySpvDetails.subTitle} />
+        <form className={s.spvDetailsForm} onSubmit={handleSubmit(onSubmit)}>
           <Fieldset title={spvDetailsFieldset.spvName.title} subTitle={spvDetailsFieldset.spvName.subTitle}>
             <InputText
               value={spvDetailsFieldset.spvName.inputText?.value || ''}

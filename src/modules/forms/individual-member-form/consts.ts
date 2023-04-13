@@ -1,4 +1,4 @@
-import { FieldsetValue } from '../../types/projects/projects';
+import { FieldsetValue } from '../../../types/projects/projects';
 
 type ValueOf<T> = T[keyof T];
 

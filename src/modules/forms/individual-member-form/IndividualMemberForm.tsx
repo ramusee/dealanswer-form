@@ -1,8 +1,8 @@
 import React from 'react';
-import { InputFileDescBlock } from '../../components/element-groups/files-uploading-group/components/InputFileDescBlock';
+import { InputFileDescBlock } from '../../../components/element-groups/files-uploading-group/components/InputFileDescBlock';
 import { individualMemberForm } from './consts';
-import { InputText } from '../../ui/inputs/input-text';
-import { InputTextGroup } from '../../components/element-groups/input-text-group';
+import { InputText } from '../../../ui/inputs/input-text';
+import { InputTextGroup } from '../../../components/element-groups/input-text-group';
 
 import s from './styles.module.scss';
 

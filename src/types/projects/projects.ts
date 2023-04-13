@@ -7,6 +7,9 @@ interface FieldsetValue {
   radioList?: InputRadioItem[];
   checkboxList?: string[];
   inputTextList?: InputTextItem[];
+  select?: {
+    placeholder: string;
+  };
   inputText?: {
     value: string;
     placeholder: string;
@@ -19,6 +22,9 @@ interface FieldsetValue {
   members?: string[] | null;
 }
 
+interface InitialMember {
+  memberType: string;
+}
 interface IMemberIndividual {
   memberType: string;
   citizenship: string;

@@ -29,6 +29,9 @@ const investStructureFieldset: Record<FieldsetInvestStructureName, FieldsetValue
     and may be a manager of the SPV or appoint a third-party manager. They may also
     be foreign individuals or legal entities.`,
     members: null,
+    select: {
+      placeholder: 'Add Initial Member',
+    },
   },
   [FieldsetInvestStructureName.memberType]: {
     title: 'Member Type',

@@ -15,8 +15,9 @@ import {
   setMySpvDetailsTabTwo,
   setPreviousSpvName,
 } from './actions';
-import { IInvestmentTerms } from '../../../types/projects/spv/InvestmentTerms';
 import { investmentTermsState, mySpvDetailsState, welcomeBlockState } from './consts';
+
+import { IInvestmentTerms } from '../../../types/projects/spv/InvestmentTerms';
 import { IMemberIndividual } from '../../../types/projects/projects';
 
 interface SpvState {
@@ -83,6 +84,5 @@ export const spv = createReducer(initialSpvState, {
   [setInvestmentTermsTabThree.type]: (state, action) => {
     state.investmentTerms.tabThree = action.payload;
   },
-
   //  investment structure
 });

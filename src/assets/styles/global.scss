@@ -1,13 +1,14 @@
 @import "./fonts-styles/poppins.css";
 @import "./fonts-styles/roboto.css";
 @import "./fonts-styles/bbstudio.css";
+@import "./fonts-styles/sf-pro-display.css";
 @import "./colors";
 
 html, body, #root {
   min-height: 100vh;
   height: 100vh;
   padding: 0 calc(20px - (100vw - 100%)) 0 0;
-  font-family: 'Poppins', -apple-system, 'BB Studio Pro Headline', 'BlinkMacSystemFont', 'Roboto', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif';
+  font-family: 'Poppins', 'Roboto', -apple-system, 'Cantarell', 'BlinkMacSystemFont', 'SF Pro Display', 'BB Studio Pro Headline', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif';
 }
 
 html {

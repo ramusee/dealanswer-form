@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MySpvDetailsTabOne } from './components/MySpvDetailsTabOne';
 import { MySpvDetailsTabTwo } from './components/MySpvDetailsTabTwo';
 import { selectMySpvDetailsCurrentTab, setMySpvDetailCurrentTab } from '../../../store/reducers/spv';
+import { AuthForm } from '../../forms/auth-form';
 
 const MySpvDetails: FC = () => {
   const currentLocalTab = useSelector(selectMySpvDetailsCurrentTab);
@@ -16,6 +17,7 @@ const MySpvDetails: FC = () => {
     <>
       {currentLocalTab === 1 && <MySpvDetailsTabOne changeCurrentTab={changeCurrentTab} />}
       {currentLocalTab === 2 && <MySpvDetailsTabTwo changeCurrentTab={changeCurrentTab} />}
+      {currentLocalTab === 3 && <AuthForm changeCurrentTab={changeCurrentTab} />}
     </>
   );
 };

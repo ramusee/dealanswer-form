@@ -13,3 +13,9 @@ export const selectInvestTermsCurrentTab = createSelector(selectSpvState, state 
 export const selectInvestmentTermsTabOne = createSelector(selectSpvState, state => state.investmentTerms.tabOne);
 export const selectInvestmentTermsTabTwo = createSelector(selectSpvState, state => state.investmentTerms.tabTwo);
 export const selectInvestmentTermsTabThree = createSelector(selectSpvState, state => state.investmentTerms.tabThree);
+
+//investment structure
+export const selectInvestmentStructure = createSelector(
+  selectSpvState,
+  state => state.investmentStructure.initialMembers,
+);
