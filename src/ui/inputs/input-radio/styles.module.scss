@@ -30,18 +30,6 @@
   width: fit-content;
   transition: .2s ease-out;
   padding: 0 10px 0 45px;
-
-  & input {
-    display: inline-block;
-    height: 17px;
-    font-family: 'Poppins', sans-serif;
-    border: none;
-    outline: none;
-    font-size: 14px;
-    transition: 0.2s ease-out;
-    width: 180px;
-    min-width: 15px;
-  }
 }
 
 .inputRadio {
@@ -102,4 +90,5 @@
 
 .marginRight {
   margin-right: 150px;
+  flex-shrink: 9;
 }

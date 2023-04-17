@@ -15,6 +15,7 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
   const { register, watch } = useFormContext();
 
   const currentRadioValue = watch(`${name}.radioValue`);
+  const inputTextValue = watch(`${name}.contentTextValue`);
 
   const isChecked = currentRadioValue === value;
   const containerClassName = cn(
@@ -23,6 +24,19 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
     isDisabled && s.disabled,
     content === InputRadioContent.InputText && s.marginRight,
   );
+
+  const inputTextStyle = {
+    display: 'inline-block',
+    height: '17px',
+    fontFamily: "'Poppins', sans-serif",
+    border: 'none',
+    outline: 'none',
+    fontSize: '14px',
+    transition: 'width .05s ease-out',
+    width: `${inputTextValue ? Math.min(inputTextValue.length + 1, 20) : 0}ch`,
+    minWidth: '20px',
+    maxWidth: '200px',
+  };
 
   const renderContent = () => {
     switch (content) {
@@ -42,9 +56,9 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
                   {...register(`${name}.contentTextValue`, {
                     required: true,
                   })}
+                  style={inputTextStyle}
                   type="text"
                   autoFocus={isChecked}
-                  placeholder="Other"
                 />
               </div>
             )}

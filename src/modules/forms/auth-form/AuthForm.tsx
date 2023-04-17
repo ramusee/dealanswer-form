@@ -15,6 +15,7 @@ import { ICONS } from '../../../consts/icons';
 import { InputPassword } from '../../../ui/inputs/input-password';
 import { ReactComponent as GoogleLogoIcon } from '../../../assets/icons/googleLogo.svg';
 import { ReactComponent as AppleLogoIcon } from '../../../assets/icons/appleLogo.svg';
+
 import s from './styles.module.scss';
 
 const AuthForm: FC<AuthFormProps> = ({ changeCurrentTab }) => {
@@ -25,6 +26,7 @@ const AuthForm: FC<AuthFormProps> = ({ changeCurrentTab }) => {
   const onSubmit = (data: any) => {
     console.log(data);
     dispatch(nextProgressStep());
+    changeCurrentTab(1);
   };
 
   const buttonGoogleClassName = cn(s.authButton, s.buttonGoogle);

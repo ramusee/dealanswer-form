@@ -47,6 +47,7 @@ const investTermsFieldset: Record<FieldsetInvestTermsName, FieldsetValue> = {
       { value: '3%', content: InputRadioContent.Default },
       { value: '5%', content: InputRadioContent.Default },
       { value: 'Other', content: InputRadioContent.InputText },
+      { value: differentPercent, content: InputRadioContent.Default },
       { value: 'None', content: InputRadioContent.Default },
     ],
   },
