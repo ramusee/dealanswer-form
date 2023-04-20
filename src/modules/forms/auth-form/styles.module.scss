@@ -1,5 +1,13 @@
 @import "src/assets/styles/colors";
 
+
+.authFormContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+
 .authForm {
   display: flex;
   flex-direction: column;
@@ -11,6 +19,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 16px;
 }
 
 .forgotButton {
@@ -80,6 +89,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: .2s ease-out;
+  padding: 5px 10px;
 
   &:hover {
     box-shadow: 0 5px 10px $greyBorder;;
@@ -98,4 +108,26 @@
   color: $blackBase;
   border: 1px solid $blackBase;
   font-family: "SF Pro Display", sans-serif;
+}
+
+.authFormTermsText {
+  font-size: 12px;
+  color: $greyBase;
+  white-space: pre-wrap;
+  text-align: center;
+
+  a {
+    color: $greenBase;
+    font-weight: 600;
+  }
+}
+
+.authFormSignUpText {
+  text-align: center;
+  font-size: 14px;
+
+  & > a {
+    color: $greenBase;
+    font-weight: 600;
+  }
 }

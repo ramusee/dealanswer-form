@@ -1,11 +1,14 @@
 import { InputRadioItem } from '../ui/radioInputGroup';
 import { InputTextItem } from '../ui/inputTextGroup';
 
+type ValueOf<T> = T[keyof T];
+
 interface FieldsetValue {
   title: string;
   subTitle?: string;
   radioList?: InputRadioItem[];
   checkboxList?: string[];
+  subscribeItemList?: string[];
   inputTextList?: InputTextItem[];
   select?: {
     placeholder: string;
@@ -25,6 +28,7 @@ interface FieldsetValue {
 interface InitialMember {
   memberType: string;
 }
+
 interface IMemberIndividual {
   memberType: string;
   citizenship: string;
@@ -57,4 +61,4 @@ interface IMemberLegalEntity {
   signatoryEmail: string;
   carriedInterest: string;
 }
-export type { FieldsetValue, IMemberIndividual, IMemberLegalEntity };
+export type { FieldsetValue, IMemberIndividual, IMemberLegalEntity, ValueOf };

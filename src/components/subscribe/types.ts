@@ -1,5 +1,6 @@
 interface SubscribeProps {
   title: string;
+  value: string;
   contentList: string[];
 }
 

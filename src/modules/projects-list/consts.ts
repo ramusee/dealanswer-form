@@ -1,6 +1,5 @@
 import { ProjectItem } from './types';
-
-type ValueOf<T> = T[keyof T];
+import { ValueOf } from '../../types/projects/projects';
 
 const ProjectName = {
   spv: 'SPV',

@@ -19,3 +19,6 @@ export const selectInvestmentStructure = createSelector(
   selectSpvState,
   state => state.investmentStructure.initialMembers,
 );
+
+//add ons
+export const selectAddOnsCurrentTab = createSelector(selectSpvState, state => state.addOns.currentTab);

@@ -8,13 +8,13 @@ import { ICONS } from '../../consts/icons';
 
 import s from './styles.module.scss';
 
-const Subscribe: FC<SubscribeProps> = ({ title, contentList }) => {
+const Subscribe: FC<SubscribeProps> = ({ value, title, contentList }) => {
   const [isSubscribed, setIsSubscribed] = useState<boolean>(false);
-  const subscribeClassName = cn(s.subscribe, isSubscribed && s.active);
   const subscribeButtonHandler = () => {
-    setIsSubscribed(prevState => !prevState);
+    // setValue(value);
   };
 
+  const subscribeClassName = cn(s.subscribe, isSubscribed && s.active);
   return (
     <div className={subscribeClassName}>
       <span>{title}</span>

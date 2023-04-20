@@ -5,6 +5,7 @@ import {
   IInvestmentTermsTabThree,
   IInvestmentTermsTabTwo,
 } from '../../../types/projects/spv/InvestmentTerms';
+import { IAddOnsTabOne } from '../../../types/projects/spv/addOns';
 
 const setMySpvDetailCurrentTab = createAction<number>('set my spv details current local tab');
 
@@ -25,6 +26,10 @@ const setInvestmentTermsTabOne = createAction<IInvestmentTermsTabOne>(' set inve
 const setInvestmentTermsTabTwo = createAction<IInvestmentTermsTabTwo>('set investment terms tab two');
 const setInvestmentTermsTabThree = createAction<IInvestmentTermsTabThree>('set investment terms tab three');
 
+// add-ons
+const setAddOnsCurrentTab = createAction<number>('set add-ons current tab');
+const setAddOnsTabOne = createAction<IAddOnsTabOne>('set add-ons tab one');
+
 export {
   setIsFirstTimeSpv,
   setPreviousSpvName,
@@ -38,4 +43,6 @@ export {
   setInvestmentTermsTabOne,
   setInvestmentTermsTabTwo,
   setInvestmentTermsTabThree,
+  setAddOnsCurrentTab,
+  setAddOnsTabOne,
 };

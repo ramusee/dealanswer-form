@@ -1,6 +1,4 @@
-import { FieldsetValue } from '../../../types/projects/projects';
-
-type ValueOf<T> = T[keyof T];
+import { FieldsetValue, ValueOf } from '../../../types/projects/projects';
 
 const FieldsetIndividualMemberName = {
   passport: 'passport',

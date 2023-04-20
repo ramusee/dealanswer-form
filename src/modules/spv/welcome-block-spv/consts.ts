@@ -1,7 +1,5 @@
 import { InputRadioContent } from '../../../types/ui/radioInputGroup';
-import { FieldsetValue } from '../../../types/projects/projects';
-
-type ValueOf<T> = T[keyof T];
+import { FieldsetValue, ValueOf } from '../../../types/projects/projects';
 
 const RadioValue = {
   No: 'No',

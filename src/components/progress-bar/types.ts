@@ -1,4 +1,4 @@
-type ValueOf<T> = T[keyof T];
+import { ValueOf } from '../../types/projects/projects';
 
 const Statuses = {
   InProgress: 'InProgress',

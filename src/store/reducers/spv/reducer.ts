@@ -15,10 +15,11 @@ import {
   setMySpvDetailsTabTwo,
   setPreviousSpvName,
 } from './actions';
-import { investmentTermsState, mySpvDetailsState, welcomeBlockState } from './consts';
+import { addOnsState, investmentTermsState, mySpvDetailsState, welcomeBlockState } from './consts';
 
 import { IInvestmentTerms } from '../../../types/projects/spv/InvestmentTerms';
 import { IMemberIndividual } from '../../../types/projects/projects';
+import { IAddOns } from '../../../types/projects/spv/addOns';
 
 interface SpvState {
   members: IMemberIndividual[] | null;
@@ -28,6 +29,7 @@ interface SpvState {
   investmentStructure: {
     initialMembers: IMemberIndividual[] | null;
   };
+  addOns: IAddOns;
 }
 
 const initialSpvState: SpvState = {
@@ -38,7 +40,7 @@ const initialSpvState: SpvState = {
   investmentStructure: {
     initialMembers: null,
   },
-  // addOns: {},
+  addOns: addOnsState,
   // orderSummary: {},
 };
 

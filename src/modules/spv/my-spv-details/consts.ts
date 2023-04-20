@@ -1,7 +1,5 @@
-import { FieldsetValue } from '../../../types/projects/projects';
+import { FieldsetValue, ValueOf } from '../../../types/projects/projects';
 import { InputRadioContent } from '../../../types/ui/radioInputGroup';
-
-type ValueOf<T> = T[keyof T];
 
 const sectionTitleMySpvDetails = {
   title: 'My SPV Details',

@@ -99,4 +99,29 @@ const investmentTermsState = {
   tabThree: investmentTermsTabThreeState,
 };
 
-export { welcomeBlockState, mySpvDetailsState, investmentTermsState };
+// add-ons
+
+const addOnsTabOneState = {
+  legalDocsManageCompany: {
+    radioValue: '',
+  },
+  legalDocsSpecMember: {
+    radioValue: '',
+  },
+  bankCryptoAccountManageCompany: null,
+  bankCryptoAccountSpecMember: null,
+  bankCryptoAccountSpv: null,
+  brokerAccountSpv: null,
+  exemptReportAdvisorStatus: {
+    radioValue: '',
+  },
+  adminServicesSubscribe: false,
+  taxFillingServicesSubscribe: false,
+};
+
+const addOnsState = {
+  currentTab: 1,
+  tabOne: addOnsTabOneState,
+};
+
+export { welcomeBlockState, mySpvDetailsState, investmentTermsState, addOnsState };

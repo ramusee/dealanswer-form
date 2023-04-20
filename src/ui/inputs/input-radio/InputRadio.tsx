@@ -33,7 +33,7 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
     outline: 'none',
     fontSize: '14px',
     transition: 'width .05s ease-out',
-    width: `${inputTextValue ? Math.min(inputTextValue.length + 1, 20) : 0}ch`,
+    width: `${inputTextValue ? inputTextValue.length + 1 : 0}ch`,
     minWidth: '20px',
     maxWidth: '200px',
   };
