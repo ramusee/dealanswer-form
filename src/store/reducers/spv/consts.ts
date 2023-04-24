@@ -44,7 +44,6 @@ const mySpvDetailsState = {
 };
 
 // investmentTerms
-
 const investmentTermsTabOneState = {
   carriedInterestFor: null,
   carriedInterest: {
@@ -100,7 +99,6 @@ const investmentTermsState = {
 };
 
 // add-ons
-
 const addOnsTabOneState = {
   legalDocsManageCompany: {
     radioValue: '',
@@ -113,6 +111,9 @@ const addOnsTabOneState = {
   bankCryptoAccountSpv: null,
   brokerAccountSpv: null,
   exemptReportAdvisorStatus: {
+    radioValue: '',
+  },
+  eraSpv: {
     radioValue: '',
   },
   adminServicesSubscribe: false,

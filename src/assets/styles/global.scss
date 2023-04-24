@@ -8,14 +8,13 @@ html, body, #root {
   min-height: 100vh;
   height: 100vh;
   font-family: 'Poppins', 'Roboto', -apple-system, 'Cantarell', 'BlinkMacSystemFont', 'SF Pro Display', 'BB Studio Pro Headline', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif';
-  line-height: 1.3;
-  padding: 0 calc(20px - (100vw - 100%)) 0 0;
 }
 
 html {
   scrollbar-width: thin;
   scrollbar-color: rgba(133, 133, 133, 0.3) $greyBackground;
   scrollbar-gutter: stable;
+  line-height: 1.3;
 }
 
 body::-webkit-scrollbar {

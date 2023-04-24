@@ -1,14 +1,17 @@
 import { FieldsetValue, ValueOf } from '../../../types/projects/projects';
 import { InputRadioContent } from '../../../types/ui/radioInputGroup';
 
+const sectionTitleAddOns = 'Add-Ons';
+
 const FieldsetAddOnsName = {
   legalDocsManageCompany: 'legalDocsManageCompany',
   legalDocsSpecMember: 'legalDocsSpecMember',
-  bankCryptoAccountManageCompany: 'bankAccountManageCompany',
+  bankCryptoAccountManageCompany: 'bankCryptoAccountManageCompany',
   bankCryptoAccountSpecMember: 'bankCryptoAccountSpecMember',
   bankCryptoAccountSpv: 'bankCryptoAccountSpv',
   brokerAccountSpv: 'brokerAccountSpv',
   exemptReportAdvisorStatus: 'exemptReportAdvisorStatus',
+  eraSpv: 'eraSpv',
   adminServicesSubscribe: 'adminServicesSubscribe',
   taxFillingServicesSubscribe: 'taxFillingServicesSubscribe',
 } as const;
@@ -20,6 +23,11 @@ const dualRadioList = [
 ];
 
 const bankCheckboxList = ['Mercury', 'Flagstar Bank', 'Citizens Bank', 'Bank of America', 'TD Bank', 'Circle'];
+const exemptReportAdvisorStatusDesc = `An Exempt Reporting Advisor (ERA) is a type of investment advisor 
+that is exempt from registering with the U.S. Securities and Exchange Commission (SEC) under certain conditions. 
+To qualify for exempt reporting advisor status, the advisor must have assets under management of less than $150 million.
+ If an advisor qualifies for exempt reporting advisor status, 
+ they can avoid the costs and administrative burdens associated with SEC registration.`;
 
 const addOnsFieldset: Record<FieldsetAddOnsName, FieldsetValue> = {
   [FieldsetAddOnsName.legalDocsManageCompany]: {
@@ -56,6 +64,11 @@ const addOnsFieldset: Record<FieldsetAddOnsName, FieldsetValue> = {
     subTitle: 'Deal Answer can assist you in establishing an Exempt Reporting Advisor for a fee of US$1,500.',
     radioList: dualRadioList,
   },
+  [FieldsetAddOnsName.eraSpv]: {
+    title: 'Do you want to hire Deal Answer as an ERA for your SPV for $1,500?',
+    subTitle: 'Retain Deal Answer as the Exempt Reporting Advisor for your SPV for a cost of US$500/annually.',
+    radioList: dualRadioList,
+  },
   [FieldsetAddOnsName.adminServicesSubscribe]: {
     title: 'Do you need administration services?',
     subscribeItemList: [
@@ -86,4 +99,4 @@ const addOnsFieldset: Record<FieldsetAddOnsName, FieldsetValue> = {
   },
 };
 
-export { addOnsFieldset, FieldsetAddOnsName };
+export { addOnsFieldset, FieldsetAddOnsName, sectionTitleAddOns, exemptReportAdvisorStatusDesc };

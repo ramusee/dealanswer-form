@@ -1,16 +1,15 @@
 import React, { FC } from 'react';
 
 import { Header } from '../modules/header';
-import { BackgroundVideo } from '../components/background-video';
-
+import backgroundImage from '../assets/images/backgroundImage.jpg';
 import { Outlet } from 'react-router';
 import s from './styles.module.scss';
 
 const AppLayout: FC = () => {
   return (
     <div className={s.mainLayout}>
-      <BackgroundVideo />
       <Header />
+      <img className={s.bgImage} src={backgroundImage} alt="background image" />
       <main>
         <section className={s.wrapper}>
           <Outlet />

@@ -22,3 +22,4 @@ export const selectInvestmentStructure = createSelector(
 
 //add ons
 export const selectAddOnsCurrentTab = createSelector(selectSpvState, state => state.addOns.currentTab);
+export const selectAddOnsTabOne = createSelector(selectSpvState, state => state.addOns.tabOne);

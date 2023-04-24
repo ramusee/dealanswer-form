@@ -13,6 +13,7 @@ interface IAddOnsTabOne {
   bankCryptoAccountSpv: string[] | null;
   brokerAccountSpv: string[] | null;
   exemptReportAdvisorStatus: IRadioValueDefault;
+  eraSpv: IRadioValueDefault;
   adminServicesSubscribe: boolean;
   taxFillingServicesSubscribe: boolean;
 }

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import cn from 'classnames';
 
 import { SubscribeProps } from './types';
@@ -7,11 +7,14 @@ import { ButtonColor, ButtonSize } from '../../types/ui/button';
 import { ICONS } from '../../consts/icons';
 
 import s from './styles.module.scss';
+import { useFormContext } from 'react-hook-form';
 
 const Subscribe: FC<SubscribeProps> = ({ value, title, contentList }) => {
-  const [isSubscribed, setIsSubscribed] = useState<boolean>(false);
+  const { setValue, watch } = useFormContext();
+  const isSubscribed = watch(value);
+
   const subscribeButtonHandler = () => {
-    // setValue(value);
+    setValue(value, !isSubscribed);
   };
 
   const subscribeClassName = cn(s.subscribe, isSubscribed && s.active);

@@ -15,6 +15,7 @@ const ProgressBarItem: FC<ProgressBarItemProps> = ({ id, title, status }) => {
   const isDone = status === Statuses.Done;
   const isActiveItem = id === currentProgressStep && s.activeIcon;
   const dispatch = useDispatch();
+
   const iconClassName = cn(s.icon, isActiveItem && s.activeIcon);
   const contentClassName = cn(s.content, isActiveItem && s.contentActive);
 

@@ -2,6 +2,8 @@ import { createReducer } from '@reduxjs/toolkit/src';
 import { ISpvWelcomeBlock } from '../../../types/projects/spv/welcomeBlock';
 import { IMySpvDetails } from '../../../types/projects/spv/mySpvDetails';
 import {
+  setAddOnsCurrentTab,
+  setAddOnsTabOne,
   setChangeMemberRoleInformation,
   setInvestmentTermsCurrentTab,
   setInvestmentTermsTabOne,
@@ -46,9 +48,6 @@ const initialSpvState: SpvState = {
 
 export const spv = createReducer(initialSpvState, {
   // welcomeBlock
-  [setMySpvDetailCurrentTab.type]: (state, action) => {
-    state.mySpvDetails.currentTab = action.payload;
-  },
   [setIsFirstTimeSpv.type]: (state, action) => {
     state.welcomeBlock.isFirstTimeSpv = action.payload;
     state.welcomeBlock.previousSpvName = '';
@@ -67,6 +66,9 @@ export const spv = createReducer(initialSpvState, {
     state.welcomeBlock.changeMemberRoleInformation = action.payload;
   },
   // mySpvDetails
+  [setMySpvDetailCurrentTab.type]: (state, action) => {
+    state.mySpvDetails.currentTab = action.payload;
+  },
   [setMySpvDetailsTabOne.type]: (state, action) => {
     state.mySpvDetails.tabOne = action.payload;
   },
@@ -86,5 +88,11 @@ export const spv = createReducer(initialSpvState, {
   [setInvestmentTermsTabThree.type]: (state, action) => {
     state.investmentTerms.tabThree = action.payload;
   },
-  //  investment structure
+  //  add-ons
+  [setAddOnsCurrentTab.type]: (state, action) => {
+    state.addOns.currentTab = action.payload;
+  },
+  [setAddOnsTabOne.type]: (state, action) => {
+    state.addOns.tabOne = action.payload;
+  },
 });
