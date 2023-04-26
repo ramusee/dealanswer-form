@@ -40,7 +40,7 @@ const InvestmentTermsTabOne: FC<InvestmentTermsTabProps> = ({ changeCurrentTab }
   useEffect(() => {
     dispatch(setInvestmentTermsTabOne(cloneAllFields));
   }, [
-    cloneAllFields.carriedInterestFor?.length,
+    cloneAllFields.carriedInterestMembers?.length,
     cloneAllFields.carriedInterest.radioValue,
     cloneAllFields.preferredReturn.radioValue,
     debouncedCarriedInterestTextValue,
@@ -58,12 +58,12 @@ const InvestmentTermsTabOne: FC<InvestmentTermsTabProps> = ({ changeCurrentTab }
         <SectionTitle title={sectionTitleInvestmentTerms} />
         <form className={s.investmentTermsForm} onSubmit={methods.handleSubmit(onSubmit)}>
           <Fieldset
-            title={investTermsFieldset.carriedInterestFor.title}
-            subTitle={investTermsFieldset.carriedInterestFor.subTitle}
+            title={investTermsFieldset.carriedInterestMembers.title}
+            subTitle={investTermsFieldset.carriedInterestMembers.subTitle}
           >
             <CheckboxGroup
-              groupName={FieldsetInvestTermsName.carriedInterestFor}
-              checkboxList={investTermsFieldset.carriedInterestFor.checkboxList || []}
+              groupName={FieldsetInvestTermsName.carriedInterestMembers}
+              checkboxList={investTermsFieldset.carriedInterestMembers.checkboxList || []}
             />
           </Fieldset>
           <Fieldset

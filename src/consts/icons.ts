@@ -8,6 +8,7 @@ import { ReactComponent as trashIcon } from '../assets/icons/trash.svg';
 import { ReactComponent as loginIcon } from '../assets/icons/login.svg';
 import { ReactComponent as CheckGreenIcon } from '../assets/icons/checkGreen.svg';
 import { ReactComponent as DownloadIcon } from '../assets/icons/download.svg';
+import { ReactComponent as AddIcon } from '../assets/icons/add.svg';
 import { IconsKey } from '../types/ui/icons';
 
 const ICONS: Record<IconsKey, React.FC | null> = {
@@ -20,6 +21,7 @@ const ICONS: Record<IconsKey, React.FC | null> = {
   Login: loginIcon,
   CheckGreen: CheckGreenIcon,
   Download: DownloadIcon,
+  Add: AddIcon,
 };
 
 export { ICONS };

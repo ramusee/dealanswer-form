@@ -8,7 +8,7 @@ interface IInvestmentTerms {
 }
 
 interface IInvestmentTermsTabOne {
-  carriedInterestFor: string[] | null;
+  carriedInterestMembers: string[] | null;
   carriedInterest: IRadioValueText;
   preferredReturn: IRadioValueText;
 }

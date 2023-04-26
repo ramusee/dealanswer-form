@@ -9,7 +9,7 @@ const Dropdown: FC<DropdownProps> = ({
   title,
   optionList,
   optionClickHandler,
-  newEntityClickHandler,
+  newPersonClickHandler,
   isDisabled = false,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -38,7 +38,6 @@ const Dropdown: FC<DropdownProps> = ({
   const openClickHandler = () => {
     setIsOpen(prevState => !prevState);
   };
-
   const filteredOptionsElems = filteredOptions.map(option => {
     return (
       <span
@@ -69,7 +68,14 @@ const Dropdown: FC<DropdownProps> = ({
       </div>
       {isOpen && (
         <div className={s.content}>
-          <button type="button" onClick={newEntityClickHandler} className={addButtonClassName}>
+          <button
+            type="button"
+            onClick={() => {
+              newPersonClickHandler();
+              setIsOpen(false);
+            }}
+            className={addButtonClassName}
+          >
             <span>Create new person</span>
           </button>
           {filteredOptionsElems}

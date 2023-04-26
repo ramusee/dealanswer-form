@@ -26,6 +26,9 @@ const setInvestmentTermsTabOne = createAction<IInvestmentTermsTabOne>(' set inve
 const setInvestmentTermsTabTwo = createAction<IInvestmentTermsTabTwo>('set investment terms tab two');
 const setInvestmentTermsTabThree = createAction<IInvestmentTermsTabThree>('set investment terms tab three');
 
+// investmentStructure
+const setInitialMemberNames = createAction<string[]>('set initial member names');
+
 // add-ons
 const setAddOnsCurrentTab = createAction<number>('set add-ons current tab');
 const setAddOnsTabOne = createAction<IAddOnsTabOne>('set add-ons tab one');
@@ -45,4 +48,5 @@ export {
   setInvestmentTermsTabThree,
   setAddOnsCurrentTab,
   setAddOnsTabOne,
+  setInitialMemberNames,
 };

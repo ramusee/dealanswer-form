@@ -2,7 +2,7 @@ interface DropdownProps {
   title: string;
   optionList: string[];
   optionClickHandler: (option: string) => void;
-  newEntityClickHandler: () => void;
+  newPersonClickHandler: () => void;
   isDisabled?: boolean;
 }
 

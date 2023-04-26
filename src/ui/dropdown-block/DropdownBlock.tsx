@@ -8,10 +8,17 @@ import { Button } from '../button';
 
 import s from './styles.module.scss';
 
-const DropdownBlock: FC<DropdownBlockProps> = ({ title, optionList, percentSpv }) => {
+const DropdownBlock: FC<DropdownBlockProps> = ({
+  title,
+  optionList,
+  percent,
+  addPersonHandler,
+  createPersonClickHandler,
+}) => {
   const [currentMember, setCurrentMember] = useState('');
   const optionClickHandler = (option: string) => {
     setCurrentMember(option);
+    addPersonHandler(option);
   };
   return (
     <>
@@ -20,7 +27,7 @@ const DropdownBlock: FC<DropdownBlockProps> = ({ title, optionList, percentSpv }
           title={title}
           optionList={optionList}
           optionClickHandler={optionClickHandler}
-          newEntityClickHandler={() => console.log('newentity')}
+          newPersonClickHandler={createPersonClickHandler}
         />
       ) : (
         <div className={s.dropdownBlockContainer}>

@@ -1,9 +1,10 @@
 import React, { FC, useState } from 'react';
+
 import { FieldsetProps } from './types';
 import { ReactComponent as InfoIcon } from '../../assets/icons/infoIcon.svg';
+import { Modal } from '../../ui/modal';
 
 import s from './styles.module.scss';
-import { Modal } from '../../ui/modal';
 
 const Fieldset: FC<FieldsetProps> = ({ title, subTitle, children, infoText }) => {
   const [isActiveModal, setIsActiveModal] = useState<boolean>(false);
@@ -18,7 +19,7 @@ const Fieldset: FC<FieldsetProps> = ({ title, subTitle, children, infoText }) =>
         {title}
         {infoText && <InfoIcon onClick={infoIconHandler} />}
       </p>
-      {subTitle && <span>{subTitle}</span>}
+      {subTitle && <span className={s.subtitle}>{subTitle}</span>}
       {children}
       <Modal isActive={isActiveModal} setIsActive={setIsActiveModal}>
         <p>{infoText}</p>

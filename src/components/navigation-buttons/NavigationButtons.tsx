@@ -27,8 +27,8 @@ const NavigationButtons: FC<NavigationButtonsProps> = ({ nextButtonHandler, back
           size={ButtonSize.XL}
           color={ButtonColor.Green}
           Icon={ICONS.ArrowRight}
-          iconRight
           type="submit"
+          iconRight
         >
           {nextButtonTitle ? `Next, ${nextButtonTitle}` : 'Next'}
         </Button>

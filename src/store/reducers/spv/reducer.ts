@@ -5,6 +5,7 @@ import {
   setAddOnsCurrentTab,
   setAddOnsTabOne,
   setChangeMemberRoleInformation,
+  setInitialMemberNames,
   setInvestmentTermsCurrentTab,
   setInvestmentTermsTabOne,
   setInvestmentTermsTabThree,
@@ -20,16 +21,16 @@ import {
 import { addOnsState, investmentTermsState, mySpvDetailsState, welcomeBlockState } from './consts';
 
 import { IInvestmentTerms } from '../../../types/projects/spv/InvestmentTerms';
-import { IMemberIndividual } from '../../../types/projects/projects';
 import { IAddOns } from '../../../types/projects/spv/addOns';
+import { InitialMembers } from '../../../types/projects/spv/investmentStructure';
 
 interface SpvState {
-  members: IMemberIndividual[] | null;
+  members: InitialMembers[] | null;
   welcomeBlock: ISpvWelcomeBlock;
   mySpvDetails: IMySpvDetails;
   investmentTerms: IInvestmentTerms;
   investmentStructure: {
-    initialMembers: IMemberIndividual[] | null;
+    initialMemberNames: string[] | null;
   };
   addOns: IAddOns;
 }
@@ -40,7 +41,7 @@ const initialSpvState: SpvState = {
   mySpvDetails: mySpvDetailsState,
   investmentTerms: investmentTermsState,
   investmentStructure: {
-    initialMembers: null,
+    initialMemberNames: null,
   },
   addOns: addOnsState,
   // orderSummary: {},
@@ -87,6 +88,10 @@ export const spv = createReducer(initialSpvState, {
   },
   [setInvestmentTermsTabThree.type]: (state, action) => {
     state.investmentTerms.tabThree = action.payload;
+  },
+  //investmentStructure
+  [setInitialMemberNames.type]: (state, action) => {
+    state.investmentStructure.initialMemberNames = action.payload;
   },
   //  add-ons
   [setAddOnsCurrentTab.type]: (state, action) => {

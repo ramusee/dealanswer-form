@@ -2,7 +2,7 @@ import { InputTextItem } from '../../../types/ui/inputTextGroup';
 
 interface InputTextGroupProps {
   inputList: InputTextItem[];
-  isTwoColumns?: boolean;
+  twoColumns?: boolean;
 }
 
 export type { InputTextGroupProps };

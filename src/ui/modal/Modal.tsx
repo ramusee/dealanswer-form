@@ -1,9 +1,11 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, PropsWithChildren, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
-import s from './styles.module.scss';
 import { ModalProps } from './types';
 import { Button } from '../button';
 import { ButtonColor, ButtonSize } from '../../types/ui/button';
+
+import s from './styles.module.scss';
 
 const Modal: FC<ModalProps> = ({ isActive, setIsActive, children }) => {
   useEffect(() => {
@@ -14,31 +16,32 @@ const Modal: FC<ModalProps> = ({ isActive, setIsActive, children }) => {
     const documentWidth = document.documentElement.clientWidth;
     const scrollbarWidth = windowWidth - documentWidth;
 
-    document.body.style.overflow = 'hidden';
-
     if (scrollbarWidth > 0) {
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
+      document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
     }
-
+    document.documentElement.style.overflowY = 'hidden';
     return () => {
-      document.body.style.overflow = 'auto';
-      document.body.style.paddingRight = '';
+      document.documentElement.style.overflowY = '';
+      document.documentElement.style.paddingRight = '';
     };
   }, [isActive]);
 
-  if (!isActive) {
+  const portalElement = document.getElementById('root');
+
+  if (!isActive || !portalElement) {
     return null;
   }
 
-  return (
-    <div className={s.modal}>
-      <div className={s.modalContent} style={{ paddingRight: isActive && '8px' }}>
+  return createPortal(
+    <div className={s.modal} onClick={() => setIsActive(false)}>
+      <div className={s.modalContent} onClick={e => e.stopPropagation()}>
         {children}
         <Button size={ButtonSize.M} color={ButtonColor.Green} onClick={() => setIsActive(false)}>
           Close
         </Button>
       </div>
-    </div>
+    </div>,
+    portalElement,
   );
 };
 

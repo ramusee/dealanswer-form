@@ -8,7 +8,7 @@ import s from './styles.module.scss';
 
 const IndividualMemberForm = () => {
   return (
-    <div className={s.individualMemberFormContainer}>
+    <div className={s.individualMemberContainer}>
       <div className={s.fieldset}>
         <InputFileDescBlock
           inputTitle={individualMemberForm.passport.inputFile?.title || ''}
@@ -21,7 +21,7 @@ const IndividualMemberForm = () => {
       </div>
       <div className={s.fieldset}>
         <span>{individualMemberForm.memberInfo.title}</span>
-        <InputTextGroup inputList={individualMemberForm.memberInfo.inputTextList || []} isTwoColumns />
+        <InputTextGroup inputList={individualMemberForm.memberInfo.inputTextList || []} twoColumns />
       </div>
     </div>
   );

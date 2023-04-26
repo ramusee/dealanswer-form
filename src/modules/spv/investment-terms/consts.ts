@@ -4,7 +4,7 @@ import { InputRadioContent } from '../../../types/ui/radioInputGroup';
 const sectionTitleInvestmentTerms = 'Investment Terms';
 
 const FieldsetInvestTermsName = {
-  carriedInterestFor: 'carriedInterestFor',
+  carriedInterestMembers: 'carriedInterestMembers',
   carriedInterest: 'carriedInterest',
   preferredReturn: 'preferredReturn',
   managementFee: 'managementFee',
@@ -22,7 +22,7 @@ type FieldsetInvestTermsName = ValueOf<typeof FieldsetInvestTermsName>;
 const differentPercent = 'Different % for each investor';
 
 const investTermsFieldset: Record<FieldsetInvestTermsName, FieldsetValue> = {
-  [FieldsetInvestTermsName.carriedInterestFor]: {
+  [FieldsetInvestTermsName.carriedInterestMembers]: {
     title: 'Who will receive Carried Interest?',
     subTitle: 'Manager or third-party (Special Member) may receive the carried interest',
     checkboxList: ['Manager(s)', 'Special Member(s)'],

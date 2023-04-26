@@ -45,7 +45,7 @@ const mySpvDetailsState = {
 
 // investmentTerms
 const investmentTermsTabOneState = {
-  carriedInterestFor: null,
+  carriedInterestMembers: null,
   carriedInterest: {
     radioValue: '',
     contentTextValue: '',

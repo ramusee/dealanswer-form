@@ -7,19 +7,16 @@ export const selectSpvWelcomeBlock = createSelector(selectSpvState, state => sta
 export const selectMySpvDetailsTabOne = createSelector(selectSpvState, state => state.mySpvDetails.tabOne);
 export const selectMySpvDetailsTabTwo = createSelector(selectSpvState, state => state.mySpvDetails.tabTwo);
 export const selectMySpvDetailsCurrentTab = createSelector(selectSpvState, state => state.mySpvDetails.currentTab);
-
 //investmentTerms
 export const selectInvestTermsCurrentTab = createSelector(selectSpvState, state => state.investmentTerms.currentTab);
 export const selectInvestmentTermsTabOne = createSelector(selectSpvState, state => state.investmentTerms.tabOne);
 export const selectInvestmentTermsTabTwo = createSelector(selectSpvState, state => state.investmentTerms.tabTwo);
 export const selectInvestmentTermsTabThree = createSelector(selectSpvState, state => state.investmentTerms.tabThree);
-
 //investment structure
-export const selectInvestmentStructure = createSelector(
+export const selectInitialMemberNames = createSelector(
   selectSpvState,
-  state => state.investmentStructure.initialMembers,
+  state => state.investmentStructure.initialMemberNames,
 );
-
 //add ons
 export const selectAddOnsCurrentTab = createSelector(selectSpvState, state => state.addOns.currentTab);
 export const selectAddOnsTabOne = createSelector(selectSpvState, state => state.addOns.tabOne);

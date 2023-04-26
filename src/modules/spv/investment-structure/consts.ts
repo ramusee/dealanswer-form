@@ -3,8 +3,10 @@ import { InputRadioContent } from '../../../types/ui/radioInputGroup';
 
 const sectionTitleInvestmentStructure = 'Investment Structure';
 
+const LEGAL_ENTITY = 'Legal Entity';
+const INDIVIDUAL = 'Individual';
+
 const FieldsetInvestStructureName = {
-  desiredSpvName: 'desiredSpvName',
   initialMembers: 'initialMembers',
   memberType: 'memberType',
   manager: 'manager',
@@ -13,13 +15,6 @@ const FieldsetInvestStructureName = {
 type FieldsetInvestStructureName = ValueOf<typeof FieldsetInvestStructureName>;
 
 const investStructureFieldset: Record<FieldsetInvestStructureName, FieldsetValue> = {
-  [FieldsetInvestStructureName.desiredSpvName]: {
-    title: 'Enter the desired name of your SPV',
-    inputText: {
-      value: FieldsetInvestStructureName.desiredSpvName,
-      placeholder: 'SPV LLC',
-    },
-  },
   [FieldsetInvestStructureName.initialMembers]: {
     title: 'Initial Member(s)',
     subTitle: `The initial member(s) of the SPV will form the SPV and enter into the LLC Agreement
@@ -48,4 +43,10 @@ const investStructureFieldset: Record<FieldsetInvestStructureName, FieldsetValue
   },
 };
 
-export { FieldsetInvestStructureName, sectionTitleInvestmentStructure, investStructureFieldset };
+export {
+  FieldsetInvestStructureName,
+  sectionTitleInvestmentStructure,
+  investStructureFieldset,
+  LEGAL_ENTITY,
+  INDIVIDUAL,
+};

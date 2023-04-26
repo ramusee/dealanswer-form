@@ -6,7 +6,7 @@ import { addOnsFieldset, exemptReportAdvisorStatusDesc, FieldsetAddOnsName, sect
 import { previousProgressStep } from '../../../../store/reducers/common';
 import { AddOnsTabProps } from '../types';
 import { IAddOnsTabOne } from '../../../../types/projects/spv/addOns';
-import { selectAddOnsTabOne, setAddOnsTabOne } from '../../../../store/reducers/spv';
+import { selectAddOnsTabOne, selectInvestmentTermsTabOne, setAddOnsTabOne } from '../../../../store/reducers/spv';
 
 import { Fieldset } from '../../../../components/fieldset/Fieldset';
 import { SectionTitle } from '../../../../components/section-title';
@@ -19,6 +19,7 @@ import s from '../styles.module.scss';
 
 const AddOnsTabOne: FC<AddOnsTabProps> = ({ changeCurrentTab }) => {
   const addOnsTabOne = useSelector(selectAddOnsTabOne);
+  // const carriedInterestMembers = useSelector(selectInvestmentTermsTabOne).carriedInterestMembers;
   const dispatch = useDispatch();
 
   const methods = useForm<IAddOnsTabOne>({
@@ -43,6 +44,7 @@ const AddOnsTabOne: FC<AddOnsTabProps> = ({ changeCurrentTab }) => {
     cloneAllFields.adminServicesSubscribe,
     cloneAllFields.taxFillingServicesSubscribe,
   ]);
+
   const onSubmit = (data: IAddOnsTabOne) => {
     console.log(data);
   };

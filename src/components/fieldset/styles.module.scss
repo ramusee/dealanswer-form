@@ -5,17 +5,17 @@
   flex-direction: column;
   gap: 12px;
   font-size: 22px;
+}
 
-  & > span {
-    font-size: 12px;
-    line-height: 120%;
-    color: $greyBase;
-  }
+.subtitle {
+  font-size: 12px;
+  line-height: 120%;
+  color: $greyBase;
 }
 
 .title {
- & > svg {
-   margin-left: 4px;
-   cursor: pointer;
- }
+  & > svg {
+    margin-left: 4px;
+    cursor: pointer;
+  }
 }
