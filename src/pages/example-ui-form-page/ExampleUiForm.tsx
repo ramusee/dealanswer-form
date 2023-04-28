@@ -104,7 +104,7 @@ const ExampleUiForm = () => {
         <InputPercent name="% in the Carried Interest" onClick={() => console.log('button')} />
         <Dropdown
           optionClickHandler={() => console.log('hey')}
-          newPersonClickHandler={() => console.log('dropdown new')}
+          createPersonClickHandler={() => console.log('dropdown new')}
           title="Add Manager"
           optionList={dropDownOptionsList}
         />

@@ -5,7 +5,7 @@ import {
   setAddOnsCurrentTab,
   setAddOnsTabOne,
   setChangeMemberRoleInformation,
-  setInitialMemberNames,
+  addInitialMemberName,
   setInvestmentTermsCurrentTab,
   setInvestmentTermsTabOne,
   setInvestmentTermsTabThree,
@@ -17,6 +17,7 @@ import {
   setMySpvDetailsTabOne,
   setMySpvDetailsTabTwo,
   setPreviousSpvName,
+  removeInitialMemberName,
 } from './actions';
 import { addOnsState, investmentTermsState, mySpvDetailsState, welcomeBlockState } from './consts';
 
@@ -25,23 +26,56 @@ import { IAddOns } from '../../../types/projects/spv/addOns';
 import { InitialMembers } from '../../../types/projects/spv/investmentStructure';
 
 interface SpvState {
-  members: InitialMembers[] | null;
+  members: InitialMembers[];
   welcomeBlock: ISpvWelcomeBlock;
   mySpvDetails: IMySpvDetails;
   investmentTerms: IInvestmentTerms;
   investmentStructure: {
-    initialMemberNames: string[] | null;
+    initialMemberNames: string[];
   };
   addOns: IAddOns;
 }
 
 const initialSpvState: SpvState = {
-  members: null,
+  members: [
+    {
+      memberType: 'Individual',
+      citizenship: 'USA',
+      fullLegalName: 'Justin Timberlake',
+      carriedInterest: '30%',
+      lineOne: 'example1',
+      lineTwo: 'example2',
+      city: 'New York',
+      state: 'USA',
+      postalCode: '421234',
+      country: 'USA',
+      phoneNumber: '42898329835',
+      email: 'ram.u@live.com',
+      passportNumber: '34243 234234',
+      birthDate: '15.02.1992',
+    },
+    {
+      memberType: 'Individual',
+      citizenship: 'USA',
+      fullLegalName: 'Mark Wahlberg',
+      carriedInterest: '60%',
+      lineOne: 'example1',
+      lineTwo: 'example2',
+      city: 'New York',
+      state: 'USA',
+      postalCode: '421234',
+      country: 'USA',
+      phoneNumber: '42898329835',
+      email: 'ram.u@live.com',
+      passportNumber: '34243 234234',
+      birthDate: '11.05.1982',
+    },
+  ],
   welcomeBlock: welcomeBlockState,
   mySpvDetails: mySpvDetailsState,
   investmentTerms: investmentTermsState,
   investmentStructure: {
-    initialMemberNames: null,
+    initialMemberNames: [],
   },
   addOns: addOnsState,
   // orderSummary: {},
@@ -76,7 +110,7 @@ export const spv = createReducer(initialSpvState, {
   [setMySpvDetailsTabTwo.type]: (state, action) => {
     state.mySpvDetails.tabTwo = action.payload;
   },
-  //  investment terms
+  // investment terms
   [setInvestmentTermsCurrentTab.type]: (state, action) => {
     state.investmentTerms.currentTab = action.payload;
   },
@@ -89,11 +123,16 @@ export const spv = createReducer(initialSpvState, {
   [setInvestmentTermsTabThree.type]: (state, action) => {
     state.investmentTerms.tabThree = action.payload;
   },
-  //investmentStructure
-  [setInitialMemberNames.type]: (state, action) => {
-    state.investmentStructure.initialMemberNames = action.payload;
+  // investmentStructure
+  [addInitialMemberName.type]: (state, action) => {
+    state.investmentStructure.initialMemberNames.push(action.payload);
   },
-  //  add-ons
+  [removeInitialMemberName.type]: (state, action) => {
+    state.investmentStructure.initialMemberNames = state.investmentStructure.initialMemberNames.filter(
+      item => item !== action.payload,
+    );
+  },
+  // add-ons
   [setAddOnsCurrentTab.type]: (state, action) => {
     state.addOns.currentTab = action.payload;
   },

@@ -39,6 +39,6 @@ interface IMemberLegalEntity {
   carriedInterest: string;
 }
 
-type InitialMembers = IMemberIndividual[] | IMemberLegalEntity[];
+type InitialMembers = IMemberIndividual | IMemberLegalEntity;
 
 export type { IInvestmentStructure, InitialMembers, IMemberLegalEntity, IMemberIndividual };

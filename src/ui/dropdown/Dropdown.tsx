@@ -9,7 +9,7 @@ const Dropdown: FC<DropdownProps> = ({
   title,
   optionList,
   optionClickHandler,
-  newPersonClickHandler,
+  createPersonClickHandler,
   isDisabled = false,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -71,7 +71,7 @@ const Dropdown: FC<DropdownProps> = ({
           <button
             type="button"
             onClick={() => {
-              newPersonClickHandler();
+              createPersonClickHandler();
               setIsOpen(false);
             }}
             className={addButtonClassName}

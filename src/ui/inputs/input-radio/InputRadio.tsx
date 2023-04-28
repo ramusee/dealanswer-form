@@ -26,16 +26,7 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
   );
 
   const inputTextStyle = {
-    display: 'inline-block',
-    height: '17px',
-    fontFamily: "'Poppins', sans-serif",
-    border: 'none',
-    outline: 'none',
-    fontSize: '14px',
-    transition: 'width .05s ease-out',
     width: `${inputTextValue ? inputTextValue.length + 1 : 0}ch`,
-    minWidth: '20px',
-    maxWidth: '200px',
   };
 
   const renderContent = () => {
@@ -56,6 +47,7 @@ const InputRadio: FC<InputRadioProps> = memo(props => {
                   {...register(`${name}.contentTextValue`, {
                     required: true,
                   })}
+                  className={s.inputText}
                   style={inputTextStyle}
                   type="text"
                   autoFocus={isChecked}

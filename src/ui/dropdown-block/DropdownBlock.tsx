@@ -13,6 +13,7 @@ const DropdownBlock: FC<DropdownBlockProps> = ({
   optionList,
   percent,
   addPersonHandler,
+  removePersonHandler,
   createPersonClickHandler,
 }) => {
   const [currentMember, setCurrentMember] = useState('');
@@ -27,7 +28,7 @@ const DropdownBlock: FC<DropdownBlockProps> = ({
           title={title}
           optionList={optionList}
           optionClickHandler={optionClickHandler}
-          newPersonClickHandler={createPersonClickHandler}
+          createPersonClickHandler={createPersonClickHandler}
         />
       ) : (
         <div className={s.dropdownBlockContainer}>
@@ -40,7 +41,10 @@ const DropdownBlock: FC<DropdownBlockProps> = ({
               size={ButtonSize.M}
               color={ButtonColor.Grey}
               Icon={ICONS.Trash}
-              onClick={() => setCurrentMember('')}
+              onClick={() => {
+                removePersonHandler(currentMember);
+                setCurrentMember('');
+              }}
             >
               Remove
             </Button>

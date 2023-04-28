@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { IndividualMemberForm } from '../../../forms/individual-member-form';
 import { RadioGroup } from '../../../../components/element-groups/radio-group';
@@ -9,13 +9,21 @@ import s from '../styles.module.scss';
 import { Fieldset } from '../../../../components/fieldset/Fieldset';
 import { DropdownBlock } from '../../../../ui/dropdown-block';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectInitialMemberNames, setInitialMemberNames } from '../../../../store/reducers/spv';
+import {
+  addInitialMemberName,
+  removeInitialMemberName,
+  selectInitialMemberNames,
+  selectMembers,
+} from '../../../../store/reducers/spv';
 
 const InitialMembers = () => {
   const [showCreatePersonForm, setShowCreatePersonForm] = useState<boolean>(false);
-  const currentInitialMemberNames = useSelector(selectInitialMemberNames);
-
+  const initialMemberNames = useSelector(selectInitialMemberNames);
+  const members = useSelector(selectMembers) || [];
   const dispatch = useDispatch();
+
+  const memberNames = useMemo(() => members.map(({ fullLegalName }) => fullLegalName), [members.length]);
+
   const methods = useForm({
     defaultValues: { memberType: { radioValue: 'Individual' } },
   });
@@ -27,9 +35,13 @@ const InitialMembers = () => {
     setShowCreatePersonForm(true);
   };
   const addPersonHandler = (memberName: string) => {
-    // dispatch(setInitialMemberNames());
+    dispatch(addInitialMemberName(memberName));
   };
-  const isInitialMembers = currentInitialMemberNames && currentInitialMemberNames.length;
+  const removePersonHandler = (memberName: string) => {
+    dispatch(removeInitialMemberName(memberName));
+  };
+
+  const isInitialMembers = !!initialMemberNames.length;
 
   const onSubmit = (data: any) => {
     console.log(data);
@@ -44,18 +56,20 @@ const InitialMembers = () => {
         >
           <DropdownBlock
             title={investStructureFieldset.initialMembers.select?.placeholder || ''}
-            optionList={investStructureFieldset.initialMembers.members || []}
+            optionList={memberNames}
             createPersonClickHandler={createPersonClickHandler}
-            addPersonHandler={() => console.log('hey')}
+            addPersonHandler={addPersonHandler}
+            removePersonHandler={removePersonHandler}
           />
           {isInitialMembers && (
             <>
               <span className={s.dropdownTitle}>Please add another Initial Member</span>
               <DropdownBlock
                 title={investStructureFieldset.initialMembers.select?.placeholder || ''}
-                optionList={investStructureFieldset.initialMembers.members || []}
+                optionList={memberNames}
                 createPersonClickHandler={createPersonClickHandler}
-                addPersonHandler={() => console.log('hey')}
+                addPersonHandler={addPersonHandler}
+                removePersonHandler={removePersonHandler}
               />
             </>
           )}
