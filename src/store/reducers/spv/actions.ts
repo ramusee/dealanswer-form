@@ -6,6 +6,7 @@ import {
   IInvestmentTermsTabTwo,
 } from '../../../types/projects/spv/InvestmentTerms';
 import { IAddOnsTabOne } from '../../../types/projects/spv/addOns';
+import { ICommonMember } from '../../../types/projects/spv/investmentStructure';
 
 const setMySpvDetailCurrentTab = createAction<number>('set my spv details current local tab');
 
@@ -27,12 +28,13 @@ const setInvestmentTermsTabTwo = createAction<IInvestmentTermsTabTwo>('set inves
 const setInvestmentTermsTabThree = createAction<IInvestmentTermsTabThree>('set investment terms tab three');
 
 // investmentStructure
+const addCommonMember = createAction<ICommonMember>('add common member');
 const addInitialMemberName = createAction<string>('add initial member name');
 const removeInitialMemberName = createAction<string>('remove initial member name');
-// add-ons
+
+// addOns
 const setAddOnsCurrentTab = createAction<number>('set add-ons current tab');
 const setAddOnsTabOne = createAction<IAddOnsTabOne>('set add-ons tab one');
-
 export {
   setIsFirstTimeSpv,
   setPreviousSpvName,
@@ -48,6 +50,7 @@ export {
   setInvestmentTermsTabThree,
   setAddOnsCurrentTab,
   setAddOnsTabOne,
+  addCommonMember,
   addInitialMemberName,
   removeInitialMemberName,
 };

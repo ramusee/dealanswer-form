@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { useDispatch } from 'react-redux';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { SectionTitle } from '../../../components/section-title';
+import { SectionTitle } from '../../section-title';
 import { InputText } from '../../../ui/inputs/input-text';
 import { AuthFormProps } from './types';
 import { authFormFieldset } from './consts';

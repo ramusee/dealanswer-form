@@ -1,11 +1,11 @@
 import { InputRadioContent } from '../../../types/ui/radioInputGroup';
 import { FieldsetValue, ValueOf } from '../../../types/projects/projects';
 
-const RadioValue = {
+const dualRadioValue = {
   No: 'No',
   Yes: 'Yes',
 } as const;
-type RadioValue = ValueOf<typeof RadioValue>;
+type RadioValue = ValueOf<typeof dualRadioValue>;
 
 const SpvMemberRole = {
   spvInitialMember: "SPV's Initial Member(s)",
@@ -27,11 +27,11 @@ const spvWelcomeFieldset: Record<FieldsetName, FieldsetValue> = {
     title: 'Is it your first time forming an SPV with Deal Answer?',
     radioList: [
       {
-        value: RadioValue.Yes,
+        value: dualRadioValue.Yes,
         content: InputRadioContent.Default,
       },
       {
-        value: RadioValue.No,
+        value: dualRadioValue.No,
         content: InputRadioContent.Default,
       },
     ],
@@ -45,11 +45,11 @@ const spvWelcomeFieldset: Record<FieldsetName, FieldsetValue> = {
     title: 'Do you want to change your SPV Investment Structure?',
     radioList: [
       {
-        value: RadioValue.Yes,
+        value: dualRadioValue.Yes,
         content: InputRadioContent.Default,
       },
       {
-        value: RadioValue.No,
+        value: dualRadioValue.No,
         content: InputRadioContent.Default,
       },
     ],
@@ -58,11 +58,11 @@ const spvWelcomeFieldset: Record<FieldsetName, FieldsetValue> = {
     title: 'Do you want to change your SPV Investment Terms?',
     radioList: [
       {
-        value: RadioValue.Yes,
+        value: dualRadioValue.Yes,
         content: InputRadioContent.Default,
       },
       {
-        value: RadioValue.No,
+        value: dualRadioValue.No,
         content: InputRadioContent.Default,
       },
     ],
@@ -73,4 +73,4 @@ const spvWelcomeFieldset: Record<FieldsetName, FieldsetValue> = {
   },
 };
 
-export { spvWelcomeFieldset, FieldsetWelcomeBlockName, RadioValue };
+export { spvWelcomeFieldset, FieldsetWelcomeBlockName, dualRadioValue };

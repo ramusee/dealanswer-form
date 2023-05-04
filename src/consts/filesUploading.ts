@@ -1,4 +1,4 @@
-const documentsTypes = [
+const documentsTypesExample = [
   {
     inputTitle: 'Second ID Document',
     documentDesc: "Passport, driver's license, permanent residency card, and similar documents",
@@ -20,4 +20,9 @@ const filesUploadingExample = [
   },
 ];
 
-export { documentsTypes, filesUploadingExample };
+const filesUploadingTitle = 'Upload Incorporation Documents';
+const filesUploadingSubtitle = `Please upload any of the following documents: articles
+of incorporation,certificate of formation, operating agreement, certificate of shareholders,
+certificate of directors and officers, or similar documents.`;
+
+export { documentsTypesExample, filesUploadingExample, filesUploadingTitle, filesUploadingSubtitle };

@@ -18,3 +18,34 @@
   font-size: 18px;
   color: $blackBase;
 }
+
+.sidebarFilesUploading {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.attachedBlock {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid $greyBorder;
+  border-radius: 12px;
+  padding: 20px;
+  align-items: center;
+  max-height: 80px;
+  width: 100%;
+  height: 100%;
+  background-color: $whiteBase;
+
+  & > span {
+    max-width: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.saveButtonContainer {
+  align-self: end;
+  width: 100%;
+  max-width: 285px;
+}

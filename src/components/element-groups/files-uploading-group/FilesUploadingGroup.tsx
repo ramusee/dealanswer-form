@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { FilesUploadingGroupProps } from './types';
 import { InputFileDescBlock } from './components/InputFileDescBlock';
-import { documentsTypes } from '../../../consts/filesUploading';
+import { documentsTypesExample } from '../../../consts/filesUploading';
 
 import s from './styles.module.scss';
 
@@ -10,7 +10,7 @@ const FilesUploadingGroup: FC<FilesUploadingGroupProps> = ({ title, withCitizens
   return (
     <div className={s.uploadingGroupContainer}>
       <span>{title}</span>
-      {documentsTypes.map(({ inputTitle, documentDesc }) => (
+      {documentsTypesExample.map(({ inputTitle, documentDesc }) => (
         <InputFileDescBlock key={inputTitle} inputTitle={inputTitle} description={documentDesc} />
       ))}
     </div>

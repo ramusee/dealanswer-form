@@ -1,4 +1,5 @@
 import { FieldsetValue, ValueOf } from '../../../types/projects/projects';
+import { emailPattern } from '../../../consts/common';
 
 const FieldsetIndividualMemberName = {
   passport: 'passport',
@@ -32,7 +33,7 @@ const individualMemberForm: Record<FieldsetIndividualMemberName, FieldsetValue> 
       { value: 'postalCode', placeholder: 'Zip/Postal Code' },
       { value: 'country', placeholder: 'Country' },
       { value: 'phoneNumber', placeholder: 'Phone Number (optional)', isRequired: false },
-      { value: 'email', placeholder: 'Email (optional)', isRequired: false },
+      { value: 'email', placeholder: 'Email (optional)', pattern: emailPattern, isRequired: false },
       { value: 'passportNumber', placeholder: 'Passport Number' },
       { value: 'birthDate', placeholder: 'Date of Birth' },
     ],

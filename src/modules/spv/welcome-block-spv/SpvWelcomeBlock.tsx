@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import { FieldsetWelcomeBlockName, RadioValue, spvWelcomeFieldset } from './consts';
+import { FieldsetWelcomeBlockName, dualRadioValue, spvWelcomeFieldset } from './consts';
 
 import { RadioGroup } from '../../../components/element-groups/radio-group';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -107,7 +107,7 @@ const SpvWelcomeBlock: FC = () => {
             radioList={spvWelcomeFieldset.isFirstTimeSpv.radioList || []}
             groupName={FieldsetWelcomeBlockName.isFirstTimeSpv}
           />
-          {isFirstTimeSpvValue.radioValue === RadioValue.No && (
+          {isFirstTimeSpvValue.radioValue === dualRadioValue.No && (
             <InputText
               isRequired
               placeholder={spvWelcomeFieldset.isFirstTimeSpv.inputText?.placeholder || ''}
@@ -121,7 +121,7 @@ const SpvWelcomeBlock: FC = () => {
             groupName={FieldsetWelcomeBlockName.isChangeSpvInvestmentStructure}
           />
         </Fieldset>
-        {isChangeSpvStructureValue.radioValue === RadioValue.No && (
+        {isChangeSpvStructureValue.radioValue === dualRadioValue.No && (
           <Fieldset title={spvWelcomeFieldset.isChangeSpvInvestmentTerms.title}>
             <RadioGroup
               radioList={spvWelcomeFieldset.isChangeSpvInvestmentTerms.radioList || []}
@@ -129,7 +129,7 @@ const SpvWelcomeBlock: FC = () => {
             />
           </Fieldset>
         )}
-        {isChangeSpvStructureValue.radioValue === RadioValue.Yes && (
+        {isChangeSpvStructureValue.radioValue === dualRadioValue.Yes && (
           <Fieldset title={spvWelcomeFieldset.changeMemberRoleInformation.title}>
             <CheckboxGroup
               groupName={FieldsetWelcomeBlockName.changeMemberRoleInformation}

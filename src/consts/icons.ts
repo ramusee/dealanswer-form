@@ -9,6 +9,8 @@ import { ReactComponent as loginIcon } from '../assets/icons/login.svg';
 import { ReactComponent as CheckGreenIcon } from '../assets/icons/checkGreen.svg';
 import { ReactComponent as DownloadIcon } from '../assets/icons/download.svg';
 import { ReactComponent as AddIcon } from '../assets/icons/add.svg';
+import { ReactComponent as FolderAdd } from '../assets/icons/folderAdd.svg';
+
 import { IconsKey } from '../types/ui/icons';
 
 const ICONS: Record<IconsKey, React.FC | null> = {
@@ -22,6 +24,7 @@ const ICONS: Record<IconsKey, React.FC | null> = {
   CheckGreen: CheckGreenIcon,
   Download: DownloadIcon,
   Add: AddIcon,
+  FolderAdd: FolderAdd,
 };
 
 export { ICONS };

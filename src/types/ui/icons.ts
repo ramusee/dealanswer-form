@@ -19,6 +19,7 @@ const IconsKey = {
   CheckGreen: 'CheckGreen',
   Download: 'Download',
   Add: 'Add',
+  FolderAdd: 'FolderAdd',
 } as const;
 
 type IconsKey = ValueOf<typeof IconsKey>;

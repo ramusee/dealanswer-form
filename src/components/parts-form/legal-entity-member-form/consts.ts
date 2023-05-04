@@ -29,7 +29,7 @@ const legalEntityMemberForm: Record<FieldsetLegalEntityMemberName, FieldsetValue
       { value: 'carriedPercent', placeholder: '% in the SPV' },
     ],
     inputFile: {
-      title: 'Upload incorporation Documents',
+      title: 'Upload Incorporation Documents',
       value: 'incorporationDocsFiles',
     },
   },

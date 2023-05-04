@@ -5,6 +5,7 @@ const sectionTitleInvestmentStructure = 'Investment Structure';
 
 const LEGAL_ENTITY = 'Legal Entity';
 const INDIVIDUAL = 'Individual';
+const EDIT_PERSON = 'Edit Person';
 
 const FieldsetInvestStructureName = {
   initialMembers: 'initialMembers',
@@ -49,4 +50,5 @@ export {
   investStructureFieldset,
   LEGAL_ENTITY,
   INDIVIDUAL,
+  EDIT_PERSON,
 };

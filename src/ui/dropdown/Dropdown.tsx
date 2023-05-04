@@ -38,6 +38,7 @@ const Dropdown: FC<DropdownProps> = ({
   const openClickHandler = () => {
     setIsOpen(prevState => !prevState);
   };
+
   const filteredOptionsElems = filteredOptions.map(option => {
     return (
       <span
@@ -45,6 +46,7 @@ const Dropdown: FC<DropdownProps> = ({
         key={option}
         onClick={() => {
           optionClickHandler(option);
+          setIsOpen(false);
         }}
       >
         {option}

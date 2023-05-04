@@ -15,12 +15,15 @@ const InputText: FC<InputTextProps> = ({
 }) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
-  const { register, watch, trigger } = useFormContext();
+  const { register, watch } = useFormContext();
   const inputValue = watch(value);
   const activeHandler = () => {
     setIsActive(prevState => !prevState);
   };
   const containerClassName = cn(s.container, isActive && s.active, inputValue && s.filled, isDisabled && s.disabled);
+  const patternValue = pattern
+    ? { value: pattern, message: 'You’ve made a mistake in your email address.' }
+    : undefined;
 
   return (
     <label className={containerClassName}>
@@ -29,7 +32,7 @@ const InputText: FC<InputTextProps> = ({
         {...register(value, {
           disabled: isDisabled,
           required: isRequired,
-          pattern: pattern,
+          pattern: patternValue,
         })}
         placeholder={placeholder}
         onFocus={activeHandler}

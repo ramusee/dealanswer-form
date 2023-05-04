@@ -18,15 +18,16 @@ import {
   setMySpvDetailsTabTwo,
   setPreviousSpvName,
   removeInitialMemberName,
+  addCommonMember,
 } from './actions';
 import { addOnsState, investmentTermsState, mySpvDetailsState, welcomeBlockState } from './consts';
 
 import { IInvestmentTerms } from '../../../types/projects/spv/InvestmentTerms';
 import { IAddOns } from '../../../types/projects/spv/addOns';
-import { InitialMembers } from '../../../types/projects/spv/investmentStructure';
+import { ICommonMember } from '../../../types/projects/spv/investmentStructure';
 
 interface SpvState {
-  members: InitialMembers[];
+  members: ICommonMember[];
   welcomeBlock: ISpvWelcomeBlock;
   mySpvDetails: IMySpvDetails;
   investmentTerms: IInvestmentTerms;
@@ -39,7 +40,7 @@ interface SpvState {
 const initialSpvState: SpvState = {
   members: [
     {
-      memberType: 'Individual',
+      memberType: { radioValue: 'Individual' },
       citizenship: 'USA',
       fullLegalName: 'Justin Timberlake',
       carriedInterest: '30%',
@@ -55,7 +56,7 @@ const initialSpvState: SpvState = {
       birthDate: '15.02.1992',
     },
     {
-      memberType: 'Individual',
+      memberType: { radioValue: 'Individual' },
       citizenship: 'USA',
       fullLegalName: 'Mark Wahlberg',
       carriedInterest: '60%',
@@ -124,6 +125,9 @@ export const spv = createReducer(initialSpvState, {
     state.investmentTerms.tabThree = action.payload;
   },
   // investmentStructure
+  [addCommonMember.type]: (state, action) => {
+    state.members.push(action.payload);
+  },
   [addInitialMemberName.type]: (state, action) => {
     state.investmentStructure.initialMemberNames.push(action.payload);
   },

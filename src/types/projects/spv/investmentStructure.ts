@@ -1,44 +1,60 @@
-interface IInvestmentStructure {
-  desiredNameSpv: string;
-}
+import { IRadioValueDefault } from '../../../ui/inputs/input-radio/types';
 
-interface InitialMember {
-  memberType: string;
-}
+// interface IMemberIndividual {
+//   memberType: string;
+//   citizenship: string;
+//   fullLegalName: string;
+//   carriedInterest: string;
+//   lineOne: string;
+//   lineTwo: string;
+//   city: string;
+//   state: string;
+//   postalCode: string;
+//   country: string;
+//   phoneNumber: string;
+//   email: string;
+//   passportNumber: string;
+//   birthDate: string;
+// }
+//
+// interface IMemberLegalEntity {
+//   memberType: string;
+//   fullLegalName: string;
+//   stateIncorporation: string;
+//   lineOne: string;
+//   lineTwo: string;
+//   city: string;
+//   stateMailing: string;
+//   postalCode: string;
+//   country: string;
+//   signatoryName: string;
+//   signatoryTitle: string;
+//   signatoryEmail: string;
+//   carriedInterest: string;
+// }
 
-interface IMemberIndividual {
-  memberType: string;
-  citizenship: string;
+interface ICommonMember {
+  memberType: IRadioValueDefault;
+  citizenship?: string;
   fullLegalName: string;
   carriedInterest: string;
   lineOne: string;
   lineTwo: string;
   city: string;
-  state: string;
+  state?: string;
   postalCode: string;
   country: string;
-  phoneNumber: string;
-  email: string;
-  passportNumber: string;
-  birthDate: string;
+  phoneNumber?: string;
+  email?: string;
+  passportNumber?: string;
+  birthDate?: string;
+  stateIncorporation?: string;
+  stateMailing?: string;
+  signatoryName?: string;
+  signatoryTitle?: string;
+  signatoryEmail?: string;
 }
 
-interface IMemberLegalEntity {
-  memberType: string;
-  fullLegalName: string;
-  stateIncorporation: string;
-  lineOne: string;
-  lineTwo: string;
-  city: string;
-  stateMailing: string;
-  postalCode: string;
-  country: string;
-  signatoryName: string;
-  signatoryTitle: string;
-  signatoryEmail: string;
-  carriedInterest: string;
-}
+// type InitialMember = IMemberIndividual | IMemberLegalEntity;
 
-type InitialMembers = IMemberIndividual | IMemberLegalEntity;
-
-export type { IInvestmentStructure, InitialMembers, IMemberLegalEntity, IMemberIndividual };
+export type { ICommonMember };

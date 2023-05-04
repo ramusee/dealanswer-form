@@ -1,0 +1,12 @@
+.personForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+
+.saveButtonContainer {
+  align-self: end;
+  max-width: 285px;
+  width: 100%;
+}

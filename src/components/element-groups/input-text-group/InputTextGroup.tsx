@@ -7,11 +7,18 @@ import { InputText } from '../../../ui/inputs/input-text';
 import s from './styles.module.scss';
 
 const InputTextGroup: FC<InputTextGroupProps> = ({ inputList, twoColumns = false }) => {
-  const InutTextGroupContainerClassName = cn(s.inputTextGroupContainer, twoColumns && s.twoColumn);
+  const InputTextGroupContainerClassName = cn(s.inputTextGroupContainer, twoColumns && s.twoColumn);
   return (
-    <div className={InutTextGroupContainerClassName}>
-      {inputList.map(({ value, type, placeholder, isRequired }) => (
-        <InputText key={value} value={value} placeholder={placeholder} type={type} isRequired={isRequired} />
+    <div className={InputTextGroupContainerClassName}>
+      {inputList.map(({ value, type, placeholder, isRequired, pattern }) => (
+        <InputText
+          key={value}
+          value={value}
+          placeholder={placeholder}
+          type={type}
+          pattern={pattern}
+          isRequired={isRequired}
+        />
       ))}
     </div>
   );

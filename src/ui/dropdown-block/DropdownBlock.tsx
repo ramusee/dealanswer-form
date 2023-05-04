@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Dropdown } from '../dropdown';
 import { DropdownBlockProps } from './types';
 
@@ -13,17 +13,17 @@ const DropdownBlock: FC<DropdownBlockProps> = ({
   optionList,
   percent,
   addPersonHandler,
+  editPersonHandler,
   removePersonHandler,
   createPersonClickHandler,
+  targetMembers,
 }) => {
-  const [currentMember, setCurrentMember] = useState('');
   const optionClickHandler = (option: string) => {
-    setCurrentMember(option);
     addPersonHandler(option);
   };
   return (
-    <>
-      {!currentMember ? (
+    <div className={s.selectedBlockContainer}>
+      {!targetMembers.length ? (
         <Dropdown
           title={title}
           optionList={optionList}
@@ -31,27 +31,28 @@ const DropdownBlock: FC<DropdownBlockProps> = ({
           createPersonClickHandler={createPersonClickHandler}
         />
       ) : (
-        <div className={s.dropdownBlockContainer}>
-          <span>{currentMember}</span>
-          <div className={s.buttonContainer}>
-            <Button size={ButtonSize.M} color={ButtonColor.White} Icon={ICONS.Edit} onClick={() => console.log('edit')}>
-              Edit
-            </Button>
-            <Button
-              size={ButtonSize.M}
-              color={ButtonColor.Grey}
-              Icon={ICONS.Trash}
-              onClick={() => {
-                removePersonHandler(currentMember);
-                setCurrentMember('');
-              }}
-            >
-              Remove
-            </Button>
+        targetMembers.map(member => (
+          <div key={member} className={s.selectedBlock}>
+            <span>{member}</span>
+            <div className={s.buttonContainer}>
+              <Button size={ButtonSize.M} color={ButtonColor.White} Icon={ICONS.Edit} onClick={editPersonHandler}>
+                Edit
+              </Button>
+              <Button
+                size={ButtonSize.M}
+                color={ButtonColor.Grey}
+                Icon={ICONS.Trash}
+                onClick={() => {
+                  removePersonHandler(member);
+                }}
+              >
+                Remove
+              </Button>
+            </div>
           </div>
-        </div>
+        ))
       )}
-    </>
+    </div>
   );
 };
 
