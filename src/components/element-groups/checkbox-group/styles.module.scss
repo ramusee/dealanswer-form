@@ -1,5 +1,15 @@
+@import 'src/assets/styles/colors';
+
 .container {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  position: relative;
+}
+
+.errorMessage {
+  position: absolute;
+  color: $redError;
+  font-size: 11px;
+  bottom: -20px;
 }

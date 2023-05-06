@@ -1,5 +1,15 @@
+@import 'src/assets/styles/colors';
+
 .radioGroupContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  position: relative;
+}
+
+.errorMessage {
+  position: absolute;
+  color: $redError;
+  font-size: 11px;
+  bottom: -20px;
 }

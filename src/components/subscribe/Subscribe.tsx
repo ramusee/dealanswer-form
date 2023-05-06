@@ -29,9 +29,11 @@ const Subscribe: FC<SubscribeProps> = ({ value, title, contentList }) => {
       <div className={s.subscribeFooter}>
         <span>$1,000/month</span>
         {!isSubscribed ? (
-          <Button size={ButtonSize.L} onClick={subscribeButtonHandler} color={ButtonColor.Green}>
-            Subscribe
-          </Button>
+          <div>
+            <Button size={ButtonSize.L} onClick={subscribeButtonHandler} color={ButtonColor.Green}>
+              Subscribe
+            </Button>
+          </div>
         ) : (
           <div className={s.subscribeSuccess}>
             <span>You are subscribed</span>

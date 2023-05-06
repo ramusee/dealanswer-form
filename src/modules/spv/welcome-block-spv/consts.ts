@@ -1,18 +1,17 @@
 import { InputRadioContent } from '../../../types/ui/radioInputGroup';
 import { FieldsetValue, ValueOf } from '../../../types/projects/projects';
 
-const dualRadioValue = {
+const DualRadioValue = {
   No: 'No',
   Yes: 'Yes',
 } as const;
-type RadioValue = ValueOf<typeof dualRadioValue>;
+type DualRadioValue = ValueOf<typeof DualRadioValue>;
 
-const SpvMemberRole = {
+const spvMemberRole = {
   spvInitialMember: "SPV's Initial Member(s)",
   spvManager: "SPV's Manager",
   spvSpecialMember: "SPV's Special Member",
-} as const;
-type SpvMemberRole = ValueOf<typeof SpvMemberRole>;
+};
 
 const FieldsetWelcomeBlockName = {
   isFirstTimeSpv: 'isFirstTimeSpv',
@@ -27,11 +26,11 @@ const spvWelcomeFieldset: Record<FieldsetName, FieldsetValue> = {
     title: 'Is it your first time forming an SPV with Deal Answer?',
     radioList: [
       {
-        value: dualRadioValue.Yes,
+        value: DualRadioValue.Yes,
         content: InputRadioContent.Default,
       },
       {
-        value: dualRadioValue.No,
+        value: DualRadioValue.No,
         content: InputRadioContent.Default,
       },
     ],
@@ -45,11 +44,11 @@ const spvWelcomeFieldset: Record<FieldsetName, FieldsetValue> = {
     title: 'Do you want to change your SPV Investment Structure?',
     radioList: [
       {
-        value: dualRadioValue.Yes,
+        value: DualRadioValue.Yes,
         content: InputRadioContent.Default,
       },
       {
-        value: dualRadioValue.No,
+        value: DualRadioValue.No,
         content: InputRadioContent.Default,
       },
     ],
@@ -58,19 +57,19 @@ const spvWelcomeFieldset: Record<FieldsetName, FieldsetValue> = {
     title: 'Do you want to change your SPV Investment Terms?',
     radioList: [
       {
-        value: dualRadioValue.Yes,
+        value: DualRadioValue.Yes,
         content: InputRadioContent.Default,
       },
       {
-        value: dualRadioValue.No,
+        value: DualRadioValue.No,
         content: InputRadioContent.Default,
       },
     ],
   },
   [FieldsetWelcomeBlockName.changeMemberRoleInformation]: {
     title: 'Do you want to change or amend information about:',
-    checkboxList: Object.values(SpvMemberRole),
+    checkboxList: Object.values(spvMemberRole),
   },
 };
 
-export { spvWelcomeFieldset, FieldsetWelcomeBlockName, dualRadioValue };
+export { spvWelcomeFieldset, FieldsetWelcomeBlockName, DualRadioValue };

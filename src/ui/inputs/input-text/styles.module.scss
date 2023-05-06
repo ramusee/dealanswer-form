@@ -12,6 +12,7 @@
   transition: box-shadow .2s ease-out;
   background-color: $whiteBase;
   min-width: 60px;
+  position: relative;
 
   &:hover {
     box-shadow: 0 5px 10px $greyBorder;
@@ -23,7 +24,7 @@
     height: 18px;
   }
 
-  & span {
+  & .placeholder {
     color: $greyBase;
     font-size: 11px;
   }
@@ -39,7 +40,18 @@
   justify-content: space-between;
 }
 
+.redBorder {
+  border: 2px solid $redBorder;
+}
+
 .disabled {
   opacity: 0.6;
 }
 
+.errorMessage {
+  position: absolute;
+  color: $redError;
+  font-size: 11px;
+  right: 15px;
+  top: 6px;
+}

@@ -63,11 +63,16 @@
   & > span {
     color: $greenBase;
   }
+
+  & > div {
+    max-width: 253px;;
+    width: 100%;
+  }
 }
 
 .subscribeSuccess {
   align-self: start;
-  width: 253px;
+
 
   & > span {
     display: inline-block;
@@ -80,6 +85,5 @@
     & path {
       stroke: $greenBase;
     }
-
   }
 }

@@ -20,7 +20,10 @@ import { Link } from 'react-router-dom';
 import s from './styles.module.scss';
 
 const AuthForm: FC<AuthFormProps> = ({ changeCurrentTab }) => {
-  const methods = useForm();
+  const methods = useForm({
+    reValidateMode: 'onBlur',
+    mode: 'onBlur',
+  });
   const { handleSubmit } = methods;
 
   const dispatch = useDispatch();
