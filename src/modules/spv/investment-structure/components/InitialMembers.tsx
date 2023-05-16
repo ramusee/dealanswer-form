@@ -23,16 +23,19 @@ import s from '../styles.module.scss';
 const InitialMembers = () => {
   const [showCreatePersonForm, setShowCreatePersonForm] = useState<boolean>(false);
   const [sidebarActive, setSidebarActive] = useState<boolean>(false);
+  const [alreadyExistsPersonError, setAlreadyExistsPersonError] = useState<boolean>(false);
+
   const initialMemberNames = useSelector(selectInitialMemberNames);
   const members = useSelector(selectMembers) || [];
   const dispatch = useDispatch();
 
   const commonMemberNames = useMemo(() => members.map(({ fullLegalName }) => fullLegalName), [members.length]);
+
   const methods = useForm<ICommonMember>({
     defaultValues: { memberType: { radioValue: 'Individual' } },
   });
 
-  const { watch } = methods;
+  const { reset } = methods;
 
   const createPersonClickHandler = () => {
     setShowCreatePersonForm(true);
@@ -45,9 +48,11 @@ const InitialMembers = () => {
     dispatch(addInitialMemberName(memberName));
     setShowCreatePersonForm(false);
   };
+
   const editPersonHandler = () => {
     setSidebarActive(prevState => !prevState);
   };
+
   const removePersonHandler = (memberName: string) => {
     dispatch(removeInitialMemberName(memberName));
   };
@@ -57,8 +62,16 @@ const InitialMembers = () => {
   const sidebarHandler = () => {
     setSidebarActive(prevState => !prevState);
   };
+
   const onSubmit = (data: ICommonMember) => {
+    if (commonMemberNames.includes(data.fullLegalName)) {
+      setAlreadyExistsPersonError(true);
+      return;
+    }
     dispatch(addCommonMember(data));
+    dispatch(addInitialMemberName(data.fullLegalName));
+    setShowCreatePersonForm(false);
+    reset();
   };
 
   return (
@@ -89,10 +102,10 @@ const InitialMembers = () => {
             </>
           )}
         </Fieldset>
-        {showCreatePersonForm && <PersonForm />}
+        {showCreatePersonForm && <PersonForm alreadyExistsPersonError={alreadyExistsPersonError} />}
       </form>
       <Sidebar title={EDIT_PERSON} active={sidebarActive} setActive={sidebarHandler}>
-        <PersonForm />
+        <PersonForm alreadyExistsPersonError={alreadyExistsPersonError} />
       </Sidebar>
     </FormProvider>
   );
